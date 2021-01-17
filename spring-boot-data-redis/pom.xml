@@ -8,15 +8,15 @@
         <version>1.0.0</version>
     </parent>
     <groupId>com.jourwon.spring.boot</groupId>
-    <artifactId>spring-boot-helloworld</artifactId>
+    <artifactId>spring-boot-data-redis</artifactId>
     <version>1.0.0</version>
-    <name>spring-boot-helloworld</name>
-    <description>快速入门-HelloWorld</description>
+    <name>spring-boot-data-redis</name>
+    <description>spring-boot整合redis</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
         <dependency>
@@ -30,14 +30,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
