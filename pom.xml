@@ -13,6 +13,8 @@
     <modules>
         <!-- 快速入门-HelloWorld -->
         <module>spring-boot-helloworld</module>
+        <!-- 集成Redis -->
+        <module>spring-boot-data-redis</module>
     </modules>
 
     <properties>

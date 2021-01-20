@@ -7,12 +7,22 @@
         <artifactId>spring-boot-example</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>spring-boot-helloworld</artifactId>
+    <artifactId>spring-boot-knife4j</artifactId>
     <version>1.0.0</version>
-    <name>spring-boot-helloworld</name>
-    <description>快速入门-HelloWorld</description>
+    <name>spring-boot-knife4j</name>
+    <description>集成Knife4j-API接口文档</description>
+
+    <properties>
+        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
+    </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>${knife4j-spring-boot-starter.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

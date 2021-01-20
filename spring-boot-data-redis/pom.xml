@@ -7,11 +7,10 @@
         <artifactId>spring-boot-example</artifactId>
         <version>1.0.0</version>
     </parent>
-    <groupId>com.jourwon.spring.boot</groupId>
     <artifactId>spring-boot-data-redis</artifactId>
     <version>1.0.0</version>
     <name>spring-boot-data-redis</name>
-    <description>spring-boot整合redis</description>
+    <description>集成Redis</description>
 
     <dependencies>
         <dependency>

@@ -18,7 +18,7 @@ class SpringBootDataRedisApplicationTests {
     }
 
     @Resource
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, User> redisTemplate;
 
     @Autowired
     private RedisUtils redisUtils;
