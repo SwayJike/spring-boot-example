@@ -3,15 +3,16 @@ package com.jourwon.spring.boot.controller;
 import com.jourwon.spring.boot.common.CommonPage;
 import com.jourwon.spring.boot.enums.ResponseCodeEnum;
 import com.jourwon.spring.boot.exception.CommonException;
+import com.jourwon.spring.boot.query.PageQuery;
 import com.jourwon.spring.boot.response.CommonResponse;
 import com.jourwon.spring.boot.vo.UserVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,8 +69,8 @@ public class DemoController {
 
     @GetMapping("/page")
     @ApiOperation("分页数据格式示例")
-    public CommonResponse<CommonPage<UserVO>> testPage(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                                                       @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+    public CommonResponse<CommonPage<UserVO>> testPage(@Valid PageQuery pageQuery/*@RequestParam(required = false, defaultValue = "1") Integer pageNum,
+                                                       @RequestParam(required = false, defaultValue = "10") Integer pageSize*/) {
         List<UserVO> list = new ArrayList<>(4);
         list.add(UserVO.builder()
                 .userId(1L)
@@ -108,8 +109,9 @@ public class DemoController {
                 .updateTime(null)
                 .build());
 
-        CommonPage<UserVO> page = new CommonPage<>(pageNum,
-                pageSize, 4, 1, 4, list);
+        System.out.println("当前页码：" + pageQuery.getPageNum() + " 分页大小：" + pageQuery.getPageSize());
+        CommonPage<UserVO> page = new CommonPage<>(pageQuery.getPageNum(),
+                pageQuery.getPageSize(), 4, 1, 4, list);
 
         return CommonResponse.success(page);
     }

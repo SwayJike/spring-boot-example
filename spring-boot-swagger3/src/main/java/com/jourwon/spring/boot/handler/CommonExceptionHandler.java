@@ -123,11 +123,9 @@ public class CommonExceptionHandler {
      */
     private String getBindResultMessage(BindingResult bindingResult) {
         FieldError error = bindingResult.getFieldError();
-        // String field = error != null ? error.getField() : "空";
-        // String code = error != null ? error.getDefaultMessage() : "空";
-        // return String.format("%s:%s", field, code);
-        // return code;
-        return error != null ? error.getDefaultMessage() : "空";
+        String field = error != null ? error.getField() : "空";
+        String code = error != null ? error.getDefaultMessage() : "空";
+        return String.format("%s:%s", field, code);
     }
 
     /**
@@ -200,7 +198,6 @@ public class CommonExceptionHandler {
         log.info("[handleMethodArgumentTypeMismatchException] 方法参数类型不匹配异常: ", e);
         return new CommonResponse<>(ResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL);
     }
-
 
     /**
      * 不支持当前请求方法时抛出的异常

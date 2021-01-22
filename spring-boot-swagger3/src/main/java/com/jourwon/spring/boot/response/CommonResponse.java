@@ -19,7 +19,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "统一返回前端的响应对象")
+@ApiModel(value = "CommonResponse-统一返回前端的响应对象")
 public class CommonResponse<T> implements Serializable {
 
     private static final long serialVersionUID = -1338376281028943181L;
