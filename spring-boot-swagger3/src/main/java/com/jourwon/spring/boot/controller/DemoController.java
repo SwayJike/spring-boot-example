@@ -69,8 +69,7 @@ public class DemoController {
 
     @GetMapping("/page")
     @ApiOperation("分页数据格式示例")
-    public CommonResponse<CommonPage<UserVO>> testPage(@Valid PageQuery pageQuery/*@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                                                       @RequestParam(required = false, defaultValue = "10") Integer pageSize*/) {
+    public CommonResponse<CommonPage<UserVO>> testPage(@Valid PageQuery pageQuery) {
         List<UserVO> list = new ArrayList<>(4);
         list.add(UserVO.builder()
                 .userId(1L)

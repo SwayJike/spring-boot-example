@@ -1,5 +1,6 @@
 package com.jourwon.spring.boot.response;
 
+import com.jourwon.spring.boot.constant.SysConstants;
 import com.jourwon.spring.boot.enums.ResponseCodeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,8 +25,6 @@ public class CommonResponse<T> implements Serializable {
 
     private static final long serialVersionUID = -1338376281028943181L;
 
-    private static final String MDC_KEY = "traceId";
-
     @ApiModelProperty(value = "响应编码")
     private String code;
 
@@ -36,7 +35,7 @@ public class CommonResponse<T> implements Serializable {
     private T data;
 
     @ApiModelProperty(value = "请求id")
-    private String traceId = MDC.get(MDC_KEY);
+    private String traceId = MDC.get(SysConstants.MDC_KEY);
 
     @ApiModelProperty(value = "时间戳")
     private long timestamp = System.currentTimeMillis();

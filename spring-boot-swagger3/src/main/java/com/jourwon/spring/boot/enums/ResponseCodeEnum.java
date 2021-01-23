@@ -19,27 +19,15 @@ public enum ResponseCodeEnum {
      * 成功
      */
     SUCCESS("00000", "成功"),
-    /**
-     * 用户退出成功
-     */
-    LOGOUT_SUCCESS("00000", "用户退出成功"),
 
     /**
      * 用户请求参数错误
      */
     REQUEST_PARAMETER_ILLEGAL("A0400", "用户请求参数错误"),
     /**
-     * 用户名已存在
-     */
-    USERNAME_EXISTS("A0111", "用户名已存在"),
-    /**
      * 访问未授权
      */
     UNAUTHORIZED_ACCESS("A0301", "访问未授权"),
-    /**
-     * 用户账户不存在或密码错误
-     */
-    USERNAME_OR_PASSWORD_ERROR("A0342", "用户账户不存在或密码错误"),
     /**
      * 不支持当前请求类型
      */

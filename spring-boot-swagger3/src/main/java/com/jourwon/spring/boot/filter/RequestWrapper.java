@@ -26,7 +26,7 @@ public class RequestWrapper extends HttpServletRequestWrapper {
     @Getter
     private final byte[] body;
 
-    private Map<String, String> headerMap = new HashMap<>();
+    private final Map<String, String> headerMap = new HashMap<>();
 
     public RequestWrapper(HttpServletRequest request) {
         super(request);
@@ -73,20 +73,20 @@ public class RequestWrapper extends HttpServletRequestWrapper {
                 sb.append(line);
             }
         } catch (IOException e) {
-            log.info("处理异常{}", e);
+            log.info("处理异常:{}", e);
         } finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException e) {
-                    log.info("处理异常{}", e);
+                    log.info("处理异常:{}", e);
                 }
             }
             if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    log.info("处理异常{}", e);
+                    log.info("处理异常:{}", e);
                 }
             }
         }

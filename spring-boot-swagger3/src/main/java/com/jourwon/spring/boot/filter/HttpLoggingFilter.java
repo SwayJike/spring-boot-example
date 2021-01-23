@@ -1,5 +1,6 @@
 package com.jourwon.spring.boot.filter;
 
+import com.jourwon.spring.boot.constant.SysConstants;
 import com.jourwon.spring.boot.util.IpUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -13,7 +14,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -29,8 +32,7 @@ public class HttpLoggingFilter extends OncePerRequestFilter {
     private static final String BEFORE_LOG_URL = "请求地址 = {}";
     private static final String BEFORE_LOG_MSG = "请求参数 = {}";
     private static final String AFTER_LOG_MSG = "耗时[{}ms], 响应参数 = {}";
-    private static final String MDC_KEY = "traceId";
-    private static final String HEALTH = "health";
+    private static final String REQ_ID = "reqId";
     private static final int LENGTH = 1000;
 
     private static final String[] CHARS = new String[]{"a", "b", "c", "d", "e", "f",
@@ -41,15 +43,15 @@ public class HttpLoggingFilter extends OncePerRequestFilter {
             "W", "X", "Y", "Z"};
 
     public String generateShortUuid() {
-        StringBuffer shortBuffer = new StringBuffer();
+        StringBuilder stringBuilder = new StringBuilder();
         String uuid = UUID.randomUUID().toString().replace("-", "");
         int length = 8;
         for (int i = 0; i < length; i++) {
             String str = uuid.substring(i * 4, i * 4 + 4);
             int x = Integer.parseInt(str, 16);
-            shortBuffer.append(CHARS[x % 0x3E]);
+            stringBuilder.append(CHARS[x % 0x3E]);
         }
-        return shortBuffer.toString();
+        return stringBuilder.toString();
 
     }
 
@@ -65,24 +67,26 @@ public class HttpLoggingFilter extends OncePerRequestFilter {
 
         String queryString = request.getQueryString();
         if (null != queryString) {
-            url.append("?").append(queryString);
+            url.append("?").append(URLDecoder.decode(queryString, StandardCharsets.UTF_8.toString()));
         }
 
-        String reqId = request.getHeader("reqId");
+        String reqId = request.getHeader(REQ_ID);
         if (StringUtils.isNotBlank(reqId)) {
-            MDC.put(MDC_KEY, reqId);
+            MDC.put(SysConstants.MDC_KEY, reqId);
         } else {
             reqId = generateShortUuid();
-            MDC.put(MDC_KEY, reqId);
+            MDC.put(SysConstants.MDC_KEY, reqId);
         }
 
+        String contentType = request.getContentType();
         // 上传文件类的请求
-        if (request.getContentType() == null
-                || request.getContentType().contains(MediaType.MULTIPART_FORM_DATA_VALUE)
-                || request.getContentType().contains(MediaType.MULTIPART_MIXED_VALUE)) {
+        boolean flag = contentType != null
+                && (contentType.contains(MediaType.MULTIPART_FORM_DATA_VALUE)
+                || contentType.contains(MediaType.MULTIPART_MIXED_VALUE));
+        if (flag) {
             doLogBefore(url.toString(), "");
             filterChain.doFilter(request, response);
-            doLogAfter(url.toString(), "", System.currentTimeMillis() - start);
+            doLogAfter("", System.currentTimeMillis() - start);
             MDC.clear();
             return;
         }
@@ -91,10 +95,10 @@ public class HttpLoggingFilter extends OncePerRequestFilter {
         RequestWrapper requestWrapper = new RequestWrapper(request);
 
         // 把reqId放到请求体里，供需要使用的服务获取
-        requestWrapper.addHeader("reqId", reqId);
+        requestWrapper.addHeader(REQ_ID, reqId);
 
         //请求参数打印日志
-        String requestBody = getContentAsString(requestWrapper.getBody(), requestWrapper.getCharacterEncoding());
+        String requestBody = getContentAsString(requestWrapper.getBody(), Charset.forName(requestWrapper.getCharacterEncoding()));
         doLogBefore(url.toString(), requestBody);
 
         //执行真正的请求
@@ -103,41 +107,33 @@ public class HttpLoggingFilter extends OncePerRequestFilter {
 
         //响应数据打印日志
         byte[] buf = wrappedResponse.getContentAsByteArray();
-        String responseBody = getContentAsString(buf, response.getCharacterEncoding());
-        doLogAfter(url.toString(), responseBody, System.currentTimeMillis() - start);
+        String responseBody = getContentAsString(buf, StandardCharsets.UTF_8);
+        doLogAfter(responseBody, System.currentTimeMillis() - start);
 
         //这里一定要把content拷贝回真正的response, copyBodyToResponse需要spring 4.2以上.
         wrappedResponse.copyBodyToResponse();
         MDC.clear();
     }
 
-    private String getContentAsString(byte[] buf, String charsetName) {
+    private String getContentAsString(byte[] buf, Charset charset) {
         if (buf == null || buf.length == 0) {
             return "";
         }
         int length = Math.min(buf.length, LENGTH);
-        try {
-            String result = new String(buf, 0, length, charsetName);
-            if (buf.length > LENGTH) {
-                result = result + "...";
-            }
-            return result;
-        } catch (UnsupportedEncodingException ex) {
-            return "Unsupported Encoding";
+        String result = new String(buf, 0, length, charset);
+        if (buf.length > LENGTH) {
+            result = result + "...";
         }
+        return result;
     }
 
     private void doLogBefore(String url, String payload) {
-        if (!url.contains(HEALTH)) {
-            log.info(BEFORE_LOG_URL, url);
-            log.info(BEFORE_LOG_MSG, payload);
-        }
+        log.info(BEFORE_LOG_URL, url);
+        log.info(BEFORE_LOG_MSG, payload);
     }
 
-    private void doLogAfter(String url, String response, long time) {
-        if (!url.contains(HEALTH)) {
-            log.info(AFTER_LOG_MSG, time, Objects.isNull(response) ? "null" : response);
-        }
+    private void doLogAfter(String response, long time) {
+        log.info(AFTER_LOG_MSG, time, Objects.isNull(response) ? "null" : response);
     }
 
 }
