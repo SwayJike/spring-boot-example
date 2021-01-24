@@ -2,10 +2,10 @@ package com.jourwon.spring.boot.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.jourwon.spring.boot.common.CommonPage;
 import com.jourwon.spring.boot.enums.CommonResponseCodeEnum;
 import com.jourwon.spring.boot.query.PageQuery;
 import com.jourwon.spring.boot.query.UserQuery;
+import com.jourwon.spring.boot.response.CommonPage;
 import com.jourwon.spring.boot.response.CommonResponse;
 import com.jourwon.spring.boot.vo.UserVO;
 import io.swagger.annotations.Api;
@@ -28,7 +28,7 @@ import java.util.*;
 @RequestMapping("/user")
 public class UserController {
 
-    private static final List<UserVO> list = new ArrayList<UserVO>() {
+    private static final List<UserVO> LIST = new ArrayList<UserVO>() {
         {
             add(UserVO.builder()
                     .userId(1L).username("JourWon").mobilePhoneNumber("13800000000")
@@ -56,8 +56,8 @@ public class UserController {
     @ApiOperationSupport(order = 1)
     @GetMapping("/{userId}")
     @ApiOperation("根据用户id获取用户")
-    public CommonResponse<UserVO> getByUserId(@PathVariable("userId") Long userId) {
-        for (UserVO userVO : list) {
+    public CommonResponse<UserVO> get(@PathVariable("userId") Long userId) {
+        for (UserVO userVO : LIST) {
             if (userId.equals(userVO.getUserId())) {
                 return CommonResponse.success(userVO);
             }
@@ -70,7 +70,7 @@ public class UserController {
     @GetMapping
     @ApiOperation("获取所有用户列表")
     public CommonResponse<List<UserVO>> list() {
-        return CommonResponse.success(list);
+        return CommonResponse.success(LIST);
     }
 
     @ApiOperationSupport(order = 3)
@@ -82,12 +82,12 @@ public class UserController {
         int pageSize = pageQuery.getPageSize();
         int pageNum = pageQuery.getPageNum();
 
-        int size = list.size();
+        int size = LIST.size();
         int start = (pageNum - 1) * pageSize;
         int end = Math.min(pageNum * pageSize, size);
 
         for (int i = start; i < end; i++) {
-            userList.add(list.get(i));
+            userList.add(LIST.get(i));
         }
 
         int pages = (size + pageSize - 1) / pageSize;
@@ -101,23 +101,22 @@ public class UserController {
     @PostMapping
     @ApiOperation("新增用户")
     public CommonResponse<?> insert(@Valid @RequestBody UserQuery userQuery) {
-        Optional<UserVO> optional = list.stream().max(Comparator.comparing(UserVO::getUserId));
+        Optional<UserVO> optional = LIST.stream().max(Comparator.comparing(UserVO::getUserId));
         UserVO userVO = null;
         if (optional.isPresent()) {
             userVO = UserVO.builder().userId(optional.get().getUserId() + 1L).username(userQuery.getUsername())
                     .mobilePhoneNumber(userQuery.getMobilePhoneNumber()).email(userQuery.getEmail())
                     .deleteState((short) 0).createTime(LocalDateTime.now()).updateTime(null).build();
         }
-        list.add(userVO);
-
+        LIST.add(userVO);
         return CommonResponse.success("新增用户成功");
     }
 
     @ApiOperationSupport(order = 5)
     @PutMapping("/{userId}")
     @ApiOperation("根据用户id更新用户")
-    public CommonResponse<?> get(@PathVariable("userId") Long userId, @Valid @RequestBody UserQuery userQuery) {
-        for (UserVO userVO : list) {
+    public CommonResponse<?> update(@PathVariable("userId") Long userId, @Valid @RequestBody UserQuery userQuery) {
+        for (UserVO userVO : LIST) {
             if (userId.equals(userVO.getUserId())) {
                 userVO.setUsername(userQuery.getUsername());
                 userVO.setMobilePhoneNumber(userQuery.getMobilePhoneNumber());
@@ -134,7 +133,7 @@ public class UserController {
     @DeleteMapping("/{userId}")
     @ApiOperation("根据用户id删除用户")
     public CommonResponse<?> delete(@PathVariable("userId") Long userId) {
-        Iterator<UserVO> iterator = list.iterator();
+        Iterator<UserVO> iterator = LIST.iterator();
         while (iterator.hasNext()) {
             if (userId.equals(iterator.next().getUserId())) {
                 iterator.remove();

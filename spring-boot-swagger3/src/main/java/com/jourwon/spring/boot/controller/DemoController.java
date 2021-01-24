@@ -1,6 +1,6 @@
 package com.jourwon.spring.boot.controller;
 
-import com.jourwon.spring.boot.common.CommonPage;
+import com.jourwon.spring.boot.response.CommonPage;
 import com.jourwon.spring.boot.enums.CommonResponseCodeEnum;
 import com.jourwon.spring.boot.exception.CommonException;
 import com.jourwon.spring.boot.query.PageQuery;

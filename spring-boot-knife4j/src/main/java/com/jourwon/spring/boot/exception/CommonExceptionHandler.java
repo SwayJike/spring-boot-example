@@ -1,7 +1,6 @@
-package com.jourwon.spring.boot.handler;
+package com.jourwon.spring.boot.exception;
 
 import com.jourwon.spring.boot.enums.CommonResponseCodeEnum;
-import com.jourwon.spring.boot.exception.CommonException;
 import com.jourwon.spring.boot.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.jourwon.spring.boot.common;
+package com.jourwon.spring.boot.response;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
