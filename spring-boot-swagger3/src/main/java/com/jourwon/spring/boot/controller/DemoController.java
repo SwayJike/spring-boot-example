@@ -1,7 +1,7 @@
 package com.jourwon.spring.boot.controller;
 
 import com.jourwon.spring.boot.common.CommonPage;
-import com.jourwon.spring.boot.enums.ResponseCodeEnum;
+import com.jourwon.spring.boot.enums.CommonResponseCodeEnum;
 import com.jourwon.spring.boot.exception.CommonException;
 import com.jourwon.spring.boot.query.PageQuery;
 import com.jourwon.spring.boot.response.CommonResponse;
@@ -52,19 +52,19 @@ public class DemoController {
     @GetMapping("/unauthorized_access")
     @ApiOperation("访问未授权")
     public CommonResponse<?> testAuthFail() {
-        return CommonResponse.failure(ResponseCodeEnum.UNAUTHORIZED_ACCESS);
+        return CommonResponse.failure(CommonResponseCodeEnum.UNAUTHORIZED_ACCESS);
     }
 
     @GetMapping("/exception")
     @ApiOperation("异常响应")
     public CommonResponse<?> testUnknownException() {
-        throw new CommonException(ResponseCodeEnum.SYS_EXCEPTION);
+        throw new CommonException(CommonResponseCodeEnum.SYS_EXCEPTION);
     }
 
     @GetMapping("/timeout")
     @ApiOperation("系统执行超时")
     public CommonResponse<?> testTimeout() {
-        throw new CommonException(ResponseCodeEnum.SYSTEM_EXECUTION_TIMEOUT);
+        throw new CommonException(CommonResponseCodeEnum.SYSTEM_EXECUTION_TIMEOUT);
     }
 
     @GetMapping("/page")

@@ -1,6 +1,6 @@
 package com.jourwon.spring.boot.handler;
 
-import com.jourwon.spring.boot.enums.ResponseCodeEnum;
+import com.jourwon.spring.boot.enums.CommonResponseCodeEnum;
 import com.jourwon.spring.boot.exception.CommonException;
 import com.jourwon.spring.boot.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +45,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler({Exception.class})
     public CommonResponse<?> handleException(Exception e) {
         log.error("[Exception 异常]", e);
-        return new CommonResponse<>(ResponseCodeEnum.SYS_EXCEPTION);
+        return new CommonResponse<>(CommonResponseCodeEnum.SYS_EXCEPTION);
     }
 
     /**
@@ -71,7 +71,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler({NestedServletException.class})
     public CommonResponse<?> handleNestedServletException(NestedServletException e) {
         log.error("[NestedServletException 异常]", e);
-        return new CommonResponse<>(ResponseCodeEnum.SYS_EXCEPTION);
+        return new CommonResponse<>(CommonResponseCodeEnum.SYS_EXCEPTION);
     }
 
     /**
@@ -84,7 +84,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler({RestClientException.class})
     public CommonResponse<?> restClientExceptionHandler(RestClientException e) {
         log.error("[RestClientException 异常]", e);
-        return new CommonResponse<>(ResponseCodeEnum.SYS_EXCEPTION);
+        return new CommonResponse<>(CommonResponseCodeEnum.SYS_EXCEPTION);
     }
 
     /**
@@ -97,7 +97,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler({HttpMessageNotReadableException.class})
     public CommonResponse<?> handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
         log.info("[handleHttpMessageNotReadableException] 请求参数解析失败：", e);
-        return new CommonResponse<>(ResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL);
+        return new CommonResponse<>(CommonResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL);
     }
 
     /**
@@ -112,7 +112,7 @@ public class CommonExceptionHandler {
         BindingResult bindingResult = e.getBindingResult();
         String message = getBindResultMessage(bindingResult);
         log.info("[handleMethodArgumentNotValidException] 请求参数验证失败：" + message);
-        return new CommonResponse<>(ResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL, message);
+        return new CommonResponse<>(CommonResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL, message);
     }
 
     /**
@@ -137,10 +137,10 @@ public class CommonExceptionHandler {
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler({BindException.class})
     public CommonResponse<?> handleHttpMessageNotReadableException(BindException e) {
-        BindingResult commonResponse = e.getBindingResult();
-        String message = getBindResultMessage(commonResponse);
+        BindingResult bindingResult = e.getBindingResult();
+        String message = getBindResultMessage(bindingResult);
         log.info("[handleHttpMessageNotReadableException] 参数绑定失败：" + message);
-        return new CommonResponse<>(ResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL, message);
+        return new CommonResponse<>(CommonResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL, message);
     }
 
     /**
@@ -153,7 +153,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler({ValidationException.class})
     public CommonResponse<?> handleValidationException(ValidationException e) {
         log.info("[handleValidationException] 参数验证失败：", e);
-        return new CommonResponse<>(ResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL, e.getMessage());
+        return new CommonResponse<>(CommonResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL, e.getMessage());
     }
 
 
@@ -167,7 +167,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler({MissingServletRequestParameterException.class})
     public CommonResponse<?> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
         log.info("[handleMissingServletRequestParameterException] 缺少参数: " + e.getParameterName());
-        return new CommonResponse<>(ResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL, "缺少参数：" + e.getParameterName());
+        return new CommonResponse<>(CommonResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL, "缺少参数：" + e.getParameterName());
     }
 
     /**
@@ -183,7 +183,7 @@ public class CommonExceptionHandler {
         ConstraintViolation<?> violation = violations.iterator().next();
         String message = violation.getMessage();
         log.info("[handleServiceException] 参数验证失败：" + message);
-        return new CommonResponse<>(ResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL, message);
+        return new CommonResponse<>(CommonResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL, message);
     }
 
     /**
@@ -196,7 +196,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler({MethodArgumentTypeMismatchException.class})
     public CommonResponse<?> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
         log.info("[handleMethodArgumentTypeMismatchException] 方法参数类型不匹配异常: ", e);
-        return new CommonResponse<>(ResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL);
+        return new CommonResponse<>(CommonResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL);
     }
 
     /**
@@ -209,7 +209,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
     public CommonResponse<?> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
         log.info("[handleHttpRequestMethodNotSupportedException] 不支持当前请求方法: ", e);
-        return new CommonResponse<>(ResponseCodeEnum.NONSUPPORT_REQUEST_TYPE);
+        return new CommonResponse<>(CommonResponseCodeEnum.NONSUPPORT_REQUEST_TYPE);
     }
 
     /**
@@ -222,7 +222,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler({HttpMediaTypeNotSupportedException.class})
     public CommonResponse<?> handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
         log.info("[handleHttpMediaTypeNotSupportedException] 不支持当前媒体类型: ", e);
-        return new CommonResponse<>(ResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL);
+        return new CommonResponse<>(CommonResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL);
     }
 
 }

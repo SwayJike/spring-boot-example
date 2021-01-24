@@ -1,6 +1,6 @@
 package com.jourwon.spring.boot.exception;
 
-import com.jourwon.spring.boot.enums.ResponseCodeEnum;
+import com.jourwon.spring.boot.enums.CommonResponseCodeEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,10 +39,10 @@ public class CommonException extends RuntimeException {
         this.message = message;
     }
 
-    public CommonException(ResponseCodeEnum responseCodeEnum) {
-        super(responseCodeEnum.getMessage());
-        this.code = responseCodeEnum.getCode();
-        this.message = responseCodeEnum.getMessage();
+    public CommonException(CommonResponseCodeEnum commonResponseCodeEnum) {
+        super(commonResponseCodeEnum.getMessage());
+        this.code = commonResponseCodeEnum.getCode();
+        this.message = commonResponseCodeEnum.getMessage();
     }
 
     /**
