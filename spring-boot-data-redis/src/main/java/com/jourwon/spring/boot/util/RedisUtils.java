@@ -2,10 +2,8 @@ package com.jourwon.spring.boot.util;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -18,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2021/1/18
  */
 @Component
-public class RedisUtils {
+public final class RedisUtils {
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
@@ -26,56 +24,54 @@ public class RedisUtils {
     // =============================common============================
 
     /**
-     * 指定缓存失效时间
+     * 判断key是否存在
      *
-     * @param key  键
-     * @param time 时间(秒)
+     * @param key 键
+     * @return boolean true：存在，false：不存在
      */
-    public Boolean expire(String key, long time) {
-        return redisTemplate.expire(key, time, TimeUnit.SECONDS);
+    public boolean hasKey(String key) {
+        return Boolean.TRUE.equals(redisTemplate.hasKey(key));
     }
 
     /**
-     * 根据key 获取过期时间
+     * 设置缓存过期时间(秒)
+     *
+     * @param key 键
+     * @param timeout 过期时间
+     * @return boolean
+     */
+    public boolean expire(String key, long timeout) {
+        return Boolean.TRUE.equals(redisTemplate.expire(key, timeout, TimeUnit.SECONDS));
+    }
+
+    /**
+     * 返回键的剩余有效时间(秒)
      *
      * @param key 键 不能为null
-     * @return Long 时间(秒) 返回0代表为永久有效
+     * @return Long 如果键不存在返回-2，如果键存在且没有设置过期时间返回-1
      */
     public Long getExpire(String key) {
         return redisTemplate.getExpire(key, TimeUnit.SECONDS);
     }
 
-
     /**
-     * 判断key是否存在
+     * 删除一个键
      *
      * @param key 键
-     * @return true 存在 false不存在
+     * @return boolean true：删除成功，false：删除失败
      */
-    public Boolean hasKey(String key) {
-        try {
-            return redisTemplate.hasKey(key);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean delete(String key) {
+        return Boolean.TRUE.equals(redisTemplate.delete(key));
     }
 
-
     /**
-     * 删除缓存
+     * 删除多个键，返回删除键的个数
      *
-     * @param key 可以传一个值 或多个
+     * @param keys 键
+     * @return Long 删除键的个数
      */
-    @SuppressWarnings("unchecked")
-    public void del(String... key) {
-        if (key != null && key.length > 0) {
-            if (key.length == 1) {
-                redisTemplate.delete(key[0]);
-            } else {
-                redisTemplate.delete((Collection<String>) CollectionUtils.arrayToList(key));
-            }
-        }
+    public Long delete(List<String> keys) {
+        return redisTemplate.delete(keys);
     }
 
 
