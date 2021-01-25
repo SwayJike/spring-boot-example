@@ -108,7 +108,6 @@ public class DemoController {
                 .updateTime(null)
                 .build());
 
-        System.out.println("当前页码：" + pageQuery.getPageNum() + " 分页大小：" + pageQuery.getPageSize());
         CommonPage<UserVO> page = new CommonPage<>(pageQuery.getPageNum(),
                 pageQuery.getPageSize(), 4, 1, 4, list);
 

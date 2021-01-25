@@ -17,9 +17,9 @@ public class IpUtils {
     private static final String HEADER_X_REAL_IP = "X-Real-IP";
     private static final String HEADER_X_FORWARDED_FOR = "x-forwarded-for";
     private static final String HEADER_HTTP_X_FORWARDED_FOR = "HTTP_X_FORWARDED_FOR";
-    private static final String HEADER_CLIENT_PROXY_IP = "Proxy-Client-IP";
-    private static final String HEADER_WL_CLIENT_PROXY_IP = "WL-Proxy-Client-IP";
     private static final String HEADER_HTTP_CLIENT_IP = "HTTP_CLIENT_IP";
+    private static final String HEADER_WL_CLIENT_PROXY_IP = "WL-Proxy-Client-IP";
+    private static final String HEADER_CLIENT_PROXY_IP = "Proxy-Client-IP";
     private static final String IP_UNKNOWN = "unknown";
     private static final String COMMA = ",";
 
@@ -58,6 +58,10 @@ public class IpUtils {
             if (ip.indexOf(COMMA) > 0) {
                 ip = ip.substring(0, ip.indexOf(COMMA));
             }
+        }
+
+        if (null == ip) {
+            ip = IP_UNKNOWN;
         }
 
         return ip;

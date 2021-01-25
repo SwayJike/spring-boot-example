@@ -1,5 +1,6 @@
 package com.jourwon.spring.boot.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jourwon.spring.boot.constant.SysConstants;
 import com.jourwon.spring.boot.enums.CommonResponseCodeEnum;
 import io.swagger.annotations.ApiModel;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 import org.slf4j.MDC;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * 统一返回前端的响应对象
@@ -38,7 +40,8 @@ public class CommonResponse<T> implements Serializable {
     private String traceId = MDC.get(SysConstants.MDC_KEY);
 
     @ApiModelProperty(value = "时间戳")
-    private long timestamp = System.currentTimeMillis();
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    private LocalDateTime timestamp = LocalDateTime.now();
 
     public CommonResponse(String code, String message) {
         this.code = code;
