@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 
 @SpringBootTest
 class SpringBootDataRedisApplicationTests {
@@ -23,25 +24,32 @@ class SpringBootDataRedisApplicationTests {
     @Autowired
     private RedisUtils redisUtils;
 
+    //===============RedisUtils测试===============
+
     @Test
-    public void test() {
-        User user = new User("DT小白", 22);
-        redisTemplate.opsForValue().set("user", user);
-        System.out.println(redisTemplate.opsForValue().get("user"));
+    public void testValueOperations01() {
+        System.out.println(redisUtils.delete("key"));
+        System.out.println(redisUtils.hasKey("key"));
+        System.out.println(redisUtils.set("key", "value"));
+        System.out.println(redisUtils.get("key"));
+        System.out.println(redisUtils.hasKey("key"));
+        System.out.println(redisUtils.getExpire("key"));
+        System.out.println(redisUtils.getExpire("key1"));
     }
 
     @Test
-    public void test1() {
-        redisUtils.set("dt", "ydf");
-        System.out.println(redisUtils.get("dt"));
+    public void testValueOperations02() {
+        User user = new User();
+        user.setUserId(1L);
+        user.setUsername("JourWon");
+        user.setCreateTime(LocalDateTime.now());
+
+        System.out.println(redisUtils.set("user", user));
+        System.out.println(((User)redisUtils.get("user")).toString());
     }
 
-    @Test
-    public void test2() {
-        System.out.println(redisUtils.hasKey("dt"));
-    }
 
-    //=======================发布订阅测试===============
+    //===============发布订阅测试===============
     @Test
     public void test3() {
         //convertAndSend(String channel, Object message)
