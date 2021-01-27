@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public final class RedisUtils {
 
     @Resource
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
 
     @Resource
     private ValueOperations<String, String> valueOperations;
@@ -102,7 +102,7 @@ public final class RedisUtils {
      * @param value 值 不能为null
      * @return boolean true:成功,false:失败
      */
-    public boolean set(String key, Object value) {
+    public boolean set(String key, String value) {
         try {
             redisTemplate.opsForValue().set(key, value);
             return true;
@@ -181,7 +181,7 @@ public final class RedisUtils {
      * @param key 键 不能为null
      * @return String 值
      */
-    public Object get(String key) {
+    public String get(String key) {
         return redisTemplate.opsForValue().get(key);
     }
 
