@@ -103,13 +103,18 @@ public final class RedisUtils {
      * @return boolean true:成功,false:失败
      */
     public boolean set(String key, String value) {
-        try {
-            redisTemplate.opsForValue().set(key, value);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+        return this.set(key, value, 0L);
+    }
+
+    /**
+     * 缓存键值对
+     *
+     * @param key   键 不能为null
+     * @param value 值 不能为null
+     * @return boolean true:成功,false:失败
+     */
+    public boolean set(String key, Object value) {
+        return this.set(key, value, 0L);
     }
 
     /**
@@ -120,11 +125,17 @@ public final class RedisUtils {
      * @param timeout 时间(秒),如果time小于等于0,不设置过期时间
      * @return boolean true:成功,false:失败
      */
-    public boolean set(String key, String value, long timeout) {
+    public boolean set(String key, Object value, long timeout) {
         try {
-            redisTemplate.opsForValue().set(key, value);
+            String val;
+            if (value instanceof String) {
+                val = value.toString();
+            } else {
+                val = ObjectMapperUtils.objToJson(value);
+            }
+            redisTemplate.opsForValue().set(key, val);
             if (timeout > 0) {
-                expire(key, timeout);
+                this.expire(key, timeout);
             }
             return true;
         } catch (Exception e) {
@@ -140,7 +151,7 @@ public final class RedisUtils {
      * @return Long 递增后的值
      */
     public Long increment(String key) {
-        return redisTemplate.opsForValue().increment(key);
+        return this.increment(key, 1L);
     }
 
     /**
@@ -161,7 +172,7 @@ public final class RedisUtils {
      * @return Long 递增后的值
      */
     public Long decrement(String key) {
-        return redisTemplate.opsForValue().decrement(key);
+        return this.decrement(key, 1L);
     }
 
     /**
@@ -183,6 +194,17 @@ public final class RedisUtils {
      */
     public String get(String key) {
         return redisTemplate.opsForValue().get(key);
+    }
+
+    /**
+     * 根据键获取对应的值
+     *
+     * @param key 键 不能为null
+     * @param clazz 类
+     * @return <T> T 返回指定类
+     */
+    public <T> T get(String key, Class<T> clazz) {
+        return ObjectMapperUtils.jsonToObj(this.get(key), clazz);
     }
 
     //
@@ -214,7 +236,7 @@ public final class RedisUtils {
         try {
             redisTemplate.<String, String>opsForHash().put(key, hashKey, value);
             if (timeout > 0) {
-                expire(key, timeout);
+                this.expire(key, timeout);
             }
             return true;
         } catch (Exception e) {

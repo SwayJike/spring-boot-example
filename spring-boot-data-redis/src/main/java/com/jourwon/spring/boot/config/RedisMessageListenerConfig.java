@@ -24,13 +24,12 @@ public class RedisMessageListenerConfig {
     /**
      * 配置Redis消息的监听容器
      *
-     * @param connectionFactory
-     * @param messageListenerAdapter
-     * @return
+     * @param connectionFactory 连接工厂
+     * @param messageListenerAdapter 消息监听器适配器
+     * @return RedisMessageListenerContainer Redis消息监听器容器
      */
     @Bean
-    @SuppressWarnings("all")
-    RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory, MessageListenerAdapter messageListenerAdapter) {
+    public RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory, MessageListenerAdapter messageListenerAdapter) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         // 配置主题名称:topicName

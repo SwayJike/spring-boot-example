@@ -1,6 +1,5 @@
 package com.jourwon.spring.boot.listener;
 
-import com.jourwon.spring.boot.dto.NoticeMessage;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
@@ -23,26 +22,28 @@ public class SubscriberMessageListener extends MessageListenerAdapter {
     public static final String TOPIC_NAME = "topicName";
 
     @Resource
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public void onMessage(Message message, byte[] pattern) {
         byte[] body = message.getBody();
         byte[] channel = message.getChannel();
-        String topic = (String) redisTemplate.getStringSerializer().deserialize(channel);
+        String topic = redisTemplate.getStringSerializer().deserialize(channel);
         assert topic != null;
         if (!topic.equals(TOPIC_NAME)) {
             return;
         }
-        Object res = redisTemplate.getValueSerializer().deserialize(body);
+        Object obj = redisTemplate.getValueSerializer().deserialize(body);
+        System.out.println("==订阅者1收到消息==");
+        System.out.println(obj);
         // 如果反序列化得到的是我们定义的消息数据体类型
-        if (res instanceof NoticeMessage) {
-            NoticeMessage noticeMessage = (NoticeMessage) res;
-            System.out.println("==订阅者1收到消息==");
-            System.out.println(noticeMessage);
-        } else {
-            System.out.println("==其他业务处理==");
-        }
+        // if (res instanceof NoticeMessage) {
+        //     NoticeMessage noticeMessage = (NoticeMessage) res;
+        //     System.out.println("==订阅者1收到消息==");
+        //     System.out.println(noticeMessage);
+        // } else {
+        //     System.out.println("==其他业务处理==");
+        // }
     }
 
 }
