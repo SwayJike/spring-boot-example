@@ -26,7 +26,7 @@ public class SpringBootMybatisGeneratorApplication {
         List<String> warnings = new ArrayList<>();
         boolean overwrite = true;
 
-        // File configFile = new File("src/main/resources/generatorConfig.xml");
+        // File configFile = new File("src/main/resources/generatorConfig-backup.xml");
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream is = classloader.getResourceAsStream("generatorConfig.xml");
 
