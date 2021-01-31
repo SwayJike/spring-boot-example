@@ -36,14 +36,6 @@ public class SubscriberMessageListener extends MessageListenerAdapter {
         Object obj = redisTemplate.getValueSerializer().deserialize(body);
         System.out.println("==订阅者1收到消息==");
         System.out.println(obj);
-        // 如果反序列化得到的是我们定义的消息数据体类型
-        // if (res instanceof NoticeMessage) {
-        //     NoticeMessage noticeMessage = (NoticeMessage) res;
-        //     System.out.println("==订阅者1收到消息==");
-        //     System.out.println(noticeMessage);
-        // } else {
-        //     System.out.println("==其他业务处理==");
-        // }
     }
 
 }
