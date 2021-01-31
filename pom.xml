@@ -11,10 +11,16 @@
     <description>企业级spring-boot案例-2.4.2版本</description>
 
     <modules>
-        <!-- 快速入门-HelloWorld -->
+        <!-- spring-boot快速入门-HelloWorld -->
         <module>spring-boot-helloworld</module>
-        <!-- 集成Redis -->
+        <!-- Spring Boot集成Swagger3-API接口文档 -->
+        <module>spring-boot-swagger3</module>
+        <!-- Spring Boot集成Knife4j-API接口文档 -->
+        <module>spring-boot-knife4j</module>
+        <!-- Spring Boot集成Redis -->
         <module>spring-boot-data-redis</module>
+        <!-- Spring Boot继承MyBatis -->
+        <module>spring-boot-mybatis</module>
     </modules>
 
     <properties>

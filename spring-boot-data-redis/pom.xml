@@ -10,7 +10,7 @@
     <artifactId>spring-boot-data-redis</artifactId>
     <version>1.0.0</version>
     <name>spring-boot-data-redis</name>
-    <description>集成Redis</description>
+    <description>Spring Boot集成Redis</description>
 
     <dependencies>
         <!-- lombok -->
