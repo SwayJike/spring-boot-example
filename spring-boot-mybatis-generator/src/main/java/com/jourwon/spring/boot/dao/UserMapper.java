@@ -1,4 +1,4 @@
-package com.jourwon.spring.boot.mapper;
+package com.jourwon.spring.boot.dao;
 
 import com.jourwon.spring.boot.entity.User;
 

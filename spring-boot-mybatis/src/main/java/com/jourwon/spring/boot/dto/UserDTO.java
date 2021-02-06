@@ -1,4 +1,4 @@
-package com.jourwon.spring.boot.entity;
+package com.jourwon.spring.boot.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -20,19 +20,16 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "User-用户")
-public class User implements Serializable {
+@ApiModel(value = "UserDTO-用户")
+public class UserDTO implements Serializable {
 
-    private static final long serialVersionUID = 5949235389416637695L;
+    private static final long serialVersionUID = -3869159805013367683L;
 
     @ApiModelProperty(value = "用户id")
     private Long userId;
 
     @ApiModelProperty(value = "用户名")
     private String username;
-
-    @ApiModelProperty(value = "密码")
-    private String password;
 
     @ApiModelProperty(value = "手机号码")
     private String mobilePhoneNumber;
