@@ -3,9 +3,9 @@ package com.jourwon.spring.boot.util;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +20,7 @@ public class ObjectMapperUtils {
 
     private static ObjectMapper objectMapper;
 
-    @Autowired
+    @Resource
     public void setObjectMapper(ObjectMapper objectMapper) {
         ObjectMapperUtils.objectMapper = objectMapper;
     }

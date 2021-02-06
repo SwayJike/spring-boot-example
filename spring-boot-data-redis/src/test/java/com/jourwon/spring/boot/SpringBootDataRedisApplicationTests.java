@@ -5,7 +5,6 @@ import com.jourwon.spring.boot.dto.User;
 import com.jourwon.spring.boot.util.ObjectMapperUtils;
 import com.jourwon.spring.boot.util.RedisUtils;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -23,7 +22,7 @@ class SpringBootDataRedisApplicationTests {
     @Resource
     private RedisTemplate<String, String> redisTemplate;
 
-    @Autowired
+    @Resource
     private RedisUtils redisUtils;
 
     //===============RedisUtils测试===============
