@@ -10,7 +10,7 @@
 	<artifactId>spring-boot-swagger3</artifactId>
 	<version>1.0.0</version>
 	<name>spring-boot-swagger3</name>
-	<description>Spring Boot集成Swagger3-API接口文档</description>
+	<description>Spring Boot整合Swagger3-API接口文档</description>
 
 	<properties>
 		<java.version>1.8</java.version>

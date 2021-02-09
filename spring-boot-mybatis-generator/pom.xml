@@ -10,7 +10,7 @@
     <artifactId>spring-boot-mybatis-generator</artifactId>
     <version>1.0.0</version>
     <name>spring-boot-mybatis-generator</name>
-    <description>Spring Boot集成MyBatis逆向工程</description>
+    <description>Spring Boot整合MyBatis逆向工程</description>
 
     <properties>
         <mybatis-generator-core.version>1.4.0</mybatis-generator-core.version>

@@ -10,7 +10,7 @@
     <artifactId>spring-boot-knife4j</artifactId>
     <version>1.0.0</version>
     <name>spring-boot-knife4j</name>
-    <description>Spring Boot集成Knife4j-API接口文档</description>
+    <description>Spring Boot整合Knife4j-API接口文档</description>
 
     <properties>
         <java.version>1.8</java.version>

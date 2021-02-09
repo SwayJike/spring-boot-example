@@ -1,5 +1,5 @@
 # 工程简介
-Spring Boot集成MyBatis逆向工程
+Spring Boot整合MyBatis逆向工程
 
 # 使用简介
 1. 目前发现直接运行main方法不会生成mapper接口和实体类
