@@ -21,6 +21,8 @@
         <module>spring-boot-data-redis</module>
         <!-- Spring Boot整合MyBatis -->
         <module>spring-boot-mybatis</module>
+        <!-- Spring Boot整合mybatis,使用pagehelper进行分页 -->
+        <module>spring-boot-mybatis-pagehelper</module>
     </modules>
 
     <properties>
