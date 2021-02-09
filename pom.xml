@@ -13,13 +13,13 @@
     <modules>
         <!-- spring-boot快速入门-HelloWorld -->
         <module>spring-boot-helloworld</module>
-        <!-- Spring Boot集成Swagger3-API接口文档 -->
+        <!-- Spring Boot整合Swagger3-API接口文档 -->
         <module>spring-boot-swagger3</module>
-        <!-- Spring Boot集成Knife4j-API接口文档 -->
+        <!-- Spring Boot整合Knife4j-API接口文档 -->
         <module>spring-boot-knife4j</module>
-        <!-- Spring Boot集成Redis -->
+        <!-- Spring Boot整合Redis -->
         <module>spring-boot-data-redis</module>
-        <!-- Spring Boot继承MyBatis -->
+        <!-- Spring Boot整合MyBatis -->
         <module>spring-boot-mybatis</module>
     </modules>
 
