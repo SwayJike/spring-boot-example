@@ -1,10 +1,10 @@
 package com.jourwon.spring.boot.service.impl;
 
-import com.jourwon.spring.boot.dto.InsertUserDTO;
-import com.jourwon.spring.boot.dto.UpdateUserDTO;
-import com.jourwon.spring.boot.dto.UserDTO;
-import com.jourwon.spring.boot.entity.User;
 import com.jourwon.spring.boot.mapper.UserMapper;
+import com.jourwon.spring.boot.model.dto.InsertUserDTO;
+import com.jourwon.spring.boot.model.dto.UpdateUserDTO;
+import com.jourwon.spring.boot.model.dto.UserDTO;
+import com.jourwon.spring.boot.model.entity.User;
 import com.jourwon.spring.boot.service.UserService;
 import com.jourwon.spring.boot.util.BeanTransformUtils;
 import org.springframework.stereotype.Service;

@@ -1,12 +1,11 @@
 package com.jourwon.spring.boot.controller;
 
-import com.jourwon.spring.boot.dto.InsertUserDTO;
-import com.jourwon.spring.boot.dto.UpdateUserDTO;
-import com.jourwon.spring.boot.dto.UserDTO;
-import com.jourwon.spring.boot.query.InsertUpdateUserQuery;
+import com.jourwon.spring.boot.model.dto.InsertUserDTO;
+import com.jourwon.spring.boot.model.dto.UpdateUserDTO;
+import com.jourwon.spring.boot.model.dto.UserDTO;
+import com.jourwon.spring.boot.model.vo.UserVO;
 import com.jourwon.spring.boot.service.UserService;
 import com.jourwon.spring.boot.util.BeanTransformUtils;
-import com.jourwon.spring.boot.vo.UserVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -51,17 +50,14 @@ public class UserController {
 
     @PostMapping
     @ApiOperation("新增用户")
-    public int insert(@Valid @RequestBody InsertUpdateUserQuery insertUpdateUserQuery) {
-        InsertUserDTO insertUserDTO = BeanTransformUtils.transform(insertUpdateUserQuery, InsertUserDTO.class);
+    public int insert(@Valid @RequestBody InsertUserDTO insertUserDTO) {
         return userService.insertSelective(insertUserDTO);
     }
 
     @PutMapping("/{userId}")
     @ApiOperation("根据主键更新用户")
-    public int updateByPrimaryKey(@PathVariable("userId") Long userId, @Valid @RequestBody InsertUpdateUserQuery insertUpdateUserQuery) {
-        UpdateUserDTO updateUserDTO = BeanTransformUtils.transform(insertUpdateUserQuery, UpdateUserDTO.class);
+    public int updateByPrimaryKey(@PathVariable("userId") Long userId, @Valid @RequestBody UpdateUserDTO updateUserDTO) {
         updateUserDTO.setUserId(userId);
-
         return userService.updateByPrimaryKeySelective(updateUserDTO);
     }
 

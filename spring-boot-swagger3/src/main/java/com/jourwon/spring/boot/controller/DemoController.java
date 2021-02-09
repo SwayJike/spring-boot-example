@@ -1,11 +1,11 @@
 package com.jourwon.spring.boot.controller;
 
-import com.jourwon.spring.boot.response.CommonPage;
 import com.jourwon.spring.boot.enums.CommonResponseCodeEnum;
 import com.jourwon.spring.boot.exception.CommonException;
-import com.jourwon.spring.boot.query.PageQuery;
-import com.jourwon.spring.boot.response.CommonResponse;
 import com.jourwon.spring.boot.vo.UserVO;
+import com.jourwon.spring.boot.query.PageQuery;
+import com.jourwon.spring.boot.response.CommonPage;
+import com.jourwon.spring.boot.response.CommonResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

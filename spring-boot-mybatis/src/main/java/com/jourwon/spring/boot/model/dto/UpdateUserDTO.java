@@ -1,4 +1,4 @@
-package com.jourwon.spring.boot.entity;
+package com.jourwon.spring.boot.model.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -8,24 +8,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
- * 用户
+ * 更新用户DTO
  *
  * @author JourWon
- * @date 2021/1/31
+ * @date 2021/2/6
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "User-用户")
-public class User implements Serializable {
+@ApiModel(value = "UpdateUserDTO-更新用户DTO")
+public class UpdateUserDTO implements Serializable {
 
-    private static final long serialVersionUID = 5949235389416637695L;
+    private static final long serialVersionUID = -6410407431610835963L;
 
-    @ApiModelProperty(value = "用户id")
+    @ApiModelProperty(value = "用户id", hidden = true)
     private Long userId;
 
     @ApiModelProperty(value = "用户名")
@@ -42,11 +41,5 @@ public class User implements Serializable {
 
     @ApiModelProperty(value = "删除状态(0:未删除,1:已删除)")
     private Short deleteState;
-
-    @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "更新时间")
-    private LocalDateTime updateTime;
 
 }

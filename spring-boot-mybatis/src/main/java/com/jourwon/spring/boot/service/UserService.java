@@ -1,8 +1,8 @@
 package com.jourwon.spring.boot.service;
 
-import com.jourwon.spring.boot.dto.InsertUserDTO;
-import com.jourwon.spring.boot.dto.UpdateUserDTO;
-import com.jourwon.spring.boot.dto.UserDTO;
+import com.jourwon.spring.boot.model.dto.InsertUserDTO;
+import com.jourwon.spring.boot.model.dto.UpdateUserDTO;
+import com.jourwon.spring.boot.model.dto.UserDTO;
 
 import java.util.List;
 

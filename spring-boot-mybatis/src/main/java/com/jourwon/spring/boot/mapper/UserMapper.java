@@ -1,6 +1,6 @@
 package com.jourwon.spring.boot.mapper;
 
-import com.jourwon.spring.boot.entity.User;
+import com.jourwon.spring.boot.model.entity.User;
 
 import java.util.List;
 
