@@ -5,7 +5,7 @@ server:
 # spring配置
 spring:
   application:
-    name: spring-boot-mybatis
+    name: spring-boot-mybatis-pagehelper
   # 数据库配置
   datasource:
     type: com.zaxxer.hikari.HikariDataSource

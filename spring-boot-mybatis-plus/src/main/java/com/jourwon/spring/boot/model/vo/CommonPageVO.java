@@ -1,4 +1,4 @@
-package com.jourwon.spring.boot.response;
+package com.jourwon.spring.boot.model.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -19,8 +19,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel("CommonPage-分页数据结构")
-public class CommonPage<T> implements Serializable {
+@ApiModel("CommonPageVO-分页数据结构")
+public class CommonPageVO<T> implements Serializable {
 
     @ApiModelProperty("当前页码,从1开始")
     private int pageNum;
@@ -44,10 +44,10 @@ public class CommonPage<T> implements Serializable {
      * 空分页数据
      *
      * @param <T> 空
-     * @return CommonPage<T> 分页数据结构
+     * @return CommonPageVO<T> 分页数据结构
      */
-    public static <T> CommonPage<T> emptyPage(int pageNum, int pageSize) {
-        return new CommonPage<>(pageNum, pageSize, 0, 0, 0, Collections.emptyList());
+    public static <T> CommonPageVO<T> emptyPage(int pageNum, int pageSize) {
+        return new CommonPageVO<>(pageNum, pageSize, 0, 0, 0, Collections.emptyList());
     }
 
 }

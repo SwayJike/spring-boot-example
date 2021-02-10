@@ -41,19 +41,13 @@ public class CommonPage<T> implements Serializable {
     private List<T> list;
 
     /**
-     * 数据没有记录返回空页,定义为一个不可变的静态私有内部类保证线程安全
-     */
-    private static final CommonPage<?> EMPTY_PAGE = new CommonPage<>(1, 0, 0, 0, 0, Collections.emptyList());
-
-    /**
      * 空分页数据
      *
      * @param <T> 空
      * @return CommonPage<T> 分页数据结构
      */
-    @SuppressWarnings({"unused", "unchecked"})
-    public static <T> CommonPage<T> emptyPage() {
-        return (CommonPage<T>) EMPTY_PAGE;
+    public static <T> CommonPage<T> emptyPage(int pageNum, int pageSize) {
+        return new CommonPage<>(pageNum, pageSize, 0, 0, 0, Collections.emptyList());
     }
 
 }

@@ -25,6 +25,8 @@
         <module>spring-boot-mybatis-pagehelper</module>
         <!-- Spring Boot整合MyBatis,使用注解方式 -->
         <module>spring-boot-mybatis-annotation</module>
+        <!-- Spring Boot整合Mybatis-Plus -->
+        <module>spring-boot-mybatis-plus</module>
     </modules>
 
     <properties>

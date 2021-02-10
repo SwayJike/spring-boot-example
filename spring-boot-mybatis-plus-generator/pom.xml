@@ -7,25 +7,17 @@
         <artifactId>spring-boot-example</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>spring-boot-mybatis-pagehelper</artifactId>
+    <artifactId>spring-boot-mybatis-plus-generator</artifactId>
     <version>1.0.0</version>
-    <name>spring-boot-mybatis-pagehelper</name>
-    <description>Spring Boot整合MyBatis,使用pagehelper进行分页</description>
+    <name>spring-boot-mybatis-plus-generator</name>
+    <description>Spring Boot整合MyBatis Plus代码生成器</description>
 
     <properties>
-        <pagehelper-spring-boot-starter.version>1.3.0</pagehelper-spring-boot-starter.version>
         <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-        <mybatis-spring-boot-starter.version>2.1.4</mybatis-spring-boot-starter.version>
+        <mybatis-plus-generator.version>3.4.1</mybatis-plus-generator.version>
     </properties>
 
     <dependencies>
-        <!-- pagehelper分页助手 -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>${pagehelper-spring-boot-starter.version}</version>
-        </dependency>
-
         <!-- Knife4j-API接口文档 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
@@ -33,11 +25,22 @@
             <version>${knife4j-spring-boot-starter.version}</version>
         </dependency>
 
-        <!-- mybatis -->
+        <!-- mybatis-plus -->
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis-spring-boot-starter.version}</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>${mybatis-plus-generator.version}</version>
+        </dependency>
+
+        <!-- freemarker模板引擎 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
         <!-- mysql数据库驱动 -->
@@ -45,19 +48,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
-        </dependency>
-
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- springboot 2.3.0及以上版本 解决@Validated @Valid 不起作用的问题 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
         <dependency>
