@@ -7,9 +7,9 @@
     <property name="LOG_HOME" value="./logs"/>
     <!-- 档案日志存放目录 -->
     <property name="LOG_ARCHIVE" value="./logs/archive"/>
-    <!-- 模块名称， 影响日志配置名，日志文件名 -->
+    <!-- 模块名称，影响日志配置名，日志文件名 -->
     <property name="LOG_MODULE_NAME" value="logback"/>
-    <!-- 日志输出格式 -->
+    <!-- 日志输出格式：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度， %msg：日志消息，%n是换行符 -->
     <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n"/>
     <!-- 日志文件大小,超过这个大小将被压缩 -->
     <property name="LOG_MAX_SIZE" value="100MB"/>
@@ -22,7 +22,6 @@
     <!-- 控制台输出 -->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度， %msg：日志消息，%n是换行符 -->
             <pattern>${PATTERN}</pattern>
             <charset>UTF-8</charset>
         </encoder>
