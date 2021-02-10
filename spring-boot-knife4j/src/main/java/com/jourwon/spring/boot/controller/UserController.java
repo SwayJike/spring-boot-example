@@ -92,7 +92,7 @@ public class UserController {
 
         int pages = (size + pageSize - 1) / pageSize;
         CommonPage<UserVO> page = new CommonPage<>(pageNum,
-                pageSize, userList.size(), pages, size, userList);
+                pageSize, userList.size(), pages, (long) size, userList);
 
         return CommonResponse.success(page);
     }
