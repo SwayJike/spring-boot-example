@@ -62,6 +62,12 @@ public class UserController {
         return userService.page3(userQuery);
     }
 
+    @GetMapping("/orderByDescMobilePhoneNumber")
+    @ApiOperation("根据手机号码倒序查询用户列表")
+    public List<UserVO> orderByDescMobilePhoneNumber() {
+        return userService.orderByDescMobilePhoneNumber();
+    }
+
     @DeleteMapping("/{userId}")
     @ApiOperation("根据主键删除用户1")
     public boolean removeById(@PathVariable("userId") Long userId) {

@@ -67,7 +67,7 @@ public interface UserService extends IService<User> {
     boolean removeUser(Long userId);
 
     /**
-     * 根据手机号码倒序
+     * 根据手机号码倒序查询用户列表
      *
      * @return List<UserVO>
      */
