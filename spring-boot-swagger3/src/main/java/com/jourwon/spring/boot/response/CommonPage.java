@@ -23,19 +23,19 @@ import java.util.List;
 public class CommonPage<T> implements Serializable {
 
     @ApiModelProperty("当前页码,从1开始")
-    private int pageNum;
+    private Integer pageNum;
 
     @ApiModelProperty("分页大小")
-    private int pageSize;
+    private Integer pageSize;
 
     @ApiModelProperty("当前分页记录数")
-    private int size;
+    private Integer size;
 
     @ApiModelProperty("总页数")
-    private int pages;
+    private Integer pages;
 
     @ApiModelProperty("总记录数")
-    private long total;
+    private Long total;
 
     @ApiModelProperty("当前页列表")
     private List<T> list;
@@ -47,7 +47,7 @@ public class CommonPage<T> implements Serializable {
      * @return CommonPage<T> 分页数据结构
      */
     public static <T> CommonPage<T> emptyPage(int pageNum, int pageSize) {
-        return new CommonPage<>(pageNum, pageSize, 0, 0, 0, Collections.emptyList());
+        return new CommonPage<>(pageNum, pageSize, 0, 0, 0L, Collections.emptyList());
     }
 
 }

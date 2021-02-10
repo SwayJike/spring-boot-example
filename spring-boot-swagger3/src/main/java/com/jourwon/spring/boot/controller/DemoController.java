@@ -109,7 +109,7 @@ public class DemoController {
                 .build());
 
         CommonPage<UserVO> page = new CommonPage<>(pageQuery.getPageNum(),
-                pageQuery.getPageSize(), 4, 1, 4, list);
+                pageQuery.getPageSize(), 4, 1, 4L, list);
 
         return CommonResponse.success(page);
     }

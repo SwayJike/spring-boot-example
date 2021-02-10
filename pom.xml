@@ -27,6 +27,12 @@
         <module>spring-boot-mybatis-annotation</module>
         <!-- Spring Boot整合Mybatis-Plus -->
         <module>spring-boot-mybatis-plus</module>
+        <!-- Spring Boot整合HikariCP数据库连接池 -->
+        <module>spring-boot-hikaricp</module>
+        <!-- Spring Boot整合Druid数据库连接池 -->
+        <module>spring-boot-druid</module>
+        <!-- Spring Boot整合logback日志 -->
+        <module>spring-boot-logback</module>
     </modules>
 
     <properties>
