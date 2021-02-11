@@ -10,19 +10,20 @@
     <!-- 模块名称，影响日志配置名，日志文件名 -->
     <property name="LOG_MODULE_NAME" value="logback"/>
     <!-- 日志输出格式：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度， %msg：日志消息，%n是换行符 -->
-    <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n"/>
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n"/>
     <!-- 日志文件大小,超过这个大小将被压缩 -->
     <property name="LOG_MAX_SIZE" value="100MB"/>
     <!-- 保留多少天以内的日志 -->
     <property name="LOG_DAYS" value="15"/>
     <!-- 缓冲队列大小 -->
     <property name="INFO_BUFFER_SIZE" value="2048"/>
+    <property name="WARN_BUFFER_SIZE" value="256"/>
     <property name="ERROR_BUFFER_SIZE" value="256"/>
 
     <!-- 控制台输出 -->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${PATTERN}</pattern>
+            <pattern>${LOG_PATTERN}</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
@@ -53,7 +54,7 @@
 
         <encoder>
             <pattern>
-                ${PATTERN}
+                ${LOG_PATTERN}
             </pattern>
             <!-- 此处设置字符集 -->
             <charset>UTF-8</charset>
@@ -83,7 +84,7 @@
 
         <encoder>
             <pattern>
-                ${PATTERN}
+                ${LOG_PATTERN}
             </pattern>
             <!-- 此处设置字符集 -->
             <charset>UTF-8</charset>
@@ -114,7 +115,7 @@
 
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
-                ${PATTERN}
+                ${LOG_PATTERN}
             </Pattern>
             <!-- 此处设置字符集 -->
             <charset>UTF-8</charset>
@@ -135,7 +136,7 @@
 
     <appender name="async-warnLog" class="ch.qos.logback.classic.AsyncAppender">
         <discardingThreshold>0</discardingThreshold>
-        <queueSize>${ERROR_BUFFER_SIZE}</queueSize>
+        <queueSize>${WARN_BUFFER_SIZE}</queueSize>
         <appender-ref ref="warnLog"/>
     </appender>
 

@@ -1,0 +1,9 @@
+# springboot配置
+# 加载配置环境
+spring:
+  profiles:
+    active:
+
+# 加载日志环境
+logging:
+  config: classpath:log4j2-spring-test.xml

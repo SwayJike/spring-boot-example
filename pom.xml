@@ -11,28 +11,40 @@
     <description>企业级spring-boot案例-2.4.2版本</description>
 
     <modules>
-        <!-- spring-boot快速入门-HelloWorld -->
-        <module>spring-boot-helloworld</module>
-        <!-- Spring Boot整合Swagger3-API接口文档 -->
-        <module>spring-boot-swagger3</module>
-        <!-- Spring Boot整合Knife4j-API接口文档 -->
-        <module>spring-boot-knife4j</module>
         <!-- Spring Boot整合Redis -->
         <module>spring-boot-data-redis</module>
-        <!-- Spring Boot整合MyBatis -->
-        <module>spring-boot-mybatis</module>
-        <!-- Spring Boot整合MyBatis,使用pagehelper进行分页 -->
-        <module>spring-boot-mybatis-pagehelper</module>
-        <!-- Spring Boot整合MyBatis,使用注解方式 -->
-        <module>spring-boot-mybatis-annotation</module>
-        <!-- Spring Boot整合Mybatis-Plus -->
-        <module>spring-boot-mybatis-plus</module>
-        <!-- Spring Boot整合HikariCP数据库连接池 -->
-        <module>spring-boot-hikaricp</module>
         <!-- Spring Boot整合Druid数据库连接池 -->
         <module>spring-boot-druid</module>
+        <!-- spring-boot快速入门-HelloWorld -->
+        <module>spring-boot-helloworld</module>
+        <!-- Spring Boot整合HikariCP数据库连接池 -->
+        <module>spring-boot-hikaricp</module>
+        <!-- Spring Boot整合Knife4j-API接口文档 -->
+        <module>spring-boot-knife4j</module>
+        <!-- Spring Boot整合log4j2日志 -->
+        <module>spring-boot-log4j2</module>
         <!-- Spring Boot整合logback日志 -->
         <module>spring-boot-logback</module>
+        <!-- Spring Boot整合MyBatis -->
+        <module>spring-boot-mybatis</module>
+        <!-- Spring Boot整合MyBatis,使用注解方式 -->
+        <module>spring-boot-mybatis-annotation</module>
+        <!-- Spring Boot整合MyBatis逆向工程 -->
+        <module>spring-boot-mybatis-generator</module>
+        <!-- Spring Boot整合通用mapper -->
+        <module>spring-boot-mybatis-mapper</module>
+        <!-- Spring Boot整合MyBatis,使用pagehelper进行分页 -->
+        <module>spring-boot-mybatis-pagehelper</module>
+        <!-- Spring Boot整合Mybatis-Plus -->
+        <module>spring-boot-mybatis-plus</module>
+        <!-- Spring Boot整合MyBatis Plus代码生成器 -->
+        <module>spring-boot-mybatis-plus-generator</module>
+        <!-- Spring Boot整合MyBatis Plus多数据源 -->
+        <module>spring-boot-mybatis-plus-multi-datasource</module>
+        <!-- Spring Boot加载配置文件 -->
+        <module>spring-boot-properties</module>
+        <!-- Spring Boot整合Swagger3-API接口文档 -->
+        <module>spring-boot-swagger3</module>
     </modules>
 
     <properties>
