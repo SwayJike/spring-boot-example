@@ -19,6 +19,8 @@
         <module>spring-boot-helloworld</module>
         <!-- Spring Boot整合HikariCP数据库连接池 -->
         <module>spring-boot-hikaricp</module>
+        <!-- Spring Boot整合Jackson,实现数据脱敏 -->
+        <module>spring-boot-json-desensitization</module>
         <!-- Spring Boot整合Knife4j-API接口文档 -->
         <module>spring-boot-knife4j</module>
         <!-- Spring Boot整合log4j2日志 -->
@@ -33,8 +35,12 @@
         <module>spring-boot-mybatis-generator</module>
         <!-- Spring Boot整合通用mapper -->
         <module>spring-boot-mybatis-mapper</module>
+        <!-- Spring Boot整合MyBatis多数据源 -->
+        <module>spring-boot-mybatis-multi-datasource</module>
         <!-- Spring Boot整合MyBatis,使用pagehelper进行分页 -->
         <module>spring-boot-mybatis-pagehelper</module>
+        <!-- Spring Boot整合MyBatis脱敏插件,实现手机号等信息脱敏 -->
+        <module>spring-boot-mybatis-plugin-sensitive</module>
         <!-- Spring Boot整合Mybatis-Plus -->
         <module>spring-boot-mybatis-plus</module>
         <!-- Spring Boot整合MyBatis Plus代码生成器 -->

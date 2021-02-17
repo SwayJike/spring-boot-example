@@ -5,14 +5,20 @@ server:
 # spring配置
 spring:
   application:
-    name: spring-boot-json-desensitization
+    name: spring-boot-mybatis-multi-datasource
   # 数据库配置
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&tinyInt1isBit=false&serverTimezone=GMT%2B8
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: root
+    test:
+      jdbc-url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&tinyInt1isBit=false&serverTimezone=GMT%2B8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
+    demo:
+      jdbc-url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&tinyInt1isBit=false&serverTimezone=GMT%2B8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
 
 # mybatis配置
 mybatis:
