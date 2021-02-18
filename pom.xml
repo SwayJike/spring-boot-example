@@ -11,12 +11,16 @@
     <description>企业级spring-boot案例-2.4.2版本</description>
 
     <modules>
+        <!-- Spring Boot整合自定义banner -->
+        <module>spring-boot-banner</module>
         <!-- Spring Boot整合cors跨域资源共享 -->
         <module>spring-boot-cors</module>
         <!-- Spring Boot整合Redis -->
         <module>spring-boot-data-redis</module>
         <!-- Spring Boot整合Druid数据库连接池 -->
         <module>spring-boot-druid</module>
+        <!-- Spring Boot整合全局异常处理,接口统一响应对象 -->
+        <module>spring-boot-exception-handler</module>
         <!-- spring-boot快速入门-HelloWorld -->
         <module>spring-boot-helloworld</module>
         <!-- Spring Boot整合HikariCP数据库连接池 -->
@@ -51,10 +55,16 @@
         <module>spring-boot-mybatis-plus-multi-datasource</module>
         <!-- Spring Boot加载配置文件 -->
         <module>spring-boot-properties</module>
+        <!-- Spring Boot整合接口限流-guava单体方式 -->
+        <module>spring-boot-ratelimit-guava</module>
+        <!-- Spring Boot整合接口限流-redis集群方式 -->
+        <module>spring-boot-ratelimit-redis</module>
         <!-- Spring Boot整合Swagger3-API接口文档 -->
         <module>spring-boot-swagger3</module>
         <!-- Spring Boot整合模板引擎Thymeleaf -->
         <module>spring-boot-thymeleaf</module>
+        <!-- Spring Boot项目打包成war包 -->
+        <module>spring-boot-war</module>
     </modules>
 
     <properties>

@@ -62,7 +62,7 @@ public class HttpLoggingFilter extends OncePerRequestFilter {
         //获取uri路径
         StringBuilder url = new StringBuilder();
         url.append("[").append(request.getMethod()).append("]");
-        url.append("[").append(IpUtils.getIpAddr(request)).append("] ");
+        url.append("[").append(IpUtils.getIpAddr()).append("] ");
         url.append(request.getRequestURL());
 
         String queryString = request.getQueryString();

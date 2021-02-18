@@ -1,7 +1,8 @@
 package com.jourwon.spring.boot.util;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
  * @author JourWon
  * @date 2021/1/22
  */
-@Slf4j
 public class IpUtils {
 
     private static final String HEADER_X_REAL_IP = "X-Real-IP";
@@ -30,7 +30,8 @@ public class IpUtils {
      * 如果使用了多级反向代理的话，X-Forwarded-For的值并不止一个，而是一串IP地址，X-Forwarded-
      * For中第一个非unknown的有效IP字符串，则为真实IP地址
      */
-    public static String getIpAddr(HttpServletRequest request) {
+    public static String getIpAddr() {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String ip = request.getHeader(HEADER_X_REAL_IP);
         if (StringUtils.isEmpty(ip) || IP_UNKNOWN.equalsIgnoreCase(ip)) {
             // 使用 nginx 反向代理的情况下，配置了 X-REAL-IP 大概率可获取到 ip，意味着以下逻辑极小概率需要执行
@@ -54,7 +55,7 @@ public class IpUtils {
 
         int length = 15;
         // 使用代理，则获取第一个IP地址
-        if (StringUtils.isNotBlank(ip) && ip.length() > length) {
+        if (StringUtils.isEmpty(ip) && ip.length() > length) {
             if (ip.indexOf(COMMA) > 0) {
                 ip = ip.substring(0, ip.indexOf(COMMA));
             }

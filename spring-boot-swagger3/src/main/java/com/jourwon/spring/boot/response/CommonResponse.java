@@ -36,7 +36,7 @@ public class CommonResponse<T> implements Serializable {
     @ApiModelProperty(value = "业务数据")
     private T data;
 
-    @ApiModelProperty(value = "请求id")
+    @ApiModelProperty(value = "traceId")
     private String traceId = MDC.get(SysConstants.MDC_KEY);
 
     @ApiModelProperty(value = "时间戳")
