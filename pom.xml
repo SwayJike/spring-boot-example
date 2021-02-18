@@ -11,6 +11,8 @@
     <description>企业级spring-boot案例-2.4.2版本</description>
 
     <modules>
+        <!-- Spring Boot整合cors跨域资源共享 -->
+        <module>spring-boot-cors</module>
         <!-- Spring Boot整合Redis -->
         <module>spring-boot-data-redis</module>
         <!-- Spring Boot整合Druid数据库连接池 -->
@@ -51,6 +53,8 @@
         <module>spring-boot-properties</module>
         <!-- Spring Boot整合Swagger3-API接口文档 -->
         <module>spring-boot-swagger3</module>
+        <!-- Spring Boot整合模板引擎Thymeleaf -->
+        <module>spring-boot-thymeleaf</module>
     </modules>
 
     <properties>
