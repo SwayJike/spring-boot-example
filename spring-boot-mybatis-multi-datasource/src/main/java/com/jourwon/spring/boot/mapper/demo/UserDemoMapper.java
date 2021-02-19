@@ -17,8 +17,6 @@ public interface UserDemoMapper {
      *
      * @return List<User>
      */
-    // @Select("select user_id, username, password, mobile_phone_number, email, " +
-    //         "delete_state, create_time, update_time from user")
     List<User> listUsers();
 
 }

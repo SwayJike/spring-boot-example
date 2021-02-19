@@ -13,6 +13,8 @@
     <modules>
         <!-- Spring Boot整合自定义banner -->
         <module>spring-boot-banner</module>
+        <!-- Spring Boot整合验证码captcha -->
+        <module>spring-boot-captcha</module>
         <!-- Spring Boot整合cors跨域资源共享 -->
         <module>spring-boot-cors</module>
         <!-- Spring Boot整合Redis -->
@@ -65,6 +67,8 @@
         <module>spring-boot-swagger3</module>
         <!-- Spring Boot整合模板引擎Thymeleaf -->
         <module>spring-boot-thymeleaf</module>
+        <!-- Spring Boot整合undertow -->
+        <module>spring-boot-undertow</module>
         <!-- Spring Boot项目打包成war包 -->
         <module>spring-boot-war</module>
     </modules>
