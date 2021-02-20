@@ -1,0 +1,10 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: spring-boot-email
+  mail:
+    host: smtp.163.com
+    username: thinkrightpad@163.com
+    password: CPXMSNGQMJSAOOAD
+    default-encoding: UTF-8

@@ -21,6 +21,8 @@
         <module>spring-boot-data-redis</module>
         <!-- Spring Boot整合Druid数据库连接池 -->
         <module>spring-boot-druid</module>
+        <!-- Spring Boot整合邮件发送 -->
+        <module>spring-boot-email</module>
         <!-- Spring Boot整合全局异常处理,接口统一响应对象 -->
         <module>spring-boot-exception-handler</module>
         <!-- spring-boot快速入门-HelloWorld -->
