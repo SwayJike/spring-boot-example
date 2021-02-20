@@ -1,12 +1,11 @@
 package com.jourwon.spring.boot.controller;
 
-import com.jourwon.spring.boot.model.dto.ValidationSysCaptchaDTO;
+import com.jourwon.spring.boot.model.dto.ValidateSysCaptchaDTO;
 import com.jourwon.spring.boot.service.SysCaptchaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
@@ -22,17 +21,24 @@ import java.io.IOException;
  * @date 2021/2/19
  */
 @RestController
+@Api(tags = "验证码controller")
 public class SysCaptchaController {
 
     @Resource
     private SysCaptchaService sysCaptchaService;
 
     /**
-     * 验证码
+     * 获取验证码
      */
     @GetMapping("/captcha.jpg")
-    public void captcha(HttpServletResponse response, String uuid) throws IOException {
-        response.setHeader("Cache-Control", "no-store, no-cache");
+    @ApiOperation("获取验证码")
+    public void captcha(HttpServletResponse response,@RequestParam String uuid) throws IOException {
+        //禁止缓存
+        response.setDateHeader("Expires", 0);
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+        response.setHeader("Pragma", "no-cache");
+        //设置响应格式为jpeg图片
         response.setContentType("image/jpeg");
 
         //获取图片验证码
@@ -46,9 +52,10 @@ public class SysCaptchaController {
     /**
      * 校验验证码
      */
-    @PostMapping("/validation")
-    public boolean login(@RequestBody ValidationSysCaptchaDTO validationSysCaptchaDTO) {
-        return sysCaptchaService.validation(validationSysCaptchaDTO.getUuid(), validationSysCaptchaDTO.getCaptcha());
+    @PostMapping("/validate")
+    @ApiOperation("校验验证码")
+    public boolean validate(@RequestBody ValidateSysCaptchaDTO validateSysCaptchaDTO) {
+        return sysCaptchaService.validate(validateSysCaptchaDTO.getUuid(), validateSysCaptchaDTO.getCaptcha());
     }
 
 }

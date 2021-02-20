@@ -15,6 +15,9 @@ public interface SysCaptchaService extends IService<SysCaptcha> {
 
     /**
      * 获取图片验证码
+     *
+     * @param uuid uuid
+     * @return BufferedImage
      */
     BufferedImage getCaptcha(String uuid);
 
@@ -25,6 +28,6 @@ public interface SysCaptchaService extends IService<SysCaptcha> {
      * @param captcha 验证码
      * @return true：成功  false：失败
      */
-    boolean validation(String uuid, String captcha);
+    boolean validate(String uuid, String captcha);
 
 }

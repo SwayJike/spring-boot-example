@@ -13,8 +13,8 @@ import java.io.Serializable;
  * @date 2021/2/20
  */
 @Data
-@ApiModel("ValidationSysCaptchaDTO-校验验证码dto")
-public class ValidationSysCaptchaDTO implements Serializable {
+@ApiModel("ValidateSysCaptchaDTO-校验验证码dto")
+public class ValidateSysCaptchaDTO implements Serializable {
 
     private static final long serialVersionUID = -3370406019971746013L;
 
