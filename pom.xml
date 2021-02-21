@@ -17,6 +17,8 @@
         <module>spring-boot-captcha</module>
         <!-- Spring Boot整合cors跨域资源共享 -->
         <module>spring-boot-cors</module>
+        <!-- Spring Boot整合jpa实现增删改查 -->
+        <module>spring-boot-data-jpa</module>
         <!-- Spring Boot整合Redis -->
         <module>spring-boot-data-redis</module>
         <!-- Spring Boot整合Druid数据库连接池 -->
