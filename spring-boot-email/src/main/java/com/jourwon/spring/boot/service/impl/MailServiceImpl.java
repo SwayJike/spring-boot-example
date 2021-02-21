@@ -71,10 +71,10 @@ public class MailServiceImpl implements MailService {
         helper.setTo(toUser);
         helper.setSubject("带附件邮件");
         //加载绝对路径资源
-        FileSystemResource fs = new FileSystemResource(new File("D:\\IdeaProjects\\my-projects\\spring-boot-example\\spring-boot-email\\src\\main\\resources\\static\\AlibabaJava.pdf"));
+        FileSystemResource fs = new FileSystemResource(new File("D:\\IdeaProjects\\my-projects\\spring-boot-example\\spring-boot-email\\src\\main\\resources\\static\\Java开发手册（嵩山版）.pdf"));
         helper.setText("这是一封带附件的邮件！");
         //添加附件资源
-        helper.addAttachment("AlibabaJava.pdf", fs);
+        helper.addAttachment("Java开发手册（嵩山版）.pdf", fs);
         jms.send(message);
     }
 
@@ -88,7 +88,7 @@ public class MailServiceImpl implements MailService {
         //设置资源的cid
         String content = "<html><body>博客头像<img src='cid:img'/></body></html>";
         helper.setText(content, true);
-        FileSystemResource fs = new FileSystemResource(new File("D:\\IdeaProjects\\my-projects\\spring-boot-example\\spring-boot-email\\src\\main\\resources\\static\\微信图片_20171128230004.jpg"));
+        FileSystemResource fs = new FileSystemResource(new File("D:\\IdeaProjects\\my-projects\\spring-boot-example\\spring-boot-email\\src\\main\\resources\\static\\excellent.jpg"));
         //和上边的cid要对应
         helper.addInline("img", fs);
         jms.send(message);
