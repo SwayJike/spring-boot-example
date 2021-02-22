@@ -75,4 +75,32 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    @Override
+    public UserDTO findByUsername(String username) {
+        User user = userDao.findByUsername(username);
+        return BeanTransformUtils.transform(user, UserDTO.class);
+    }
+
+    @Override
+    public Long countByUsername(String username) {
+        return userDao.countByUsername(username);
+    }
+
+    @Override
+    public List<UserDTO> findByEmailLike(String email) {
+        List<User> list = userDao.findByEmailLike('%' + email + '%');
+        return BeanTransformUtils.transformList(list, UserDTO.class);
+    }
+
+    @Override
+    public Integer updateByUsernameAndUserId(String username, Long userId) {
+        return userDao.updateByUsernameAndUserId(username, userId);
+    }
+
+    @Override
+    public UserDTO findByEmail(String email) {
+        User user = userDao.findByEmail(email);
+        return BeanTransformUtils.transform(user, UserDTO.class);
+    }
+
 }

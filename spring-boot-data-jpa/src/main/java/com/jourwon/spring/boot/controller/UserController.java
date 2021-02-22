@@ -69,4 +69,37 @@ public class UserController {
         return userService.updateByPrimaryKey(updateUserDTO);
     }
 
+    @GetMapping("/findByUsername")
+    @ApiOperation("根据用户名查询用户")
+    public UserVO findByUsername(@RequestParam String username) {
+        UserDTO userDTO = userService.findByUsername(username);
+        return BeanTransformUtils.transform(userDTO, UserVO.class);
+    }
+
+    @GetMapping("/countByUsername")
+    @ApiOperation("统计用户名的数量")
+    public Long countByUsername(@RequestParam String username) {
+        return userService.countByUsername(username);
+    }
+
+    @GetMapping("/findByEmailLike")
+    @ApiOperation("根据邮箱模糊查询用户")
+    public List<UserVO> findByEmailLike(@RequestParam String email) {
+        List<UserDTO> dtoList = userService.findByEmailLike(email);
+        return BeanTransformUtils.transformList(dtoList, UserVO.class);
+    }
+
+    @GetMapping("/updateByUsernameAndUserId")
+    @ApiOperation("根据用户名更新用户")
+    public Integer updateByUsernameAndUserId(@RequestParam String username, @RequestParam Long userId) {
+        return userService.updateByUsernameAndUserId(username, userId);
+    }
+
+    @GetMapping("/findByEmail")
+    @ApiOperation("根据邮箱查询用户")
+    public UserVO findByEmail(@RequestParam String email) {
+        UserDTO userDTO = userService.findByEmail(email);
+        return BeanTransformUtils.transform(userDTO, UserVO.class);
+    }
+
 }

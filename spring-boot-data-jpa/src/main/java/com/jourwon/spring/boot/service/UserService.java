@@ -65,4 +65,45 @@ public interface UserService {
      */
     boolean updateByPrimaryKey(UpdateUserDTO updateUserDTO);
 
+    /**
+     * 根据用户名查询用户
+     *
+     * @param username 用户名
+     * @return UserDTO
+     */
+    UserDTO findByUsername(String username);
+
+    /**
+     * 统计用户名的数量
+     *
+     * @param username 用户名
+     * @return Long
+     */
+    Long countByUsername(String username);
+
+    /**
+     * 根据邮箱模糊查询用户
+     *
+     * @param email 邮箱
+     * @return List<UserDTO>
+     */
+    List<UserDTO> findByEmailLike(String email);
+
+    /**
+     * 根据用户名更新用户
+     *
+     * @param username 用户名
+     * @param userId 用户id
+     * @return Integer
+     */
+    Integer updateByUsernameAndUserId(String username, Long userId);
+
+    /**
+     * 根据邮箱查询用户
+     *
+     * @param email 邮箱
+     * @return User
+     */
+    UserDTO findByEmail(String email);
+
 }
