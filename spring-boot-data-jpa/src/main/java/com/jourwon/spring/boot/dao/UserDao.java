@@ -48,7 +48,7 @@ public interface UserDao extends JpaRepository<User, Long> {
      * @param userId   用户id
      * @return Integer
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     @Modifying
     @Query(value = "update user u set u.username = ?1 where u.user_id = ?2", nativeQuery = true)
     Integer updateByUsernameAndUserId(String username, Long userId);

@@ -2,6 +2,12 @@ package com.jourwon.spring.boot.entity;
 
 import java.util.Date;
 
+/**
+ * User
+ *
+ * @author JourWon
+ * @date 2021/2/22
+ */
 public class User {
     private Long userId;
 

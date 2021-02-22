@@ -21,6 +21,7 @@ public interface MailService {
      * html邮件
      *
      * @param toUser 邮件接收者
+     * @throws MessagingException
      */
     void htmlMail(String toUser) throws MessagingException;
 
@@ -28,6 +29,7 @@ public interface MailService {
      * 带附件邮件
      *
      * @param toUser 邮件接收者
+     * @throws MessagingException
      */
     void attachmentMail(String toUser) throws MessagingException;
 
@@ -35,6 +37,7 @@ public interface MailService {
      * 带图片邮件
      *
      * @param toUser 邮件接收者
+     * @throws MessagingException
      */
     void imgMail(String toUser) throws MessagingException;
 
@@ -42,6 +45,7 @@ public interface MailService {
      * 模板邮件
      *
      * @param toUser 邮件接收者
+     * @throws MessagingException
      */
     void templateMail(String toUser) throws MessagingException;
 
