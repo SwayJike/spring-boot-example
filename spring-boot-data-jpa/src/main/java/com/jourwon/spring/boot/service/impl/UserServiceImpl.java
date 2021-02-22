@@ -1,6 +1,6 @@
 package com.jourwon.spring.boot.service.impl;
 
-import com.jourwon.spring.boot.mapper.UserDao;
+import com.jourwon.spring.boot.dao.UserDao;
 import com.jourwon.spring.boot.model.dto.InsertUserDTO;
 import com.jourwon.spring.boot.model.dto.UpdateUserDTO;
 import com.jourwon.spring.boot.model.dto.UserDTO;
@@ -62,14 +62,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean insertSelective(InsertUserDTO insertUserDTO) {
+    public boolean insert(InsertUserDTO insertUserDTO) {
         User user = BeanTransformUtils.transform(insertUserDTO, User.class);
         userDao.save(user);
         return true;
     }
 
     @Override
-    public boolean updateByPrimaryKeySelective(UpdateUserDTO updateUserDTO) {
+    public boolean updateByPrimaryKey(UpdateUserDTO updateUserDTO) {
         User user = BeanTransformUtils.transform(updateUserDTO, User.class);
         userDao.save(user);
         return true;

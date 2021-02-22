@@ -58,15 +58,15 @@ public class UserController {
 
     @PostMapping
     @ApiOperation("新增用户")
-    public boolean insertSelective(@Valid @RequestBody InsertUserDTO insertUserDTO) {
-        return userService.insertSelective(insertUserDTO);
+    public boolean insert(@Valid @RequestBody InsertUserDTO insertUserDTO) {
+        return userService.insert(insertUserDTO);
     }
 
     @PutMapping("/{userId}")
     @ApiOperation("根据主键更新用户")
-    public boolean updateByPrimaryKeySelective(@PathVariable("userId") Long userId, @Valid @RequestBody UpdateUserDTO updateUserDTO) {
+    public boolean updateByPrimaryKey(@PathVariable("userId") Long userId, @Valid @RequestBody UpdateUserDTO updateUserDTO) {
         updateUserDTO.setUserId(userId);
-        return userService.updateByPrimaryKeySelective(updateUserDTO);
+        return userService.updateByPrimaryKey(updateUserDTO);
     }
 
 }

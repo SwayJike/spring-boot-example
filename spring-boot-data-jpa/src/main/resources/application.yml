@@ -25,6 +25,8 @@ spring:
     hibernate.ddl-auto: update
     # 方言
     properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+    # 关闭open-in-view配置
+    open-in-view: false
     #    hibernate:
     #      naming:
     # 指定jpa的自动表生成策略，驼峰自动映射为下划线格式

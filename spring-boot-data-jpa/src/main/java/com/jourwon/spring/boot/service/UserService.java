@@ -54,7 +54,7 @@ public interface UserService {
      * @param insertUserDTO insertUserDTO
      * @return boolean
      */
-    boolean insertSelective(InsertUserDTO insertUserDTO);
+    boolean insert(InsertUserDTO insertUserDTO);
 
     /**
      *
@@ -63,6 +63,6 @@ public interface UserService {
      * @param updateUserDTO updateUserDTO
      * @return boolean
      */
-    boolean updateByPrimaryKeySelective(UpdateUserDTO updateUserDTO);
+    boolean updateByPrimaryKey(UpdateUserDTO updateUserDTO);
 
 }
