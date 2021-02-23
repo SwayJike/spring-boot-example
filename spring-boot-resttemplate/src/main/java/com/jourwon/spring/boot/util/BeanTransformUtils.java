@@ -3,8 +3,8 @@ package com.jourwon.spring.boot.util;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.Assert;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Field;
+import java.util.*;
 
 /**
  * bean转换工具类
@@ -44,6 +44,34 @@ public class BeanTransformUtils {
             targetList.add(targetObj);
         }
         return targetList;
+    }
+
+    public static <T> Map<String, T> transformMap(Object source, Class<T> targetClass) {
+        Assert.notNull(source, "Source must not be null");
+        Assert.notNull(targetClass, "Target class must not be null");
+
+        Map<String, T> target = new HashMap<>(16);
+        Class<?> clazz = source.getClass();
+        Class<?> superclass = clazz.getSuperclass();
+
+        packageField(source, target, clazz);
+        packageField(source, target, superclass);
+
+        return target;
+    }
+
+    private static <T> void packageField(Object source, Map<String, T> target, Class<?> clazz) {
+        for (Field field : clazz.getDeclaredFields()) {
+            field.setAccessible(true);
+            String fieldName = field.getName();
+            T value = null;
+            try {
+                value = (T) field.get(source);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            target.put(fieldName, value);
+        }
     }
 
 }

@@ -5,6 +5,7 @@ import com.jourwon.spring.boot.model.dto.UpdateUserDTO;
 import com.jourwon.spring.boot.model.query.UserQuery;
 import com.jourwon.spring.boot.model.vo.CommonPageVO;
 import com.jourwon.spring.boot.model.vo.UserVO;
+import com.jourwon.spring.boot.util.BeanTransformUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.*;
@@ -15,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -69,14 +69,16 @@ public class UserController {
     public CommonPageVO<UserVO> page1(@Valid UserQuery userQuery) {
         String url = URL_PREFIX + "page1?email={email}&mobilePhoneNumber={mobilePhoneNumber}&pageNum={pageNum}&pageSize={pageSize}&username={username}";
 
-        Map<String, Object> map = new HashMap<>(8);
-        map.put("pageNum",userQuery.getPageNum());
-        map.put("pageSize",userQuery.getPageSize());
-        map.put("username",userQuery.getUsername());
-        map.put("mobilePhoneNumber",userQuery.getMobilePhoneNumber());
-        map.put("email",userQuery.getEmail());
+        // Map<String, Object> map = new HashMap<>(8);
+        // map.put("pageNum",userQuery.getPageNum());
+        // map.put("pageSize",userQuery.getPageSize());
+        // map.put("username",userQuery.getUsername());
+        // map.put("mobilePhoneNumber",userQuery.getMobilePhoneNumber());
+        // map.put("email",userQuery.getEmail());
 
-        CommonPageVO<UserVO> page = restTemplate.getForObject(url, CommonPageVO.class, map);
+        Map<String, String> params = BeanTransformUtils.transformMap(userQuery, String.class);
+
+        CommonPageVO<UserVO> page = restTemplate.getForObject(url, CommonPageVO.class, params);
         System.out.println("返回结果：" + page);
         return page;
     }
