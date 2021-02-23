@@ -5,15 +5,17 @@ import com.jourwon.spring.boot.model.dto.UpdateUserDTO;
 import com.jourwon.spring.boot.model.query.UserQuery;
 import com.jourwon.spring.boot.model.vo.CommonPageVO;
 import com.jourwon.spring.boot.model.vo.UserVO;
-import com.jourwon.spring.boot.util.BeanTransformUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +33,7 @@ public class UserController {
     @Resource
     private RestTemplate restTemplate;
 
-    private static final String URL_PREFIX = "http://127.0.0.0:8080/user/";
+    private static final String URL_PREFIX = "http://127.0.0.1:8080/user/";
 
     @GetMapping("/{userId}")
     @ApiOperation("通过主键获取用户")
@@ -65,8 +67,15 @@ public class UserController {
     @GetMapping("/page1")
     @ApiOperation("分页查询用户1")
     public CommonPageVO<UserVO> page1(@Valid UserQuery userQuery) {
-        String url = URL_PREFIX + "page1";
-        Map<String, String> map = BeanTransformUtils.transform(userQuery, Map.class);
+        String url = URL_PREFIX + "page1?email={email}&mobilePhoneNumber={mobilePhoneNumber}&pageNum={pageNum}&pageSize={pageSize}&username={username}";
+
+        Map<String, Object> map = new HashMap<>(8);
+        map.put("pageNum",userQuery.getPageNum());
+        map.put("pageSize",userQuery.getPageSize());
+        map.put("username",userQuery.getUsername());
+        map.put("mobilePhoneNumber",userQuery.getMobilePhoneNumber());
+        map.put("email",userQuery.getEmail());
+
         CommonPageVO<UserVO> page = restTemplate.getForObject(url, CommonPageVO.class, map);
         System.out.println("返回结果：" + page);
         return page;
@@ -83,6 +92,25 @@ public class UserController {
     @PostMapping
     @ApiOperation("新增用户1")
     public boolean insertSelective(@Valid @RequestBody InsertUserDTO insertUserDTO) {
+        String url = URL_PREFIX;
+
+        //方式一：GET 方式获取 JSON 数据映射后的 Product 实体对象
+        // Boolean bool = restTemplate.postForObject(url, insertUserDTO, Boolean.class);
+        // System.out.println("返回结果：" + bool);
+
+        //方式二：GET 方式获取包含 Product 实体对象 的响应实体 ResponseEntity 对象,用 getBody() 获取
+        // ResponseEntity<Boolean> responseEntity = restTemplate.postForEntity(url, insertUserDTO, Boolean.class);
+        // System.out.println("返回结果：" + responseEntity);
+
+        //方式三： 将请求参数以键值对形式存储在 MultiValueMap 集合，发送请求时使用
+        // 设置请求的 Content-Type 为 application/json
+        MultiValueMap<String, String> header = new LinkedMultiValueMap<>();
+        header.add(HttpHeaders.CONTENT_TYPE, (MediaType.APPLICATION_JSON_VALUE));
+        HttpEntity<InsertUserDTO> request = new HttpEntity<>(insertUserDTO, header);
+
+        ResponseEntity<Boolean> exchangeResult = restTemplate.exchange(url, HttpMethod.POST, request, Boolean.class);
+        System.out.println("返回结果：" + exchangeResult);
+
         return true;
     }
 
@@ -92,7 +120,7 @@ public class UserController {
         updateUserDTO.setUserId(userId);
 
         String url = URL_PREFIX + "{userId}";
-        restTemplate.put(url,updateUserDTO,userId);
+        restTemplate.put(url, updateUserDTO, userId);
 
         return true;
     }
