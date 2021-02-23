@@ -3,6 +3,7 @@
 ```text
 
 企业级spring-boot案例
+|----Spring Boot整合异步线程池 spring-boot-async
 |----Spring Boot整合自定义banner spring-boot-banner
 |----Spring Boot整合验证码captcha spring-boot-captcha
 |----Spring Boot整合cors跨域资源共享 spring-boot-cors
@@ -31,6 +32,7 @@
 |----Spring Boot加载配置文件 spring-boot-properties
 |----Spring Boot整合接口限流-guava单体方式 spring-boot-ratelimit-guava
 |----Spring Boot整合接口限流-redis集群方式 spring-boot-ratelimit-redis
+|----Spring Boot整合RestTemplate,实现服务间调用 spring-boot-resttemplate
 |----Spring Boot整合Swagger3-API接口文档 spring-boot-swagger3
 |----Spring Boot整合模板引擎Thymeleaf spring-boot-thymeleaf
 |----Spring Boot整合undertow spring-boot-undertow

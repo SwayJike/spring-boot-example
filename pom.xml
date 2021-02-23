@@ -11,6 +11,8 @@
     <description>企业级spring-boot案例-2.4.2版本</description>
 
     <modules>
+        <!-- Spring Boot整合异步线程池 -->
+        <module>spring-boot-async</module>
         <!-- Spring Boot整合自定义banner -->
         <module>spring-boot-banner</module>
         <!-- Spring Boot整合验证码captcha -->
