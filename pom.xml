@@ -71,6 +71,8 @@
         <module>spring-boot-ratelimit-redis</module>
         <!-- Spring Boot整合RestTemplate,实现服务间调用 -->
         <module>spring-boot-resttemplate</module>
+        <!-- Spring Boot整合定时任务scheduler -->
+        <module>spring-boot-scheduler</module>
         <!-- Spring Boot整合Swagger3-API接口文档 -->
         <module>spring-boot-swagger3</module>
         <!-- Spring Boot整合模板引擎Thymeleaf -->

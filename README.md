@@ -33,6 +33,7 @@
 |----Spring Boot整合接口限流-guava单体方式 spring-boot-ratelimit-guava
 |----Spring Boot整合接口限流-redis集群方式 spring-boot-ratelimit-redis
 |----Spring Boot整合RestTemplate,实现服务间调用 spring-boot-resttemplate
+|----Spring Boot整合定时任务scheduler spring-boot-scheduler
 |----Spring Boot整合Swagger3-API接口文档 spring-boot-swagger3
 |----Spring Boot整合模板引擎Thymeleaf spring-boot-thymeleaf
 |----Spring Boot整合undertow spring-boot-undertow
