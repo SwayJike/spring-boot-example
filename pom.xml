@@ -71,6 +71,8 @@
         <module>spring-boot-ratelimit-redis</module>
         <!-- Spring Boot整合RestTemplate,实现服务间调用 -->
         <module>spring-boot-resttemplate</module>
+        <!-- Spring Boot整合retrofit,支持通过接口的方式发起HTTP请求 -->
+        <module>spring-boot-retrofit</module>
         <!-- Spring Boot整合定时任务scheduler -->
         <module>spring-boot-scheduler</module>
         <!-- Spring Boot整合Swagger3-API接口文档 -->

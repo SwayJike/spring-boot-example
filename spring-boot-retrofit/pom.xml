@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jourwon.spring.boot</groupId>
+        <artifactId>spring-boot-example</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>spring-boot-retrofit</artifactId>
+    <version>1.0.0</version>
+    <name>spring-boot-retrofit</name>
+    <description>Spring Boot整合retrofit,支持通过接口的方式发起HTTP请求</description>
+
+    <properties>
+        <sentinel-core.version>1.8.1</sentinel-core.version>
+        <retrofit-spring-boot-starter.version>2.2.7</retrofit-spring-boot-starter.version>
+        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
+    </properties>
+
+    <dependencies>
+        <!--普通降级，请启用该maven坐标，请请求接口上加入@Dgrade注解-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-core</artifactId>
+            <version>${sentinel-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.lianjiatech</groupId>
+            <artifactId>retrofit-spring-boot-starter</artifactId>
+            <version>${retrofit-spring-boot-starter.version}</version>
+        </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Knife4j-API接口文档 -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>${knife4j-spring-boot-starter.version}</version>
+        </dependency>
+
+        <!-- springboot相关 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+</project>
