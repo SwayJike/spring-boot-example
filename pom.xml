@@ -11,6 +11,8 @@
     <description>企业级spring-boot案例-2.4.2版本</description>
 
     <modules>
+        <!-- Spring Boot整合actuator,实现服务监控管理 -->
+        <module>spring-boot-actuator</module>
         <!-- Spring Boot整合异步线程池 -->
         <module>spring-boot-async</module>
         <!-- Spring Boot整合自定义banner -->
@@ -139,5 +141,32 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

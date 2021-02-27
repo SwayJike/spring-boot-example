@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: spring-boot-actuator
+  # spring security配置
+  security:
+    user:
+      name: actuator
+      password: actuator
+      roles: ACTUATOR_ADMIN
+
+# actuator监控
+management:
+#  server:
+#    # 管理的端口调整成8081
+#    port: 8081
+#    # 只允许127.0.0.1访问
+#    address: 127.0.0.1
+#    # actuator的访问路径
+#    base-path: /actuator
+  endpoints:
+    web:
+      exposure:
+        # 默认暴露的两个端点为/actuator/health 和 /actuator/info,暴露所有端点使用"*"
+        include: "*"
+        # 排除暴露的端点
+#        exclude: shutdown
+  endpoint:
+#    shutdown:
+#      # 启用shutdown功能
+#      enabled: true
+    health:
+      # 显示详细的健康信息
+      show-details: always
+
+# 自定义/info端点显示的数据
+info:
+  app:
+    name: spring-boot-actuator
+    description: Spring Boot整合actuator,实现服务监控管理
+    version: 1.0.0
