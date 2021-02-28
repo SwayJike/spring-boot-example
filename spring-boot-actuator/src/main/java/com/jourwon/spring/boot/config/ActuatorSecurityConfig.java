@@ -30,8 +30,7 @@ public class ActuatorSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
+        http.authorizeRequests()
                 .requestMatchers(EndpointRequest.to(ShutdownEndpoint.class))
                 .hasRole("ACTUATOR_ADMIN")
                 .requestMatchers(EndpointRequest.toAnyEndpoint())
