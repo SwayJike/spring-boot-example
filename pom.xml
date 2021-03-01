@@ -27,6 +27,8 @@
         <module>spring-boot-data-redis</module>
         <!-- Spring Boot整合Druid数据库连接池 -->
         <module>spring-boot-druid</module>
+        <!-- Spring Boot整合dubbo -->
+        <module>spring-boot-dubbo</module>
         <!-- Spring Boot整合邮件发送 -->
         <module>spring-boot-email</module>
         <!-- Spring Boot整合全局异常处理,接口统一响应对象 -->
@@ -99,6 +101,25 @@
         <spring.boot.version>2.4.2</spring.boot.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <!-- 锁定子模块spring-boot依赖版本,同时解决单继承问题 -->
@@ -157,6 +178,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
                 <executions>
                     <execution>
                         <id>repackage</id>

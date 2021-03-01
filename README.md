@@ -11,6 +11,7 @@
 |----Spring Boot整合jpa实现增删改查 spring-boot-data-jpa
 |----Spring Boot整合Redis spring-boot-data-redis
 |----Spring Boot整合Druid数据库连接池 spring-boot-druid
+|----Spring Boot整合dubbo spring-boot-dubbo
 |----Spring Boot整合邮件发送 spring-boot-email
 |----Spring Boot整合全局异常处理,接口统一响应对象 spring-boot-exception-handler
 |----spring-boot快速入门-HelloWorld spring-boot-helloworld

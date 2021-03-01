@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jourwon.spring.boot</groupId>
+        <artifactId>spring-boot-dubbo</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>dubbo-consumer</artifactId>
+    <version>1.0.0</version>
+    <name>dubbo-consumer</name>
+    <description>Spring Boot整合dubbo,消费者模块</description>
+
+    <properties>
+        <example-api.version>1.0.0</example-api.version>
+
+        <dubbo-spring-boot-starter.version>2.7.8</dubbo-spring-boot-starter.version>
+        <nacos.version>1.2.1</nacos.version>
+    </properties>
+
+    <dependencies>
+        <!-- Spring Boot dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>${dubbo-spring-boot-starter.version}</version>
+        </dependency>
+
+        <!-- Dubbo Registry Nacos -->
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>${nacos.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jourwon.spring.boot</groupId>
+            <artifactId>example-api</artifactId>
+            <version>${example-api.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
