@@ -32,6 +32,10 @@ public enum CommonResponseCodeEnum {
      * 不支持当前请求类型
      */
     NONSUPPORT_REQUEST_TYPE("A0444", "不支持当前请求类型"),
+    /**
+     * 数据库字段重复
+     */
+    DATABSE_FIELD_DUPLICATE("A0446", "数据库字段重复"),
 
     /**
      * 系统执行出错

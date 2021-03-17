@@ -46,6 +46,10 @@ public enum CommonResponseCodeEnum {
      * 系统执行超时
      */
     SYSTEM_EXECUTION_TIMEOUT("B0100", "系统执行超时"),
+    /**
+     * 数据库字段重复
+     */
+    DATABSE_FIELD_DUPLICATE("A0446", "数据库字段重复"),
     ;
 
     /**

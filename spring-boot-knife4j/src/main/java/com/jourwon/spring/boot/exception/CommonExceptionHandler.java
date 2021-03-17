@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.util.NestedServletException;
+import org.yaml.snakeyaml.constructor.DuplicateKeyException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -222,6 +223,19 @@ public class CommonExceptionHandler {
     public CommonResponse<?> handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
         log.info("[handleHttpMediaTypeNotSupportedException] 不支持当前媒体类型: ", e);
         return new CommonResponse<>(CommonResponseCodeEnum.REQUEST_PARAMETER_ILLEGAL);
+    }
+
+    /**
+     * 数据库字段重复
+     *
+     * @param e 异常
+     * @return CommonResponse 统一返回前端的响应对象
+     */
+    @ResponseStatus(HttpStatus.OK)
+    @ExceptionHandler({DuplicateKeyException.class})
+    public CommonResponse<?> handleDuplicateKeyException(DuplicateKeyException e) {
+        log.info("[DuplicateKeyException] 数据库字段重复: {}", e.getMessage());
+        return new CommonResponse<>(CommonResponseCodeEnum.DATABSE_FIELD_DUPLICATE);
     }
 
 }

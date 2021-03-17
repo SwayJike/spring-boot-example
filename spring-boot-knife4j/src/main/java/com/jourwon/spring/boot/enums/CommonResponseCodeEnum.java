@@ -36,6 +36,10 @@ public enum CommonResponseCodeEnum {
      * 用户id不存在
      */
     USER_ID_NOT_EXIST("A0445", "用户id不存在"),
+    /**
+     * 数据库字段重复
+     */
+    DATABSE_FIELD_DUPLICATE("A0446", "数据库字段重复"),
 
     /**
      * 系统执行出错
