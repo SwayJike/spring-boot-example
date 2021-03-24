@@ -1,6 +1,6 @@
 package com.jourwon.spring.boot.service;
 
-import com.jourwon.spring.boot.entity.User;
+import com.jourwon.spring.boot.model.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author JourWon
- * @since 2021-02-10
+ * @since 2021-03-25
  */
-public interface IUserService extends IService<User> {
+public interface UserService extends IService<User> {
 
 }

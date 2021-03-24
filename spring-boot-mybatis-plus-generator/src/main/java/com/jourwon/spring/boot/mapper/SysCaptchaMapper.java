@@ -1,6 +1,6 @@
 package com.jourwon.spring.boot.mapper;
 
-import com.jourwon.spring.boot.entity.SysCaptcha;
+import com.jourwon.spring.boot.model.entity.SysCaptcha;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author JourWon
- * @since 2021-03-24
+ * @since 2021-03-25
  */
 public interface SysCaptchaMapper extends BaseMapper<SysCaptcha> {
 

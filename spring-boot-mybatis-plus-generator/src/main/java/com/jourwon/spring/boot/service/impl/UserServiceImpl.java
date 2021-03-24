@@ -1,8 +1,8 @@
 package com.jourwon.spring.boot.service.impl;
 
-import com.jourwon.spring.boot.entity.User;
+import com.jourwon.spring.boot.model.entity.User;
 import com.jourwon.spring.boot.mapper.UserMapper;
-import com.jourwon.spring.boot.service.IUserService;
+import com.jourwon.spring.boot.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author JourWon
- * @since 2021-02-10
+ * @since 2021-03-25
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
 }

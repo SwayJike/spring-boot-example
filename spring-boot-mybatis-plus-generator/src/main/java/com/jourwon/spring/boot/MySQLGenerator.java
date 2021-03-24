@@ -21,7 +21,7 @@ import java.util.Scanner;
  * @author JourWon
  * @date 2021/2/10
  */
-public class MysqlGenerator {
+public class MySQLGenerator {
 
     /**
      * <p>

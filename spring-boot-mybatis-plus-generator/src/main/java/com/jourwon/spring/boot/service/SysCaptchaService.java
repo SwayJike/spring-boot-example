@@ -1,6 +1,6 @@
 package com.jourwon.spring.boot.service;
 
-import com.jourwon.spring.boot.entity.SysCaptcha;
+import com.jourwon.spring.boot.model.entity.SysCaptcha;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author JourWon
- * @since 2021-03-24
+ * @since 2021-03-25
  */
-public interface ISysCaptchaService extends IService<SysCaptcha> {
+public interface SysCaptchaService extends IService<SysCaptcha> {
 
 }

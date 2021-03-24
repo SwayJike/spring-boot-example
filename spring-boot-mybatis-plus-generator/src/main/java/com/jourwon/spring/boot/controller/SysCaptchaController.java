@@ -3,7 +3,7 @@ package com.jourwon.spring.boot.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Controller;
  * </p>
  *
  * @author JourWon
- * @since 2021-03-24
+ * @since 2021-03-25
  */
-@Controller
-@RequestMapping("/sys-captcha")
+@RestController
+@RequestMapping("/sysCaptcha")
 public class SysCaptchaController {
 
 }

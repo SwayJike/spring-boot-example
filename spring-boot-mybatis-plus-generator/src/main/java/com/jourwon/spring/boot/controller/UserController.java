@@ -3,7 +3,7 @@ package com.jourwon.spring.boot.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Controller;
  * </p>
  *
  * @author JourWon
- * @since 2021-02-10
+ * @since 2021-03-25
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
