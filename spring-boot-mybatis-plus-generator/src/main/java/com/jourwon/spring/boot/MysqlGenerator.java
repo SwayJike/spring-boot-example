@@ -100,9 +100,10 @@ public class MysqlGenerator {
         // strategy.setSuperEntityClass("com.baomidou.mybatisplus.samples.generator.common.BaseEntity");
         // strategy.setSuperEntityColumns("id");
         strategy.setEntityLombokModel(true);
+        strategy.setEntitySerialVersionUID(true);
         // strategy.setSuperControllerClass("com.baomidou.mybatisplus.samples.generator.common.BaseController");
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setInclude(scanner("表名"));
+        // strategy.setInclude(scanner("表名"));
         // strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
         // 选择 freemarker 引擎需要指定如下加，注意 pom 依赖必须有！
