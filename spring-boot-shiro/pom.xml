@@ -17,7 +17,7 @@
 		<fastjson.version>1.2.75</fastjson.version>
 		<knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
 		<mybatis-plus-boot-starter.version>3.4.2</mybatis-plus-boot-starter.version>
-		<shiro-spring-boot-starter.version>1.7.1</shiro-spring-boot-starter.version>
+		<shiro-spring.version>1.7.1</shiro-spring.version>
 		<commons-lang3.version>3.11</commons-lang3.version>
 		<validation-api.version>2.0.1.Final</validation-api.version>
 	</properties>
@@ -52,8 +52,8 @@
 		<!-- shiro -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring-boot-starter</artifactId>
-			<version>${shiro-spring-boot-starter.version}</version>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro-spring.version}</version>
 		</dependency>
 
 		<!-- apache工具类 -->
