@@ -14,18 +14,48 @@
 	<description>Spring Boot整合Shiro</description>
 
 	<properties>
+		<fastjson.version>1.2.75</fastjson.version>
+		<knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
+		<mybatis-plus-boot-starter.version>3.4.2</mybatis-plus-boot-starter.version>
 		<shiro-spring-boot-starter.version>1.7.1</shiro-spring-boot-starter.version>
 		<commons-lang3.version>3.11</commons-lang3.version>
 		<validation-api.version>2.0.1.Final</validation-api.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<!-- Knife4j-API接口文档 -->
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-spring-boot-starter</artifactId>
+			<version>${knife4j-spring-boot-starter.version}</version>
+		</dependency>
+
+		<!-- mybatis-plus -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>${mybatis-plus-boot-starter.version}</version>
+		</dependency>
+		<!-- mysql数据库驱动 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- shiro -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring-boot-starter</artifactId>
 			<version>${shiro-spring-boot-starter.version}</version>
 		</dependency>
+
 		<!-- apache工具类 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>

@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import com.jourwon.spring.boot.model.entity.BaseDO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +25,6 @@ import java.util.List;
  * 如果数据库设计符合规范，并且代码没有特殊要求。设置好表名前缀（无则忽略）、表字段前缀（无则忽略）后， 直接修改输出的路径、JDBC
  * Url、数据库的账户和密码即可直接生成代码。
  * </p>
- * <p>
- * 生成后将 Mapper 中的 xml 包中的 XML 文件移动到 resource 下即可，XML 存放文件夹名为 Mapper
- * 接口包名（全包名）的同名文件夹<br/>
- * 如 Mapper 接口包名为：com.example.mapper，那么在 resource 下新建同名文件夹：com.example.mapper，将
- * xml 文件移动到该文件夹下即可。
- * </p>
  *
  * @author JourWon
  * @date 2021/3/24
@@ -37,9 +32,17 @@ import java.util.List;
 public class MappingGenerator {
 
     /**
+     * 作者
+     */
+    private static final String AUTHOR = "JourWon";
+    /**
      * 生成代码输出路径，<strong>路径必须是绝对路径，不需要包含包名</strong>
      */
-    private static final String OUTPUT_DIR = "/spring-boot-mybatis-plus-generator/src/main/java";
+    private static final String CODE_OUTPUT_DIR = "/spring-boot-mybatis-plus-generator/src/main/java";
+    /**
+     * 生成mapper文件输出路径
+     */
+    private static final String MAPPER_OUTPUT_DIR = "/spring-boot-mybatis-plus-generator/src/main/resources/mapper/";
     /**
      * 生成代码输出的包名
      * <p>
@@ -47,22 +50,28 @@ public class MappingGenerator {
      * </p>
      */
     private static final String PACKAGE = "com.jourwon.spring.boot";
+
+    /**
+     * 数据库驱动
+     */
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     /**
      * JDBC URL
      */
     private static final String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true";
+
     /**
      * 数据库账户
      */
-    private static final String DB_USERNAME = "root";
+    private static final String USERNAME = "root";
+
     /**
      * 数据库账户密码
      */
-    private static final String DB_PASSWORD = "root";
+    private static final String PASSWORD = "root";
 
     /**
-     * 执行即可生成代码 需要添加 freemarker 依赖 <dependency> <groupId>org.freemarker</groupId>
-     * <artifactId>freemarker</artifactId> <version>2.3.29</version> </dependency>
+     * 执行即可生成代码 需要添加 freemarker 依赖
      */
     public static void main(String[] args) {
         autoGenerator().execute();
@@ -78,9 +87,15 @@ public class MappingGenerator {
         autoGenerator.setCfg(injectionConfig());
         autoGenerator.setTemplate(new TemplateConfig().setXml(null));
         autoGenerator.setTemplateEngine(new FreemarkerTemplateEngine());
+
         return autoGenerator;
     }
 
+    /**
+     * 自定义配置
+     *
+     * @return InjectionConfig
+     */
     private static InjectionConfig injectionConfig() {
         String projectPath = System.getProperty("user.dir");
         // 包配置
@@ -98,7 +113,7 @@ public class MappingGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称
-                return projectPath + "/spring-boot-mybatis-plus-generator/src/main/resources/mapper/" + pc.getModuleName()
+                return projectPath + MAPPER_OUTPUT_DIR + pc.getModuleName()
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
@@ -113,12 +128,12 @@ public class MappingGenerator {
      */
     private static GlobalConfig globalConfig() {
         GlobalConfig globalConfig = new GlobalConfig();
-        globalConfig.setAuthor("JourWon");
+        globalConfig.setAuthor(AUTHOR);
         // 是否打开输出目录
         globalConfig.setOpen(false);
         // 设置代码输出位置，需要绝对路径
         String projectPath = System.getProperty("user.dir");
-        globalConfig.setOutputDir(projectPath + OUTPUT_DIR);
+        globalConfig.setOutputDir(projectPath + CODE_OUTPUT_DIR);
         // 覆盖已有的代码
         globalConfig.setFileOverride(true);
         // 基本表的 ResultMap
@@ -128,16 +143,16 @@ public class MappingGenerator {
         // 开启基于 Model 操作数据库
         // globalConfig.setActiveRecord(true);
         // 设置 ID 类型
-        // globalConfig.setIdType(IdType.ASSIGN_ID);
+        // globalConfig.setIdType(IdType.AUTO);
         // 生成基本 Swagger2 文档
         // globalConfig.setSwagger2(true);
         // 开启二级缓存
         // globalConfig.setEnableCache(true);
         // 设置生成的对象名称规则，%s 表示当前的 Entity
         // 数据库表映射对象名称规则
-        globalConfig.setEntityName("%s");
+        // globalConfig.setEntityName("%s");
         //也可以使用下面这种就是末尾会以DO结尾
-//		globalConfig.setEntityName("%sDO");
+		globalConfig.setEntityName("%sDO");
         // Mapper 接口名称规则
         globalConfig.setMapperName("%sMapper");
         // Mapper XML 文件名称规则
@@ -158,14 +173,22 @@ public class MappingGenerator {
      */
     private static StrategyConfig strategyConfig() {
         StrategyConfig strategyConfig = new StrategyConfig();
-        // strategyConfig.setCapitalMode(false);
+        // 是否大写命名
+        strategyConfig.setCapitalMode(false);
         strategyConfig.setEntityLombokModel(true);
         strategyConfig.setRestControllerStyle(true);
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);
         strategyConfig.setColumnNaming(NamingStrategy.underline_to_camel);
-        // TODO 填写表前缀、表字段前缀，生成代码时去除字段前缀
+        // 填写表前缀、表字段前缀，生成代码时去除字段前缀
         // strategyConfig.setTablePrefix("tb_");
         // strategyConfig.setFieldPrefix("a_", "c_", "e_", "f_", "p_", "r_", "t_", "tf_");
+        strategyConfig.setEntitySerialVersionUID(true);
+        // 自定义继承的Entity类全称，带包名
+        strategyConfig.setSuperEntityClass(BaseDO.class);
+        // 自定义基础的Entity类，公共字段
+        strategyConfig.setSuperEntityColumns("id");
+        strategyConfig.setSuperEntityColumns("create_time");
+        strategyConfig.setSuperEntityColumns("update_time");
         return strategyConfig;
     }
 
@@ -178,28 +201,12 @@ public class MappingGenerator {
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDbType(DbType.MYSQL);
         dataSourceConfig.setTypeConvert(new MySqlTypeConvert());
-        dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver");
+        dataSourceConfig.setDriverName(DRIVER);
         dataSourceConfig.setUrl(JDBC_URL);
-        dataSourceConfig.setUsername(DB_USERNAME);
-        dataSourceConfig.setPassword(DB_PASSWORD);
+        dataSourceConfig.setUsername(USERNAME);
+        dataSourceConfig.setPassword(PASSWORD);
         return dataSourceConfig;
     }
-
-    /**
-     * PostgreSQL 数据源配置
-     *
-     * @return DataSourceConfig
-     */
-//	private static DataSourceConfig postgresqlDataSourceConfig() {
-//		DataSourceConfig dataSourceConfig = new DataSourceConfig();
-//		dataSourceConfig.setDbType(DbType.MYSQL);
-//		dataSourceConfig.setTypeConvert(new PostgreSqlTypeConvert());
-//		dataSourceConfig.setDriverName("org.postgresql.Driver");
-//		dataSourceConfig.setUrl(JDBC_URL);
-//		dataSourceConfig.setUsername(DB_USERNAME);
-//		dataSourceConfig.setPassword(DB_PASSWORD);
-//		return dataSourceConfig;
-//	}
 
     /**
      * 包相关配置信息
@@ -211,7 +218,7 @@ public class MappingGenerator {
         PackageConfig packageConfig = new PackageConfig();
         // 设置父包
         packageConfig.setParent(PACKAGE);
-        // TODO 设置生成代码的包
+        // 设置生成代码的包
         // Controller 包
         packageConfig.setController("controller");
         // 数据库表映射对象包

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jourwon.spring.boot.mapper.SysUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jourwon.spring.boot.model.entity.SysUserDO">
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="salt" property="salt"/>
+        <result column="email" property="email"/>
+        <result column="mobile_phone_number" property="mobilePhoneNumber"/>
+        <result column="lock_status" property="lockStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        update_time,
+        username, password, salt, email, mobile_phone_number, lock_status
+    </sql>
+
+    <!-- 查询用户的所有权限 -->
+    <select id="listPermissionByUserId" resultType="string">
+		select m.perms from sys_user_role ur
+			LEFT JOIN sys_role_menu rm on ur.role_id = rm.role_id
+			LEFT JOIN sys_menu m on rm.menu_id = m.menu_id
+		where ur.user_id = #{userId}
+	</select>
+
+</mapper>
