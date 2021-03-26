@@ -15,9 +15,10 @@ import com.jourwon.spring.boot.model.entity.SysUserTokenDO;
 public interface SysUserTokenService extends IService<SysUserTokenDO> {
 
     /**
-     * 生成token
+     * 根据用户id生成用户token
      *
-     * @param userId 用户ID
+     * @param userId 用户id
+     * @return 用户token
      */
     SysUserTokenDTO createToken(long userId);
 

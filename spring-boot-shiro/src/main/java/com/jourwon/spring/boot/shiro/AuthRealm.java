@@ -8,9 +8,9 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.time.ZoneOffset;
 import java.util.Set;
 
@@ -23,7 +23,7 @@ import java.util.Set;
 @Component
 public class AuthRealm extends AuthorizingRealm {
 
-    @Autowired
+    @Resource
     private ShiroService shiroService;
 
     @Override
@@ -36,7 +36,7 @@ public class AuthRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        SysUserDO user = (SysUserDO)principals.getPrimaryPrincipal();
+        SysUserDO user = (SysUserDO) principals.getPrimaryPrincipal();
         Long userId = user.getId();
 
         //用户权限列表
@@ -56,15 +56,16 @@ public class AuthRealm extends AuthorizingRealm {
 
         //根据accessToken，查询用户信息
         SysUserTokenDO sysUserToken = shiroService.getByToken(accessToken);
+        String zoneOffset = "+8";
         //token失效
-        if(sysUserToken == null || sysUserToken.getExpireTime().toInstant(ZoneOffset.of("+8")).toEpochMilli() < System.currentTimeMillis()){
-            throw new IncorrectCredentialsException("token失效，请重新登录");
+        if (sysUserToken == null || sysUserToken.getExpireTime().toInstant(ZoneOffset.of(zoneOffset)).toEpochMilli() < System.currentTimeMillis()) {
+            throw new IncorrectCredentialsException("token失效,请重新登录");
         }
 
         //查询用户信息
         SysUserDO user = shiroService.getUser(sysUserToken.getUserId());
         //账号锁定
-        if(user.getLockStatus() == 1){
+        if (user.getLockStatus() == 1) {
             throw new LockedAccountException("账号已被锁定,请联系管理员");
         }
 

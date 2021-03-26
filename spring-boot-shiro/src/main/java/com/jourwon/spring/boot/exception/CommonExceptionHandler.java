@@ -3,6 +3,7 @@ package com.jourwon.spring.boot.exception;
 import com.jourwon.spring.boot.enums.CommonResponseCodeEnum;
 import com.jourwon.spring.boot.model.vo.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
@@ -236,6 +237,19 @@ public class CommonExceptionHandler {
     public CommonResponse<?> handleDuplicateKeyException(DuplicateKeyException e) {
         log.info("[DuplicateKeyException] 数据库字段重复: {}", e.getMessage());
         return new CommonResponse<>(CommonResponseCodeEnum.DATABSE_FIELD_DUPLICATE);
+    }
+
+    /**
+     * 访问未授权
+     *
+     * @param e 异常
+     * @return CommonResponse 统一返回前端的响应对象
+     */
+    @ResponseStatus(HttpStatus.OK)
+    @ExceptionHandler({UnauthorizedException.class})
+    public CommonResponse<?> handleUnauthorizedException(UnauthorizedException e) {
+        log.info("[UnauthorizedException] 访问未授权: {}", e.getMessage());
+        return new CommonResponse<>(CommonResponseCodeEnum.UNAUTHORIZED_ACCESS);
     }
 
 }

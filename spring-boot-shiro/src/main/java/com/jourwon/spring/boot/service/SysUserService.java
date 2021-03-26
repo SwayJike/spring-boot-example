@@ -13,6 +13,12 @@ import com.jourwon.spring.boot.model.entity.SysUserDO;
  */
 public interface SysUserService extends IService<SysUserDO> {
 
+    /**
+     * 根据用户名查询用户
+     *
+     * @param username 用户名
+     * @return 用户
+     */
     SysUserDO getByUsername(String username);
 
 }

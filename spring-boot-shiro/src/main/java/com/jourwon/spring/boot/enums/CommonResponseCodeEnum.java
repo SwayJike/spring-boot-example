@@ -52,6 +52,10 @@ public enum CommonResponseCodeEnum {
      * 账号或密码不正确
      */
     ACCOUNT_LOCKED("A0243", "账号已被锁定,请联系管理员"),
+    /**
+     * token失效,请重新登录
+     */
+    INVALID_TOKEN("A0244", "token失效,请重新登录"),
 
     /**
      * 系统执行出错

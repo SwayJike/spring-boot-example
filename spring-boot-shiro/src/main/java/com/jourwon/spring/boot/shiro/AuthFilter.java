@@ -15,6 +15,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * 权限过滤器
@@ -23,18 +24,6 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2021/3/25
  */
 public class AuthFilter extends AuthenticatingFilter {
-
-    @Override
-    protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) throws Exception {
-        //获取请求token
-        String token = getRequestToken((HttpServletRequest) request);
-
-        if (StringUtils.isBlank(token)) {
-            return null;
-        }
-
-        return new AuthToken(token);
-    }
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
@@ -50,32 +39,42 @@ public class AuthFilter extends AuthenticatingFilter {
         //获取请求token，如果token不存在，直接返回401
         String token = getRequestToken((HttpServletRequest) request);
         if (StringUtils.isBlank(token)) {
-            HttpServletResponse httpResponse = (HttpServletResponse) response;
-            httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
-            httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
-
-            CommonResponse<Object> commonResponse = CommonResponse.failure(CommonResponseCodeEnum.UNAUTHORIZED_ACCESS);
-
-            String json = JSON.toJSONString(commonResponse);
-            httpResponse.getWriter().print(json);
-
-            return false;
+            return unauthorized((HttpServletResponse) response, null);
         }
 
         return executeLogin(request, response);
     }
 
+    @Override
+    protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
+        //获取请求token
+        String token = getRequestToken((HttpServletRequest) request);
+
+        if (StringUtils.isBlank(token)) {
+            return null;
+        }
+
+        return new AuthToken(token);
+    }
+
     @SneakyThrows
     @Override
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response) {
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        httpResponse.setContentType("application/json;charset=utf-8");
-        httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
-        httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
+        return unauthorized((HttpServletResponse) response, e);
+    }
+
+    private boolean unauthorized(HttpServletResponse response, AuthenticationException e) throws IOException {
+        response.setContentType("application/json;charset=utf-8");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
+
         CommonResponse<Object> commonResponse = CommonResponse.failure(CommonResponseCodeEnum.UNAUTHORIZED_ACCESS);
+        if (null != e) {
+            commonResponse = CommonResponse.failure(CommonResponseCodeEnum.UNAUTHORIZED_ACCESS.getCode(), e.getMessage());
+        }
 
         String json = JSON.toJSONString(commonResponse);
-        httpResponse.getWriter().print(json);
+        response.getWriter().print(json);
 
         return false;
     }

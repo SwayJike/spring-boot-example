@@ -89,4 +89,8 @@ public class CommonResponse<T> implements Serializable {
         return new CommonResponse<>(commonResponseCodeEnum, data);
     }
 
+    public static <T> CommonResponse<T> failure(String code, String message) {
+        return new CommonResponse<>(code, message);
+    }
+
 }

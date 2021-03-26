@@ -7,6 +7,8 @@ import com.jourwon.spring.boot.model.entity.SysUserDO;
 import com.jourwon.spring.boot.model.vo.CommonResponse;
 import com.jourwon.spring.boot.service.SysUserService;
 import com.jourwon.spring.boot.service.SysUserTokenService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2021/3/25
  */
 @RestController
+@Api(tags = {"登录相关"})
 public class SysLoginController extends AbstractController {
 
     @Autowired
@@ -32,6 +35,7 @@ public class SysLoginController extends AbstractController {
      * 登录
      */
     @PostMapping("/sys/login")
+    @ApiOperation(value = "登录")
     public CommonResponse<SysUserTokenDTO> login(@RequestBody SysLoginDTO sysLoginDTO) {
         //用户信息
         SysUserDO user = sysUserService.getByUsername(sysLoginDTO.getUsername());
@@ -55,6 +59,7 @@ public class SysLoginController extends AbstractController {
      * 退出
      */
     @PostMapping("/sys/logout")
+    @ApiOperation(value = "退出")
     public CommonResponse logout() {
         sysUserTokenService.logout(getUserId());
         return CommonResponse.success();

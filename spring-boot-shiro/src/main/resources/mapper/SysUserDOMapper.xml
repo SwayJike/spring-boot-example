@@ -25,9 +25,9 @@
 
     <!-- 查询用户的所有权限 -->
     <select id="listPermissionByUserId" resultType="string">
-		select m.perms from sys_user_role ur
+		select m.permission from sys_user_role ur
 			LEFT JOIN sys_role_menu rm on ur.role_id = rm.role_id
-			LEFT JOIN sys_menu m on rm.menu_id = m.menu_id
+			LEFT JOIN sys_menu m on rm.menu_id = m.id
 		where ur.user_id = #{userId}
 	</select>
 

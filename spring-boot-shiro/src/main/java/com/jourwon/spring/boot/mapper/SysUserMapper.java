@@ -15,6 +15,12 @@ import java.util.List;
  */
 public interface SysUserMapper extends BaseMapper<SysUserDO> {
 
+    /**
+     * 根据用户id查询用户权限列表
+     *
+     * @param userId 用户id
+     * @return 用户权限列表
+     */
     List<String> listPermissionByUserId(long userId);
 
 }

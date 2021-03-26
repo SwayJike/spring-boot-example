@@ -1,5 +1,6 @@
 package com.jourwon.spring.boot.config;
 
+import com.jourwon.spring.boot.filter.HttpLoggingFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,24 @@ public class FilterConfig {
         registration.setEnabled(true);
         registration.setOrder(Integer.MAX_VALUE - 1);
         registration.addUrlPatterns("/*");
+        return registration;
+    }
+
+    /**
+     * 日志过滤器
+     *
+     * @return FilterRegistrationBean 过滤器
+     */
+    @Bean
+    public FilterRegistrationBean<HttpLoggingFilter> httpLoggingFilterRegistration() {
+        FilterRegistrationBean<HttpLoggingFilter> registration = new FilterRegistrationBean<>();
+        registration.setFilter(new HttpLoggingFilter());
+        // 拦截路径
+        registration.addUrlPatterns("/*");
+        // 拦截器名称
+        registration.setName("httpLoggingFilter");
+        // 顺序
+        registration.setOrder(100);
         return registration;
     }
 
