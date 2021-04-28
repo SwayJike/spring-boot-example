@@ -37,13 +37,13 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'JourWon', '123456', '13800000000', 'JourWon@163.com', 0, '2021-01-31 20:54:01', NULL);
-INSERT INTO `user` VALUES (2, '马云', '123456', '13800000011', 'JackMa@163.com', 0, '2021-01-31 20:54:01', NULL);
-INSERT INTO `user` VALUES (3, '马化腾', '123456', '13800000022', 'PonyMa@163.com', 0, '2021-01-31 20:54:01', NULL);
-INSERT INTO `user` VALUES (4, '李彦宏', '123456', '13800000033', 'RobinLee@163.com', 0, '2021-01-31 20:54:01', NULL);
-INSERT INTO `user` VALUES (5, '任正非', '123456', '13800000044', 'RenZhengfei@163.com', 0, '2021-01-31 20:54:01', NULL);
-INSERT INTO `user` VALUES (6, 'Jobs', '123456', '13800000055', 'Jobs@163.com', 0, '2021-01-31 20:54:01', NULL);
-INSERT INTO `user` VALUES (7, 'Bill Gates', '123456', '13800000066', 'Bill Gates@163.com', 0, '2021-01-31 20:54:01', NULL);
-INSERT INTO `user` VALUES (8, 'Buffett', '123456', '13800000077', 'Buffett@163.com', 0, '2021-01-31 20:54:01', NULL);
+INSERT INTO `user` VALUES (1, 'JourWon', '123456', '13800000000', 'JourWon@163.com', 0, NOW(), NULL);
+INSERT INTO `user` VALUES (2, '马云', '123456', '13800000011', 'JackMa@163.com', 0, NOW(), NULL);
+INSERT INTO `user` VALUES (3, '马化腾', '123456', '13800000022', 'PonyMa@163.com', 0, NOW(), NULL);
+INSERT INTO `user` VALUES (4, '李彦宏', '123456', '13800000033', 'RobinLee@163.com', 0, NOW(), NULL);
+INSERT INTO `user` VALUES (5, '任正非', '123456', '13800000044', 'RenZhengfei@163.com', 0, NOW(), NULL);
+INSERT INTO `user` VALUES (6, 'Jobs', '123456', '13800000055', 'Jobs@163.com', 0, NOW(), NULL);
+INSERT INTO `user` VALUES (7, 'Bill Gates', '123456', '13800000066', 'Bill Gates@163.com', 0, NOW(), NULL);
+INSERT INTO `user` VALUES (8, 'Buffett', '123456', '13800000077', 'Buffett@163.com', 0, NOW(), NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
