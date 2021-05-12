@@ -2,9 +2,9 @@ package com.jourwon.spring.boot;
 
 import com.jourwon.spring.boot.provider.KafkaProvider;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
