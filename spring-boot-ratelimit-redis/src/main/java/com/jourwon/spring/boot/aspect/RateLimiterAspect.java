@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Aspect
 @Component
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class RateLimiterAspect {
 
     private final static String SEPARATOR = ":";

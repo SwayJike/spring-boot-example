@@ -16,7 +16,7 @@ class SpringBootKafkaApplicationTests {
 	void contextLoads() {
 	}
 
-	@Autowired
+	@Resource
 	private KafkaProvider kafkaProvider;
 
 	@Test

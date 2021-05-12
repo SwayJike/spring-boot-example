@@ -10,10 +10,11 @@ import com.jourwon.spring.boot.service.SysUserTokenService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.crypto.hash.Sha256Hash;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * 登录相关
@@ -25,10 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = {"登录相关"})
 public class SysLoginController extends AbstractController {
 
-    @Autowired
+    @Resource
     private SysUserService sysUserService;
 
-    @Autowired
+    @Resource
     private SysUserTokenService sysUserTokenService;
 
     /**

@@ -3,13 +3,13 @@ package com.jourwon.spring.boot.provider;
 import com.alibaba.fastjson.JSONObject;
 import com.jourwon.spring.boot.model.Order;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
 /**
@@ -27,7 +27,7 @@ public class KafkaProvider {
      */
     private static final String TOPIC = "xiaoha";
 
-    @Autowired
+    @Resource
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(long orderId, String orderNum, LocalDateTime createTime) {
