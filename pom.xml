@@ -43,6 +43,8 @@
         <module>spring-boot-https</module>
         <!-- Spring Boot整合Jackson,实现数据脱敏 -->
         <module>spring-boot-json-desensitization</module>
+        <!-- Spring Boot整合Kafka -->
+        <module>spring-boot-kafka</module>
         <!-- Spring Boot整合Knife4j-API接口文档 -->
         <module>spring-boot-knife4j</module>
         <!-- Spring Boot整合log4j2日志 -->

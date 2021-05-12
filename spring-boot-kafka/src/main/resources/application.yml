@@ -1,0 +1,16 @@
+# kafka配置
+spring:
+  kafka:
+    # kafka服务的ip端口,集群用逗号分隔的主机:端口对列表
+    bootstrap-servers: 172.25.21.123:9092
+    consumer:
+      # 指定 group_id
+      group-id: group_id
+      auto-offset-reset: earliest
+      # 指定消息key和消息体的编解码方式
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      # 指定消息key和消息体的编解码方式
+      key-deserializer: org.apache.kafka.common.serialization.StringSerializer
+      value-deserializer: org.apache.kafka.common.serialization.StringSerializer
