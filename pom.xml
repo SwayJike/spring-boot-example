@@ -29,6 +29,8 @@
         <module>spring-boot-druid</module>
         <!-- Spring Boot整合dubbo -->
         <module>spring-boot-dubbo</module>
+        <!-- Spring Boot整合EasyExcel,实现Excel导入导出 -->
+        <module>spring-boot-easyexcel</module>
         <!-- Spring Boot整合邮件发送 -->
         <module>spring-boot-email</module>
         <!-- Spring Boot整合全局异常处理,接口统一响应对象 -->
