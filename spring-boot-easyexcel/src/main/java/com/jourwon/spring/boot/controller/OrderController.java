@@ -14,7 +14,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -98,31 +98,40 @@ public class OrderController {
     @GetMapping("/export")
     @ApiOperation("导出订单Excel")
     public void exportExcel(@Valid OrderQuery orderQuery, HttpServletResponse response) throws IOException {
-        long start = System.currentTimeMillis();
-        // 这里文件名如果涉及中文一定要使用URL编码,否则会乱码
-        String fileName = URLEncoder.encode(String.format("%s-(%s).xlsx", "订单支付数据", UUID.randomUUID().toString()),
-                StandardCharsets.UTF_8.toString());
-        response.setContentType("application/force-download");
-        response.setHeader("Content-Disposition", "attachment;filename=" + fileName);
-        ExcelWriter writer = new ExcelWriterBuilder()
-                .autoCloseStream(true)
-                .excelType(ExcelTypeEnum.XLSX)
-                .file(response.getOutputStream())
-                .head(OrderDTO.class)
-                .build();
-        // xlsx文件上上限是104W行左右,这里如果超过104W需要分Sheet
-        WriteSheet writeSheet = new WriteSheet();
-        writeSheet.setSheetName("target");
-        for (; ; ) {
+        try (OutputStream out = response.getOutputStream()) {
+            long start = System.currentTimeMillis();
+            // 这里文件名如果涉及中文一定要使用URL编码,否则会乱码
+            String fileName = URLEncoder.encode(String.format("%s-(%s).xlsx", "订单支付数据", UUID.randomUUID().toString()),
+                    StandardCharsets.UTF_8.toString());
+            response.setContentType("application/vnd.ms-excel");
+            response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
+            response.setHeader("Content-Disposition", "attachment;filename=" + fileName);
+            ExcelWriter writer = new ExcelWriterBuilder()
+                    .autoCloseStream(true)
+                    .excelType(ExcelTypeEnum.XLSX)
+                    .file(out)
+                    .head(OrderDTO.class)
+                    .build();
+            // xlsx文件上上限是104W行左右,这里如果超过104W需要分Sheet
+            WriteSheet writeSheet = new WriteSheet();
+            writeSheet.setSheetName("target");
             List<OrderDTO> list = orderService.listOrder(orderQuery);
-            if (CollectionUtils.isEmpty(list)) {
-                writer.finish();
-                break;
-            } else {
-                writer.write(list, writeSheet);
-            }
+            writer.write(list, writeSheet);
+            writer.finish();
+            // for (; ; ) {
+            //     List<OrderDTO> list = orderService.listOrder(orderQuery);
+            //     if (CollectionUtils.isEmpty(list)) {
+            //         writer.finish();
+            //         break;
+            //     } else {
+            //         writer.write(list, writeSheet);
+            //     }
+            // }
+            log.info("导出数据耗时:{} ms", System.currentTimeMillis() - start);
+
+        } catch (Exception e) {
+            throw new RuntimeException("导出excel错误", e);
         }
-        log.info("导出数据耗时:{} ms", System.currentTimeMillis() - start);
     }
 
 }

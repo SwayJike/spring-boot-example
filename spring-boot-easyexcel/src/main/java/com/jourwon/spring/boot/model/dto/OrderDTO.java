@@ -2,10 +2,12 @@ package com.jourwon.spring.boot.model.dto;
 
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.format.NumberFormat;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * 订单DTO
@@ -24,11 +26,12 @@ public class OrderDTO implements Serializable {
     @ExcelProperty(value = "订单号", order = 1)
     private String orderId;
 
+    @NumberFormat
     @ExcelProperty(value = "金额", order = 2)
     private BigDecimal amount;
 
     @ExcelProperty(value = "支付时间", order = 3)
-    private String paymentTime;
+    private LocalDateTime paymentTime;
 
     @ExcelProperty(value = "订单状态", order = 4)
     private String orderStatus;
