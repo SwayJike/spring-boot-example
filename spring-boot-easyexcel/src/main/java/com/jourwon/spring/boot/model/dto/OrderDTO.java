@@ -3,6 +3,8 @@ package com.jourwon.spring.boot.model.dto;
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.format.NumberFormat;
+import com.jourwon.spring.boot.converter.LocalDateTimeConverter;
+import com.jourwon.spring.boot.converter.OrderStatusConverter;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -30,10 +32,10 @@ public class OrderDTO implements Serializable {
     @ExcelProperty(value = "金额", order = 2)
     private BigDecimal amount;
 
-    @ExcelProperty(value = "支付时间", order = 3)
+    @ExcelProperty(value = "支付时间", order = 3, converter = LocalDateTimeConverter.class)
     private LocalDateTime paymentTime;
 
-    @ExcelProperty(value = "订单状态", order = 4)
-    private String orderStatus;
+    @ExcelProperty(value = "订单状态", order = 4, converter = OrderStatusConverter.class)
+    private Integer orderStatus;
 
 }

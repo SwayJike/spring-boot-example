@@ -43,4 +43,22 @@ public enum OrderStatusEnum {
         throw new IllegalArgumentException("Unknown Order Status " + orderStatus);
     }
 
+    public static String getDescriptionByOrderStatus(Integer orderStatus) {
+        for (OrderStatusEnum orderStatusEnum : OrderStatusEnum.values()) {
+            if (orderStatusEnum.getOrderStatus().equals(orderStatus)) {
+                return orderStatusEnum.getDescription();
+            }
+        }
+        return null;
+    }
+
+    public static Integer getOrderStatusByDescription(String description) {
+        for (OrderStatusEnum orderStatusEnum : OrderStatusEnum.values()) {
+            if (orderStatusEnum.getDescription().equals(description)) {
+                return orderStatusEnum.getOrderStatus();
+            }
+        }
+        return null;
+    }
+
 }
