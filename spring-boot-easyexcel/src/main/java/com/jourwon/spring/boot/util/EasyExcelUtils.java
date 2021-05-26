@@ -42,7 +42,7 @@ public class EasyExcelUtils {
             response.setContentType("application/json");
             response.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
-            CommonResponse<Object> failure = CommonResponse.failure(CommonResponseCodeEnum.FAILED_DOWNLOAD_FILE);
+            CommonResponse failure = CommonResponse.failure(CommonResponseCodeEnum.FAILED_DOWNLOAD_FILE);
             response.getWriter().println(JSON.toJSONString(failure));
         }
     }

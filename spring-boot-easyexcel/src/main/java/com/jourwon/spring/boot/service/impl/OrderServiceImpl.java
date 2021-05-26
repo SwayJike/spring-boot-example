@@ -48,7 +48,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Override
     public void insertBatchOrder(List<OrderDTO> list) {
-
+        List<Order> orderList = BeanTransformUtils.transformList(list, Order.class);
+        this.saveBatch(orderList);
     }
 
 }
