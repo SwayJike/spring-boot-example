@@ -23,8 +23,6 @@ import java.util.List;
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
 
-
-
     @Override
     public List<OrderDTO> listOrder(OrderQuery orderQuery) {
         Integer isCurrentPage = orderQuery.getIsCurrentPage();
