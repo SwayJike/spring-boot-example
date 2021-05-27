@@ -7,8 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.io.Serializable;
 
 /**
@@ -27,11 +25,9 @@ public class PageQuery implements Serializable {
     private static final long serialVersionUID = -6363770969828711469L;
 
     @ApiModelProperty(value = "当前页码")
-    @Min(value = 1, message = "当前页码不能小于1")
     private int pageNum;
 
     @ApiModelProperty(value = "分页大小")
-    @Max(value = 1000, message = "分页大小不能超过1000条数据")
     private int pageSize;
 
 }

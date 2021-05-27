@@ -3,8 +3,10 @@ package com.jourwon.spring.boot.model.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -17,6 +19,8 @@ import java.time.LocalDateTime;
  * @date 2021/5/16
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @TableName("t_order")
 public class Order implements Serializable {

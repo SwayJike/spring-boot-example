@@ -33,3 +33,15 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     # 开发环境控制台打印sql语句
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# pagehelper配置
+pagehelper:
+  # 分页合理化参数,默认值为false
+  reasonable: false
+  # 配置方言
+  helper-dialect: mysql
+  params: count=countSql
+  # 默认值为false,当该参数设置为true时,使用 RowBounds 分页会进行 count 查询
+  row-bounds-with-count: true
+  # 支持通过 Mapper 接口参数来传递分页参数,默认值false
+  support-methods-arguments: true
