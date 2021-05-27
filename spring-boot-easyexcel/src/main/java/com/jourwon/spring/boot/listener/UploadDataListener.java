@@ -26,16 +26,16 @@ public class UploadDataListener extends AnalysisEventListener<OrderDTO> {
      * 每隔5条存储数据库，实际使用中可以3000条，然后清理list ，方便内存回收
      */
     private static final int BATCH_COUNT = 3000;
-    List<OrderDTO> list = new ArrayList<OrderDTO>();
+    List<OrderDTO> list = new ArrayList<>();
     /**
      * 假设这个是一个DAO，当然有业务逻辑这个也可以是一个service。当然如果不用存储这个对象没用。
      */
-    private OrderService orderService;
+    private final OrderService orderService;
 
     /**
      * 如果使用了spring,请使用这个构造方法。每次创建Listener的时候需要把spring管理的类传进来
      *
-     * @param orderService
+     * @param orderService orderService
      */
     public UploadDataListener(OrderService orderService) {
         this.orderService = orderService;
@@ -45,7 +45,7 @@ public class UploadDataListener extends AnalysisEventListener<OrderDTO> {
      * 这个每一条数据解析都会来调用
      *
      * @param data    one row value. Is is same as {@link AnalysisContext#readRowHolder()}
-     * @param context
+     * @param context context
      */
     @Override
     public void invoke(OrderDTO data, AnalysisContext context) {
@@ -62,7 +62,7 @@ public class UploadDataListener extends AnalysisEventListener<OrderDTO> {
     /**
      * 所有数据解析完成了 都会来调用
      *
-     * @param context
+     * @param context context
      */
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {

@@ -1,10 +1,13 @@
 package com.jourwon.spring.boot.controller;
 
+import com.jourwon.spring.boot.enums.ModelTypeEnum;
 import com.jourwon.spring.boot.listener.UploadDataListener;
 import com.jourwon.spring.boot.model.dto.OrderDTO;
+import com.jourwon.spring.boot.model.entity.Order;
 import com.jourwon.spring.boot.model.query.OrderQuery;
 import com.jourwon.spring.boot.model.vo.CommonResponse;
 import com.jourwon.spring.boot.service.OrderService;
+import com.jourwon.spring.boot.util.BeanTransformUtils;
 import com.jourwon.spring.boot.util.EasyExcelUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * 订单controller
@@ -36,9 +40,20 @@ public class OrderController {
 
     @PostMapping("/import_excel")
     @ApiOperation("导入订单Excel")
-    public CommonResponse importExcel(MultipartFile file) {
+    public CommonResponse<?> importExcel(MultipartFile file) {
         long start = System.currentTimeMillis();
-        EasyExcelUtils.importExcel(file, OrderDTO.class, new UploadDataListener(orderService));
+        EasyExcelUtils.readExcel(file, OrderDTO.class, new UploadDataListener(orderService));
+        log.info("导入数据耗时:{} ms", System.currentTimeMillis() - start);
+        return CommonResponse.success();
+    }
+
+    @PostMapping("/import_excel2")
+    @ApiOperation("导入订单Excel2")
+    public CommonResponse<?> importExcel2(MultipartFile file) {
+        long start = System.currentTimeMillis();
+        List<OrderDTO> list = EasyExcelUtils.readExcel(file, OrderDTO.class, ModelTypeEnum.ORDER_SECOND);
+        List<Order> orderList = BeanTransformUtils.transformList(list, Order.class);
+        orderService.saveBatch(orderList);
         log.info("导入数据耗时:{} ms", System.currentTimeMillis() - start);
         return CommonResponse.success();
     }
@@ -47,7 +62,7 @@ public class OrderController {
     @ApiOperation("导出订单Excel")
     public void exportExcel(@Valid OrderQuery orderQuery, HttpServletResponse response) {
         long start = System.currentTimeMillis();
-        EasyExcelUtils.exportExcel(response, ("订单-" + start), "sheet1", OrderDTO.class, orderService.listOrder(orderQuery));
+        EasyExcelUtils.writeExcel(response, ("订单-" + start), "Sheet1", OrderDTO.class, orderService.listOrder(orderQuery));
         log.info("导出数据耗时:{} ms", System.currentTimeMillis() - start);
     }
 
