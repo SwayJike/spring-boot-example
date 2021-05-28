@@ -19,10 +19,14 @@ public class ModelExcelListener<E> extends AnalysisEventListener<E> {
 
     private final List<E> list = new ArrayList<>();
 
-    private final ModelTypeEnum modelTypeEnum;
+    private ModelTypeEnum modelTypeEnum;
 
     public ModelExcelListener(ModelTypeEnum modelTypeEnum) {
         this.modelTypeEnum = modelTypeEnum;
+    }
+
+    public ModelExcelListener() {
+
     }
 
     @Override
