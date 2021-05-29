@@ -2,7 +2,6 @@ package com.jourwon.spring.boot.listener;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.jourwon.spring.boot.enums.ModelTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -19,12 +18,6 @@ public class ModelExcelListener<E> extends AnalysisEventListener<E> {
 
     private final List<E> list = new ArrayList<>();
 
-    private ModelTypeEnum modelTypeEnum;
-
-    public ModelExcelListener(ModelTypeEnum modelTypeEnum) {
-        this.modelTypeEnum = modelTypeEnum;
-    }
-
     public ModelExcelListener() {
 
     }
@@ -36,7 +29,7 @@ public class ModelExcelListener<E> extends AnalysisEventListener<E> {
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        log.info("{}-{}条数据解析完成!", modelTypeEnum.getSheetName(), list.size());
+        log.info("{}条数据解析完成!", list.size());
     }
 
     public List<E> getList() {

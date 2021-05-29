@@ -71,6 +71,11 @@ public enum CommonResponseCodeEnum {
      * 下载文件失败
      */
     FAILED_DOWNLOAD_FILE("B0401", "下载文件失败"),
+
+    /**
+     * 文件为空
+     */
+    FILE_EMPTY("B0402", "文件为空"),
     ;
 
     /**

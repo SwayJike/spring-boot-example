@@ -4,14 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 模型类型枚举，sheet的模型类型
+ * 记录模型枚举，excel一条记录对应的java类型
  *
  * @author JourWon
  * @date 2021/5/28
  */
 @Getter
 @AllArgsConstructor
-public enum ModelTypeEnum {
+public enum RowModelEnum {
 
     /**
      * 订单数据1
