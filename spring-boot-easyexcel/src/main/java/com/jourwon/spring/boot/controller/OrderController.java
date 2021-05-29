@@ -67,7 +67,7 @@ public class OrderController {
         long start = System.currentTimeMillis();
         List<OrderDTO> list = null;
         try {
-            list = EasyExcelUtils.readExcel(file.getInputStream(), OrderDTO.class, RowModelEnum.ORDER_SECOND);
+            list = EasyExcelUtils.readExcel(file.getInputStream(), OrderDTO.class, RowModelEnum.ORDER_SECOND.getSheetName());
         } catch (IOException e) {
             e.printStackTrace();
         }
