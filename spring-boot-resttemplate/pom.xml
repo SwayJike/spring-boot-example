@@ -12,10 +12,6 @@
     <name>spring-boot-resttemplate</name>
     <description>Spring Boot整合RestTemplate,实现服务间调用</description>
 
-    <properties>
-        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-    </properties>
-
     <dependencies>
         <!-- lombok -->
         <dependency>
@@ -28,7 +24,6 @@
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>${knife4j-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- springboot相关 -->

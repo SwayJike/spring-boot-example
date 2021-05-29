@@ -12,24 +12,16 @@
     <name>spring-boot-retrofit</name>
     <description>Spring Boot整合retrofit,支持通过接口的方式发起HTTP请求</description>
 
-    <properties>
-        <sentinel-core.version>1.8.1</sentinel-core.version>
-        <retrofit-spring-boot-starter.version>2.2.7</retrofit-spring-boot-starter.version>
-        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-    </properties>
-
     <dependencies>
         <!--普通降级，请启用该maven坐标，请请求接口上加入@Dgrade注解-->
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-core</artifactId>
-            <version>${sentinel-core.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.lianjiatech</groupId>
             <artifactId>retrofit-spring-boot-starter</artifactId>
-            <version>${retrofit-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- lombok -->
@@ -43,7 +35,6 @@
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>${knife4j-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- springboot相关 -->

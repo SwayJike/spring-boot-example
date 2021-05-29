@@ -12,28 +12,22 @@
     <name>spring-boot-ratelimit-guava</name>
     <description>Spring Boot整合接口限流-guava单体方式</description>
 
-    <properties>
-        <guava.version>30.1-jre</guava.version>
-        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
         </dependency>
 
         <!-- Knife4j-API接口文档 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>${knife4j-spring-boot-starter.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

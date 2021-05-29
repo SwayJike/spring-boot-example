@@ -12,16 +12,10 @@
     <name>spring-boot-ratelimit-redis</name>
     <description>Spring Boot整合接口限流-redis集群方式</description>
 
-    <properties>
-        <hutool.version>5.5.8</hutool.version>
-        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>${hutool.version}</version>
         </dependency>
 
         <!-- redis -->
@@ -39,12 +33,12 @@
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>${knife4j-spring-boot-starter.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

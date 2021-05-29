@@ -15,7 +15,6 @@
     <packaging>war</packaging>
 
     <properties>
-        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
 
@@ -37,7 +36,6 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

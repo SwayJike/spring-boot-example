@@ -12,6 +12,7 @@
 |----Spring Boot整合Redis spring-boot-data-redis
 |----Spring Boot整合Druid数据库连接池 spring-boot-druid
 |----Spring Boot整合dubbo spring-boot-dubbo
+|----Spring Boot整合EasyExcel,实现Excel导入导出 spring-boot-easyexcel
 |----Spring Boot整合邮件发送 spring-boot-email
 |----Spring Boot整合全局异常处理,接口统一响应对象 spring-boot-exception-handler
 |----Spring Boot整合flyway,数据库版本控制 spring-boot-flyway

@@ -12,22 +12,18 @@
     <name>spring-boot-exception-handler</name>
     <description>Spring Boot整合全局异常处理,接口统一响应对象</description>
 
-    <properties>
-        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-    </properties>
-
     <dependencies>
         <!-- Knife4j-API接口文档 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>${knife4j-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <!-- springboot 2.3.0及以上版本 解决@Validated @Valid 不起作用的问题 -->

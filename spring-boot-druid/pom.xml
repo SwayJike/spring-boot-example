@@ -12,32 +12,23 @@
     <name>spring-boot-druid</name>
     <description>Spring Boot整合Druid数据库连接池</description>
 
-    <properties>
-        <druid-spring-boot-starter.version>1.2.4</druid-spring-boot-starter.version>
-        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-        <mybatis-spring-boot-starter.version>2.1.4</mybatis-spring-boot-starter.version>
-    </properties>
-
     <dependencies>
         <!-- druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- Knife4j-API接口文档 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>${knife4j-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- mybatis -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- mysql数据库驱动 -->

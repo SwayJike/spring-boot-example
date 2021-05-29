@@ -12,31 +12,22 @@
     <name>spring-boot-mybatis-plus-multi-datasource</name>
     <description>Spring Boot整合MyBatis Plus多数据源</description>
 
-    <properties>
-        <dynamic-datasource-spring-boot-starter.version>3.3.1</dynamic-datasource-spring-boot-starter.version>
-        <mybatis-plus-boot-starter.version>3.4.2</mybatis-plus-boot-starter.version>
-        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-            <version>${dynamic-datasource-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- mybatis-plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
 
         <!-- Knife4j-API接口文档 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>${knife4j-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- mysql数据库驱动 -->

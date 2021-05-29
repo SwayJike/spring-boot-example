@@ -12,16 +12,10 @@
     <name>spring-boot-log4j2</name>
     <description>Spring Boot整合log4j2日志</description>
 
-    <properties>
-        <disruptor.version>3.4.2</disruptor.version>
-        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
-            <version>${disruptor.version}</version>
         </dependency>
 
         <!-- 引入log4j2依赖 -->
@@ -40,6 +34,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

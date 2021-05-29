@@ -12,34 +12,22 @@
 	<name>spring-boot-shiro</name>
 	<description>Spring Boot整合Shiro</description>
 
-	<properties>
-		<fastjson.version>1.2.75</fastjson.version>
-		<knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-		<mybatis-plus-boot-starter.version>3.4.2</mybatis-plus-boot-starter.version>
-		<shiro-spring.version>1.7.1</shiro-spring.version>
-		<commons-lang3.version>3.11</commons-lang3.version>
-		<validation-api.version>2.0.1.Final</validation-api.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>${fastjson.version}</version>
 		</dependency>
 
 		<!-- Knife4j-API接口文档 -->
 		<dependency>
 			<groupId>com.github.xiaoymin</groupId>
 			<artifactId>knife4j-spring-boot-starter</artifactId>
-			<version>${knife4j-spring-boot-starter.version}</version>
 		</dependency>
 
 		<!-- mybatis-plus -->
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
-			<version>${mybatis-plus-boot-starter.version}</version>
 		</dependency>
 		<!-- mysql数据库驱动 -->
 		<dependency>
@@ -52,21 +40,18 @@
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring</artifactId>
-			<version>${shiro-spring.version}</version>
 		</dependency>
 
 		<!-- apache工具类 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>${commons-lang3.version}</version>
 		</dependency>
 
 		<!-- 验证工具 -->
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>${validation-api.version}</version>
 		</dependency>
 
 		<!-- lombok -->
@@ -87,14 +72,5 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

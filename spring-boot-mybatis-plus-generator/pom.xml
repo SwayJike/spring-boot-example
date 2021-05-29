@@ -12,24 +12,17 @@
     <name>spring-boot-mybatis-plus-generator</name>
     <description>Spring Boot整合MyBatis Plus代码生成器</description>
 
-    <properties>
-        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
-        <mybatis-plus-generator.version>3.4.1</mybatis-plus-generator.version>
-    </properties>
-
     <dependencies>
         <!-- Knife4j-API接口文档 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>${knife4j-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- mybatis-plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
-            <version>${mybatis-plus-generator.version}</version>
         </dependency>
 
         <!-- freemarker模板引擎 -->
@@ -41,6 +34,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <!-- mysql数据库驱动 -->

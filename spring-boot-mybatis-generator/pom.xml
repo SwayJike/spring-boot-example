@@ -12,21 +12,15 @@
     <name>spring-boot-mybatis-generator</name>
     <description>Spring Boot整合MyBatis逆向工程</description>
 
-    <properties>
-        <mybatis-generator-core.version>1.4.0</mybatis-generator-core.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.5.6</version>
         </dependency>
 
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
-            <version>${mybatis-generator-core.version}</version>
         </dependency>
 
         <dependency>
