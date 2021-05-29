@@ -9,7 +9,6 @@ import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.fastjson.JSON;
 import com.jourwon.spring.boot.enums.CommonResponseCodeEnum;
-import com.jourwon.spring.boot.enums.RowModelEnum;
 import com.jourwon.spring.boot.listener.ModelExcelListener;
 import com.jourwon.spring.boot.model.vo.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -48,16 +47,16 @@ public class EasyExcelUtils {
     /**
      * 读取Excel(一个sheet),需自行实现入库等逻辑
      *
-     * @param inputStream  输入流
-     * @param rowModel     实体类
-     * @param rowModelEnum 记录模型枚举
+     * @param inputStream 输入流
+     * @param rowModel    实体类
+     * @param sheetName   sheet名称
      * @return List<T>
      */
-    public static <T> List<T> readExcel(InputStream inputStream, Class<T> rowModel, RowModelEnum rowModelEnum) {
+    public static <T> List<T> readExcel(InputStream inputStream, Class<T> rowModel, String sheetName) {
         ModelExcelListener<T> listener = new ModelExcelListener<>();
 
         EasyExcel.read(inputStream, rowModel, listener)
-                .sheet(rowModelEnum.getSheetName())
+                .sheet(sheetName)
                 .doRead();
 
         return listener.getList();
