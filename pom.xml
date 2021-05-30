@@ -95,6 +95,8 @@
         <module>spring-boot-undertow</module>
         <!-- Spring Boot项目打包成war包 -->
         <module>spring-boot-war</module>
+        <!-- Spring Boot整合zip,压缩和解压文件 -->
+        <module>spring-boot-zip</module>
     </modules>
 
     <properties>

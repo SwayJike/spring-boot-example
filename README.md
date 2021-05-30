@@ -45,5 +45,6 @@
 |----Spring Boot整合模板引擎Thymeleaf spring-boot-thymeleaf
 |----Spring Boot整合undertow spring-boot-undertow
 |----Spring Boot项目打包成war包 spring-boot-war
+|----Spring Boot整合zip,压缩和解压文件 spring-boot-zip
 
 ```
