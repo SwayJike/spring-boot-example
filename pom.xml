@@ -25,6 +25,8 @@
         <module>spring-boot-data-jpa</module>
         <!-- Spring Boot整合Redis -->
         <module>spring-boot-data-redis</module>
+        <!-- Spring Boot整合Docker -->
+        <module>spring-boot-docker</module>
         <!-- Spring Boot整合Druid数据库连接池 -->
         <module>spring-boot-druid</module>
         <!-- Spring Boot整合dubbo -->
