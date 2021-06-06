@@ -39,7 +39,7 @@
                     <imageName>spring-boot/${project.artifactId}:${project.version}</imageName>
                     <dockerHost>http://47.119.113.228:2375</dockerHost>
                     <baseImage>java:8</baseImage>
-                    <entryPoint>["java", "-jar","/${project.build.finalName}.jar"]
+                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]
                     </entryPoint>
                     <resources>
                         <resource>
