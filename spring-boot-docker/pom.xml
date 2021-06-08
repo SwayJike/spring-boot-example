@@ -22,6 +22,7 @@
 
     <build>
         <plugins>
+            <!-- 使用第三方插件 -->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
@@ -39,8 +40,7 @@
                     <imageName>spring-boot/${project.artifactId}:${project.version}</imageName>
                     <dockerHost>http://47.119.113.228:2375</dockerHost>
                     <baseImage>java:8</baseImage>
-                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]
-                    </entryPoint>
+                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
@@ -50,6 +50,35 @@
                     </resources>
                 </configuration>
             </plugin>
+
+            <!-- SpringBoot 2.4.0可以使用官方插件,未运行成功,速度太慢了 -->
+            <!--<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        &lt;!&ndash;配置镜像名称&ndash;&gt;
+                        <name>spring-boot/${project.name}:${project.version}</name>
+                        &lt;!&ndash;镜像打包完成后自动推送到镜像仓库&ndash;&gt;
+                        <publish>true</publish>
+                    </image>
+                    <docker>
+                        &lt;!&ndash;Docker远程管理地址&ndash;&gt;
+                        <host>http://47.119.113.228:2375</host>
+                        &lt;!&ndash;不使用TLS访问&ndash;&gt;
+                        <tlsVerify>false</tlsVerify>
+                        &lt;!&ndash;Docker推送镜像仓库配置&ndash;&gt;
+                        <publishRegistry>
+                            &lt;!&ndash;推送镜像仓库用户名&ndash;&gt;
+                            <username>test</username>
+                            &lt;!&ndash;推送镜像仓库密码&ndash;&gt;
+                            <password>test</password>
+                            &lt;!&ndash;推送镜像仓库地址&ndash;&gt;
+                            <url>http://47.119.113.228:2375</url>
+                        </publishRegistry>
+                    </docker>
+                </configuration>
+            </plugin>-->
         </plugins>
     </build>
 
