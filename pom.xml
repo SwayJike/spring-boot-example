@@ -17,6 +17,8 @@
         <module>spring-boot-async</module>
         <!-- Spring Boot整合自定义banner -->
         <module>spring-boot-banner</module>
+        <!-- Spring Boot整合本地缓存caffeine -->
+        <module>spring-boot-cache-caffeine</module>
         <!-- Spring Boot整合验证码captcha -->
         <module>spring-boot-captcha</module>
         <!-- Spring Boot整合cors跨域资源共享 -->

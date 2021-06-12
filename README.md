@@ -6,6 +6,7 @@
 |----Spring Boot整合actuator,实现服务监控管理 spring-boot-actuator
 |----Spring Boot整合异步线程池 spring-boot-async
 |----Spring Boot整合自定义banner spring-boot-banner
+|----Spring Boot整合本地缓存caffeine spring-boot-cache-caffeine
 |----Spring Boot整合验证码captcha spring-boot-captcha
 |----Spring Boot整合cors跨域资源共享 spring-boot-cors
 |----Spring Boot整合jpa实现增删改查 spring-boot-data-jpa
