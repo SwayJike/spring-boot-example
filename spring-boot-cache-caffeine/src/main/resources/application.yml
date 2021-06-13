@@ -1,0 +1,54 @@
+# 应用名称
+spring:
+  application:
+    name: spring-boot-cache-caffeine
+  # 数据库配置
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&tinyInt1isBit=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  cache:
+    # 缓存类型
+    type: caffeine
+    cache-names: user
+    caffeine:
+      # caffeine缓存配置参数
+      spec: initialCapacity=100,maximumSize=1000,expireAfterWrite=60s
+#  initialCapacity=[integer]: 初始的缓存空间大小
+#  maximumSize=[long]: 缓存的最大条数
+#  maximumWeight=[long]: 缓存的最大权重
+#  expireAfterAccess=[duration]: 最后一次写入或访问后经过固定时间过期
+#  expireAfterWrite=[duration]: 最后一次写入后经过固定时间过期
+#  refreshAfterWrite=[duration]: 创建缓存或者最近一次更新缓存后经过固定的时间间隔，刷新缓存
+#  weakKeys: 打开key的弱引用
+#  weakValues：打开value的弱引用
+#  softValues：打开value的软引用
+#  recordStats：开发统计功能
+
+#注意：
+#  expireAfterWrite和expireAfterAccess同时存在时，以expireAfterWrite为准。
+#  maximumSize和maximumWeight不可以同时使用
+#  weakValues和softValues不可以同时使用
+
+
+# mybatis-plus配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.jourwon.spring.boot.*.entity
+  global-config:
+    db-config:
+      # 数据库ID自增
+      id-type: auto
+  configuration:
+    # 关闭Mybatis二级缓存
+    cache-enabled: false
+    # 设置sql执行超时时间,以秒为单位的全局sql超时时间设置,当超出了设置的超时时间时,会抛出SQLTimeoutException
+    default-statement-timeout: 30
+    # 解决查询返回结果含null没有对应字段值问题
+    call-setters-on-nulls: true
+    # 开启驼峰规则自动映射字段属性值;如字段为user_name的可以映射到userName属性中
+    map-underscore-to-camel-case: true
+    # 开发环境控制台打印sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
