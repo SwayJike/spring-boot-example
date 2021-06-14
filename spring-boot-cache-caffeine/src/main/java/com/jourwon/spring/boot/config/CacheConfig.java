@@ -1,18 +1,7 @@
 package com.jourwon.spring.boot.config;
 
-import com.github.benmanes.caffeine.cache.Caffeine;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.Cache;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.caffeine.CaffeineCache;
-import org.springframework.cache.support.SimpleCacheManager;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 缓存配置
@@ -28,11 +17,11 @@ import java.util.List;
 @EnableCaching
 public class CacheConfig {
 
-    @Value("${spring.cache.cache-names}")
-    private String cacheNames;
-
-    @Value("${spring.cache.caffeine.spec}")
-    private String caffeineSpec;
+    // @Value("${spring.cache.cache-names}")
+    // private String cacheNames;
+    //
+    // @Value("${spring.cache.caffeine.spec}")
+    // private String caffeineSpec;
 
     /**
      * caffeineCache
@@ -55,7 +44,8 @@ public class CacheConfig {
 
     // 方式二：引入 Caffeine 和 Spring Cache 依赖，使用 SpringCache 注解方法实现缓存。
     // /**
-    //  * 必须要指定这个Bean，refreshAfterWrite=5s这个配置属性才生效
+    //  * 相当于在构建LoadingCache对象的时候 build()方法中指定过期之后的加载策略方法
+    //  * 必须要指定这个Bean，refreshAfterWrite=60s属性才生效
     //  *
     //  * @return CacheLoader<Object, Object>
     //  */
@@ -95,26 +85,26 @@ public class CacheConfig {
     //     return cacheManager;
     // }
 
-    /**
-     * 缓存管理器
-     * 这里返回org.springframework.cache.Cache
-     *
-     * @return CacheManager
-     */
-    @Bean
-    public CacheManager cacheManager() {
-        SimpleCacheManager cacheManager = new SimpleCacheManager();
-        List<Cache> caches = new ArrayList<>();
-        if (StringUtils.isNotBlank(cacheNames)) {
-            Caffeine<Object, Object> caffeine = Caffeine.from(caffeineSpec);
-            String[] cacheNamesArray = cacheNames.split(",");
-            for (String cacheName : cacheNamesArray) {
-                caches.add(new CaffeineCache(cacheName, caffeine.build()));
-            }
-        }
-
-        cacheManager.setCaches(caches);
-        return cacheManager;
-    }
+    // /**
+    //  * 缓存管理器
+    //  * 这里返回org.springframework.cache.Cache
+    //  *
+    //  * @return CacheManager
+    //  */
+    // @Bean
+    // public CacheManager cacheManager() {
+    //     SimpleCacheManager cacheManager = new SimpleCacheManager();
+    //     List<Cache> caches = new ArrayList<>();
+    //     if (StringUtils.isNotBlank(cacheNames)) {
+    //         Caffeine<Object, Object> caffeine = Caffeine.from(caffeineSpec);
+    //         String[] cacheNamesArray = cacheNames.split(",");
+    //         for (String cacheName : cacheNamesArray) {
+    //             caches.add(new CaffeineCache(cacheName, caffeine.build()));
+    //         }
+    //     }
+    //
+    //     cacheManager.setCaches(caches);
+    //     return cacheManager;
+    // }
 
 }
