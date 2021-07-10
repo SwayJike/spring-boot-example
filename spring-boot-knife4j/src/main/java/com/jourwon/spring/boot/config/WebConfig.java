@@ -6,11 +6,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * 跨域资源共享
+ * 使用时加 @Configuration 注解
  *
  * @author JourWon
  * @date 2021/1/24
  */
-// @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
     @Override

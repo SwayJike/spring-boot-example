@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
  * @date 2021/3/1
  */
 @DubboService(version = "${demo.service.version}")
-public class DefaultDemoService implements DemoService {
+public class DefaultDemoServiceImpl implements DemoService {
 
     /**
      * The default value of ${dubbo.application.name} is ${spring.application.name}

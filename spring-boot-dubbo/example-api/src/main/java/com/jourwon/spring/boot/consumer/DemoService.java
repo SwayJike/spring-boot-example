@@ -8,6 +8,12 @@ package com.jourwon.spring.boot.consumer;
  */
 public interface DemoService {
 
+    /**
+     * sayHello
+     *
+     * @param name name
+     * @return String
+     */
     String sayHello(String name);
 
 }

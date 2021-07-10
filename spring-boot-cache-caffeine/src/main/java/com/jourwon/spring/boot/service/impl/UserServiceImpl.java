@@ -73,8 +73,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     //     return b;
     // }
 
-    // 方式二：引入 Caffeine 和 Spring Cache 依赖，使用 SpringCache 注解方法实现缓存。
-
+    /**
+     * 方式二：引入 Caffeine 和 Spring Cache 依赖，使用 SpringCache 注解方法实现缓存。
+     */
     @Resource
     private UserMapper userMapper;
 

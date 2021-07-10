@@ -28,7 +28,9 @@ import java.util.concurrent.ConcurrentMap;
 @Api(tags = "用户")
 public class UserController {
 
-    // 方式二：引入 Caffeine 和 Spring Cache 依赖，使用 SpringCache 注解方法实现缓存。
+    /**
+     * 方式二：引入 Caffeine 和 Spring Cache 依赖，使用 SpringCache 注解方法实现缓存。
+     */
     @Resource
     private CacheManager cacheManager;
 

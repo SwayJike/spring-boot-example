@@ -109,6 +109,12 @@ public interface HttpApi {
 
     }
 
+    /**
+     * 根据用户id获取用户
+     *
+     * @param userId
+     * @return
+     */
     @GET("{userId}")
     UserVO getById(@Path("userId") Long userId);
 
@@ -119,15 +125,44 @@ public interface HttpApi {
     @GET(".")
     List<UserVO> list();
 
+    /**
+     * 分页查询用户信息
+     *
+     * @param pageNum 页码
+     * @param pageSize 每页记录数
+     * @param username 用户名
+     * @param email 邮箱
+     * @param mobilePhoneNumber 手机号码
+     * @return CommonPageVO<UserVO>
+     */
     @GET("page1")
     CommonPageVO<UserVO> page1(@Query("pageNum") Integer pageNum, @Query("pageSize") Integer pageSize, @Query("username") String username, @Query("email") String email, @Query("mobilePhoneNumber") String mobilePhoneNumber);
 
+    /**
+     * 更新用户
+     *
+     * @param userId 用户id
+     * @param updateUserDTO 用户
+     * @return boolean
+     */
     @PUT("{userId}")
     boolean updateUser(@Path("userId") Long userId, @Body UpdateUserDTO updateUserDTO);
 
+    /**
+     * 根据用户id删除用户
+     *
+     * @param userId 用户id
+     * @return boolean
+     */
     @DELETE("{userId}")
     boolean removeById(@Path("userId") Long userId);
 
+    /**
+     * 新增用户
+     *
+     * @param insertUserDTO 用户
+     * @return boolean
+     */
     @POST(".")
     boolean insert(@Body InsertUserDTO insertUserDTO);
 
