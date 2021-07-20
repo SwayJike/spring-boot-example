@@ -25,7 +25,7 @@ public class KafkaProvider {
     /**
      * 消息 TOPIC
      */
-    private static final String TOPIC = "xiaoha";
+    private static final String TOPIC = "JourWon";
 
     @Resource
     private KafkaTemplate<String, String> kafkaTemplate;
