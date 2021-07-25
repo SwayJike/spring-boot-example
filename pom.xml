@@ -41,6 +41,8 @@
         <module>spring-boot-exception-handler</module>
         <!-- Spring Boot整合flyway,数据库版本控制 -->
         <module>spring-boot-flyway</module>
+        <!-- Spring Boot整合git插件,将项目打包为tar.gz,并带上git版本号,然后通过sh脚本快速部署 -->
+        <module>spring-boot-git-commit-id-plugin</module>
         <!-- spring-boot快速入门-HelloWorld -->
         <module>spring-boot-helloworld</module>
         <!-- Spring Boot整合HikariCP数据库连接池 -->

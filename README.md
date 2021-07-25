@@ -18,6 +18,7 @@
 |----Spring Boot整合邮件发送 spring-boot-email
 |----Spring Boot整合全局异常处理,接口统一响应对象 spring-boot-exception-handler
 |----Spring Boot整合flyway,数据库版本控制 spring-boot-flyway
+|----Spring Boot整合git插件,将项目打包为tar.gz,并带上git版本号,然后通过sh脚本快速部署 spring-boot-git-commit-id-plugin
 |----spring-boot快速入门-HelloWorld spring-boot-helloworld
 |----Spring Boot整合HikariCP数据库连接池 spring-boot-hikaricp
 |----Spring Boot整合https spring-boot-https
