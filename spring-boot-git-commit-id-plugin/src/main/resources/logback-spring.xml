@@ -8,9 +8,9 @@
     <!-- 档案日志存放目录 -->
     <property name="LOG_ARCHIVE" value="./logs/archive"/>
     <!-- 模块名称，影响日志配置名，日志文件名 -->
-    <property name="LOG_MODULE_NAME" value="logback"/>
-    <!-- 日志输出格式：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度， %msg：日志消息，%n是换行符 -->
-    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n"/>
+    <property name="LOG_MODULE_NAME" value="${project.artifactId}"/>
+    <!-- 日志输出格式：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度，%logger{36} 表示logger名字最长36个字符，否则按照句点分割； %msg：日志消息，%n是换行符 -->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
     <!-- 保留多少天以内的日志 -->
     <property name="MAX_HISTORY" value="15"/>
     <!-- 日志文件大小,超过这个大小将被压缩 -->
@@ -38,8 +38,17 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>${LOG_ROOT_LEVEL}</level>
         </filter>
+        <!-- 只记录info日志 -->
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">
+            &lt;!&ndash; 设置过滤级别 &ndash;&gt;
+            <level>INFO</level>
+            &lt;!&ndash; 用于配置符合过滤条件的操作 &ndash;&gt;
+            <onMatch>ACCEPT</onMatch>
+            &lt;!&ndash; 用于配置不符合过滤条件的操作 &ndash;&gt;
+            <onMismatch>DENY</onMismatch>
+        </filter>-->
 
-        <!-- 日志归档并压缩,单个日志文件最大100MB,保存15天的日志,日志文件空间为10GB -->
+        <!-- 日志归档并压缩,单个日志文件最大100MB,保存15天的日志,日志文件空间为10GB,%i用来标记分割日志的序号 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${LOG_ARCHIVE}/${LOG_MODULE_NAME}-defaultLog-%d{yyyy-MM-dd}-%i.log.zip</fileNamePattern>
             <maxHistory>${MAX_HISTORY}</maxHistory>
