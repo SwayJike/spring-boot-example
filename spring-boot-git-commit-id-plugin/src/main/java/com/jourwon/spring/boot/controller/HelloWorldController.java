@@ -1,6 +1,7 @@
 package com.jourwon.spring.boot.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloWorldController {
 
+    @Value("${spring.application.name}")
+    private String applicationName;
+
     @GetMapping("/hello_world")
     public String helloWorld() {
         log.trace("trace");
@@ -21,7 +25,7 @@ public class HelloWorldController {
         log.info("info");
         log.warn("warn");
         log.error("error");
-        return "Hello World";
+        return applicationName;
     }
 
 }
