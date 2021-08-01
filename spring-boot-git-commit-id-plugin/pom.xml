@@ -23,6 +23,22 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <!-- 需要引入该jar才能使bootstrap配置文件生效 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -67,7 +83,8 @@
                     <!-- 生成git属性文件，默认false：不生成 -->
                     <generateGitPropertiesFile>true</generateGitPropertiesFile>
                     <!-- 生成git属性文件路径及文件名，默认${project.build.outputDirectory}/git.properties -->
-                    <generateGitPropertiesFilename>${project.build.outputDirectory}/version.properties</generateGitPropertiesFilename>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/version.properties
+                    </generateGitPropertiesFilename>
                     <!-- 生成git属性文件格式，默认值properties -->
                     <format>properties</format>
                     <!-- true：将git属性注入所有项目，默认false-->

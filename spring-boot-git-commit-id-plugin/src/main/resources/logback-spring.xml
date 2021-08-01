@@ -148,6 +148,7 @@
 
     <!-- 生产环境使用 -->
     <root level="${LOG_ROOT_LEVEL}">
+        <appender-ref ref="stdout"/>
         <appender-ref ref="async-defaultLog"/>
         <appender-ref ref="async-errorLog"/>
     </root>

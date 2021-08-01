@@ -1,0 +1,57 @@
+# Nacos配置
+nacos:
+  # nacos-center.v-base为Nacos服务端ip，这样将开发环境的代码放到生产环境则不需要修改配置
+  # 开发环境可以通过在Edit Configurations -> Environment -> VM options配置-Dnacos.server-addr=127.0.0.1:8848
+  # 生产环境可以通过在/etc/hosts文件配置 127.0.0.1       nacos-center.v-base
+  server-addr: nacos-center.v-base:8848
+  namespace: ba883dfa-784f-4dd0-acc9-46917e8f6d71
+  group: SPRING_BOOT_GIT_COMMIT_ID_PLUGIN
+  extension-configs:
+    data-id: extension-config.yml
+  shared-configs:
+    data-id: shared-config.yml
+
+spring:
+  application:
+    # 应用名称
+    name: spring-boot-git-commit-id-plugin
+  cloud:
+    nacos:
+      discovery:
+        # Nacos注册中心地址
+        server-addr: ${nacos.server-addr}
+        # 命名空间，通过命名空间区分开发，测试和生产环境
+        namespace: ${nacos.namespace}
+        # 配置分组，通过配置分组区分不同的项目应用
+        group: ${nacos.group}
+        # 从 nacos 服务器拉取新服务的持续时间
+        watch-delay: 30000
+        # 在应用程序启动时从本地缓存命名加载，默认false
+        naming-load-cache-at-start: false
+        # 心跳间隔。时间单位：毫秒
+        heart-beat-interval: 5000
+        # 心跳超时。时间单位：毫秒
+        heart-beat-timeout: 15000
+      config:
+        # Nacos配置中心地址
+        server-addr: ${nacos.server-addr}
+        # 命名空间，通过命名空间区分开发，测试和生产环境
+        namespace: ${nacos.namespace}
+        # 配置分组，通过配置分组区分不同的项目应用
+        group: ${nacos.group}
+        # dataID后缀及内容文件格式，默认properties
+        file-extension: yaml
+        # 获取配置的超时时间，默认3000，单位毫秒
+        timeout: 3000
+        # 是否开启监听和自动刷新，默认true
+        refresh-enabled: true
+        # 支持多个共享 Data Id 的配置，优先级高于shared-configs，内部由 Config POJO 组成。Config 有 3 个属性，分别是 dataId, group 以及 refresh
+        extension-configs:
+          - group: ${nacos.group}
+            data-id: ${nacos.extension-configs.data-id}
+            # 是否动态刷新，默认为false
+            refresh: true
+        shared-configs:
+          - group: ${nacos.group}
+            data-id: ${nacos.shared-configs.data-id}
+            refresh: true

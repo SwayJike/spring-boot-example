@@ -113,8 +113,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- spring-boot依赖版本 -->
+        <!-- spring-boot,spring.cloud,spring.cloud.alibaba依赖版本 -->
         <spring.boot.version>2.4.2</spring.boot.version>
+        <spring.cloud.version>2020.0.3</spring.cloud.version>
+        <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
 
         <!-- 接口文档 -->
         <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
@@ -176,11 +178,25 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- 锁定子模块spring-boot依赖版本,同时解决单继承问题 -->
+            <!-- 锁定子模块spring-boot,spring.cloud,spring.cloud.alibaba依赖版本,同时解决单继承问题 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
