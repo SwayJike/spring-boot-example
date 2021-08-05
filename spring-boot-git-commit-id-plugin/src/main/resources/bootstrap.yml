@@ -41,6 +41,8 @@ spring:
         group: ${nacos.group}
         # dataID后缀及内容文件格式，默认properties
         file-extension: yaml
+        # Nacos默认加载的配置文件
+        # ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
         # 获取配置的超时时间，默认3000，单位毫秒
         timeout: 3000
         # 是否开启监听和自动刷新，默认true
