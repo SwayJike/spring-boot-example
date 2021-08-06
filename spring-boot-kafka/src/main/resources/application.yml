@@ -54,4 +54,15 @@ spring:
         session.timeout.ms: 10000
         # 一次fetch请求，从一个broker中取得的records最大大小。如果在从topic中第一个非空的partition取消息时，如果取到的第一个record的大小就超过这个配置时，仍然会读取这个record，也就是说在这片情况下，只会返回这一条record。默认：50 * 1024 * 1024 = 52428800
         fetch.max.bytes: 52428800
+    listener:
+      # 监听类型，使用一批 ConsumerRecords 调用
+      type: batch
+      # 侦听器确认模式，当enable.auto.commit的值设置为false时，该值会生效；为true时不会生效
+      # ack-mode: batch
+      # 在侦听器容器中运行的线程数（配置为小于等于所有主题partition之和）
+      concurrency: 3
+      # 当ackMode为“COUNT”或“COUNT_TIME”时，偏移提交之间的记录数
+      # ack-count:
+      # 当ackMode为“TIME”或“COUNT_TIME”时，偏移提交之间的时间（以毫秒为单位）
+      # ack-time:
 
