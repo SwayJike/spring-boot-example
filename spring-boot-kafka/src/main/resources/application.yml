@@ -33,14 +33,25 @@ spring:
       # (3)、none：topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常
       auto-offset-reset: latest
       # 是否自动提交偏移，默认true。偏移量自己控制，可以有效避免重复读、漏读
-      enable-auto-commit: false
+      enable-auto-commit: true
       # 如果“enable.auto.commit”设置为true，消费者偏移自动提交给Kafka的频率（以毫秒为单位），默认值为5000
-#      auto-commit-interval: 5000
+      auto-commit-interval: 100
+      # 与消费者协调员之间心跳的预期时间（以毫秒为单位），默认值为3000
+      heartbeat-interval: 3000
+      # 每次fetch请求时，server应该返回的最小字节数。如果没有足够的数据返回，请求会等待，直到足够的数据才会返回。默认：1
+      fetch-min-size: 1
+      # Fetch请求发给broker后，在broker中可能会被阻塞的（当topic中records的总size小于fetch.min.bytes时），此时这个fetch请求耗时就会比较长。这个配置就是来配置consumer最多等待response多久。
+      fetch-max-wait: 500
+      # 单次调用 poll() 时返回的最大记录数，默认500。
+      max-poll-records: 500
       # 指定消息key和消息体的编解码方式
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-
-
-
-
+      properties:
+        # consumer是通过拉取的方式向服务端拉取数据，当超过指定时间间隔max.poll.interval.ms没有向服务端发送poll()请求，而心跳heartbeat线程仍然在继续，会认为该consumer锁死，就会将该consumer退出group，并进行再分配。默认：300000
+        max.poll.interval.ms: 300000
+        # 会话的超时限制。如果consumer在这段时间内没有发送心跳信息，则它会被认为挂掉了，并且reblance将会产生，必须在[group.min.session.timeout.ms, group.max.session.timeout.ms]范围内。默认：10000
+        session.timeout.ms: 10000
+        # 一次fetch请求，从一个broker中取得的records最大大小。如果在从topic中第一个非空的partition取消息时，如果取到的第一个record的大小就超过这个配置时，仍然会读取这个record，也就是说在这片情况下，只会返回这一条record。默认：50 * 1024 * 1024 = 52428800
+        fetch.max.bytes: 52428800
 
