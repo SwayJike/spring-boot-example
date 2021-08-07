@@ -2,7 +2,7 @@
 spring:
   kafka:
     # kafka服务的ip端口,集群用逗号分隔的主机:端口对列表
-    bootstrap-servers: 172.25.21.123:9092
+    bootstrap-servers: 47.119.113.228:9092
     producer:
       #producer要求leader在考虑完成请求之前收到的确认数，用于控制发送记录在服务端的持久化，默认为1，其值可以为如下：
       #acks = 0 如果设置为零，则生产者将不会等待来自服务器的任何确认，该记录将立即添加到套接字缓冲区并视为已发送。在这种情况下，无法保证服务器已收到记录，并且重试配置将不会生效（因为客户端通常不会知道任何故障），为每条记录返回的偏移量始终设置为-1。安全性最低但是效率最高。
@@ -33,7 +33,7 @@ spring:
       # (3)、none：topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常
       auto-offset-reset: latest
       # 是否自动提交偏移，默认true。偏移量自己控制，可以有效避免重复读、漏读
-      enable-auto-commit: true
+      enable-auto-commit: false
       # 如果“enable.auto.commit”设置为true，消费者偏移自动提交给Kafka的频率（以毫秒为单位），默认值为5000
       auto-commit-interval: 100
       # 与消费者协调员之间心跳的预期时间（以毫秒为单位），默认值为3000
@@ -55,10 +55,10 @@ spring:
         # 一次fetch请求，从一个broker中取得的records最大大小。如果在从topic中第一个非空的partition取消息时，如果取到的第一个record的大小就超过这个配置时，仍然会读取这个record，也就是说在这片情况下，只会返回这一条record。默认：50 * 1024 * 1024 = 52428800
         fetch.max.bytes: 52428800
     listener:
-      # 监听类型，使用一批 ConsumerRecords 调用
+      # 监听类型，single(默认)
       type: batch
-      # 侦听器确认模式，当enable.auto.commit的值设置为false时，该值会生效；为true时不会生效
-      # ack-mode: batch
+      # 侦听器确认模式，默认batch，当enable.auto.commit的值设置为false时，该值会生效；为true时不会生效
+      ack-mode: manual
       # 在侦听器容器中运行的线程数（配置为小于等于所有主题partition之和）
       concurrency: 3
       # 当ackMode为“COUNT”或“COUNT_TIME”时，偏移提交之间的记录数
