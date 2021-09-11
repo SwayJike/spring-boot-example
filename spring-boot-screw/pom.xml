@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jourwon.spring.boot</groupId>
+        <artifactId>spring-boot-example</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>spring-boot-screw</artifactId>
+    <version>1.0.0</version>
+    <name>spring-boot-screw</name>
+    <description>Spring Boot整合Screw,一键生成数据库文档</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.smallbun.screw</groupId>
+            <artifactId>screw-core</artifactId>
+            <version>${screw-core.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 通过插件的形式生成文档 -->
+            <plugin>
+                <groupId>cn.smallbun.screw</groupId>
+                <artifactId>screw-maven-plugin</artifactId>
+                <version>1.0.5</version>
+                <dependencies>
+                    <!-- HikariCP -->
+                    <dependency>
+                        <groupId>com.zaxxer</groupId>
+                        <artifactId>HikariCP</artifactId>
+                        <version>3.4.5</version>
+                    </dependency>
+                    <!--mysql driver-->
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.22</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <!--username-->
+                    <username>root</username>
+                    <!--password-->
+                    <password>root</password>
+                    <!--driver-->
+                    <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
+                    <!--jdbc url-->
+                    <jdbcUrl>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;allowMultiQueries=true&amp;useSSL=false&amp;tinyInt1isBit=false&amp;serverTimezone=UTC</jdbcUrl>
+                    <!--生成文件类型-->
+                    <fileType>MD</fileType>
+                    <!--打开文件输出目录-->
+                    <openOutputDir>true</openOutputDir>
+                    <!--生成文档位置-->
+                    <!--<fileOutputDir>C:\Users\JourWon\Desktop</fileOutputDir>-->
+                    <!--生成模板-->
+                    <produceType>freemarker</produceType>
+                    <!--文档名称 为空时:将采用[数据库名称-描述-版本号]作为文档名称-->
+                    <!--<fileName></fileName>-->
+                    <!--描述-->
+                    <description>数据库文档生成</description>
+                    <!--版本-->
+                    <version>${project.version}</version>
+                    <!--标题-->
+                    <title>数据库文档</title>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

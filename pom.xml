@@ -91,6 +91,8 @@
         <module>spring-boot-retrofit</module>
         <!-- Spring Boot整合定时任务scheduler -->
         <module>spring-boot-scheduler</module>
+        <!-- Spring Boot整合Screw,一键生成数据库文档 -->
+        <module>spring-boot-screw</module>
         <!--Spring Boot整合Shiro -->
         <module>spring-boot-shiro</module>
         <!-- Spring Boot整合Swagger3-API接口文档 -->
@@ -121,6 +123,7 @@
         <!-- 接口文档 -->
         <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
         <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
+        <screw-core.version>1.0.5</screw-core.version>
 
         <!-- mybatis相关 -->
         <mybatis-spring-boot-starter.version>2.1.4</mybatis-spring-boot-starter.version>
