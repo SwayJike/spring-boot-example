@@ -157,6 +157,7 @@
 
         <kaptcha.version>2.3.2</kaptcha.version>
         <guava.version>30.1-jre</guava.version>
+        <pf4j.version>3.6.0</pf4j.version>
         <hutool.version>5.5.8</hutool.version>
     </properties>
 

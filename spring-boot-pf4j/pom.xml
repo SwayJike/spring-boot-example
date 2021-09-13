@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jourwon.spring.boot</groupId>
+    <artifactId>spring-boot-pf4j</artifactId>
+    <version>1.0.0</version>
+    <name>spring-boot-pf4j</name>
+    <description>Spring Boot整合pf4j,进行插件式编程拓展</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <!-- 设置jdk版本,maven编译环境和项目编码 -->
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- spring-boot,spring.cloud,spring.cloud.alibaba依赖版本 -->
+        <spring.boot.version>2.4.2</spring.boot.version>
+
+        <pf4j.version>3.6.0</pf4j.version>
+        <spring.version>5.3.3</spring.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 锁定子模块spring-boot,spring.cloud,spring.cloud.alibaba依赖版本,同时解决单继承问题 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.pf4j</groupId>
+                <artifactId>pf4j</artifactId>
+                <version>${pf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

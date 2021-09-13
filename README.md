@@ -37,6 +37,7 @@
 |----Spring Boot整合Mybatis-Plus spring-boot-mybatis-plus
 |----Spring Boot整合MyBatis Plus代码生成器 spring-boot-mybatis-plus-generator
 |----Spring Boot整合MyBatis Plus多数据源 spring-boot-mybatis-plus-multi-datasource
+|----Spring Boot整合pf4j,进行插件式编程拓展 spring-boot-pf4j
 |----Spring Boot加载配置文件 spring-boot-properties
 |----Spring Boot整合接口限流-guava单体方式 spring-boot-ratelimit-guava
 |----Spring Boot整合接口限流-redis集群方式 spring-boot-ratelimit-redis
