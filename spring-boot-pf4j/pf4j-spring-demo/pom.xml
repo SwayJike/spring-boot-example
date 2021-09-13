@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jourwon.spring.boot</groupId>
+        <artifactId>spring-boot-pf4j</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>pf4j-spring-demo</artifactId>
+    <version>1.0.0</version>
+    <name>pf4j-spring-demo</name>
+    <description>pf4j-spring Demo Parent</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <pf4j-spring.version>0.7.0</pf4j-spring.version>
+        <pf4j-spring-demo-api.version>1.0.0</pf4j-spring-demo-api.version>
+        <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
+    </properties>
+
+</project>
