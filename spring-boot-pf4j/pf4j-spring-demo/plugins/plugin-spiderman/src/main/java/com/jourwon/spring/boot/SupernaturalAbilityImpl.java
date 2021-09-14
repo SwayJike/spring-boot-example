@@ -1,11 +1,15 @@
 package com.jourwon.spring.boot;
 
+import lombok.extern.slf4j.Slf4j;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class SupernaturalAbilityImpl implements SupernaturalAbility{
-    private Logger log = LoggerFactory.getLogger(SupernaturalAbilityImpl.class);
+/**
+ * 超能力 实现类
+ *
+ * @author JourWon
+ * @date 2021/9/14
+ */
+@Slf4j
+public class SupernaturalAbilityImpl implements SupernaturalAbility {
 
     private final String name = "蜘蛛侠";
 
@@ -38,4 +42,5 @@ public class SupernaturalAbilityImpl implements SupernaturalAbility{
     public void defense() {
         log.info("{}在防御", name);
     }
+
 }

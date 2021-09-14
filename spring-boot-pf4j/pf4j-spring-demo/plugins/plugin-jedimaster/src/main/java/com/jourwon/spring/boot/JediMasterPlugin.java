@@ -1,13 +1,22 @@
 package com.jourwon.spring.boot;
 
+import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
 import org.pf4j.PluginWrapper;
 import org.pf4j.demo.api.Hero;
 import org.pf4j.spring.SpringPlugin;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import javax.annotation.Resource;
+
+/**
+ * 绝地大师 插件
+ *
+ * @author JourWon
+ * @date 2021/9/14
+ */
+@Slf4j
 public class JediMasterPlugin extends SpringPlugin {
 
     public JediMasterPlugin(PluginWrapper wrapper) {
@@ -16,13 +25,14 @@ public class JediMasterPlugin extends SpringPlugin {
 
     @Override
     public void start() {
-        System.out.println("jediMaster.start()");
+        log.info("jediMaster.start()");
     }
 
     @Override
     public void stop() {
-        System.out.println("jediMaster.stop()");
-        super.stop();
+        log.info("jediMaster.stop()");
+        // to close applicationContext
+        // super.stop();
     }
 
     @Override
@@ -38,7 +48,7 @@ public class JediMasterPlugin extends SpringPlugin {
     @Extension
     public static class JediMaster implements Hero {
 
-        @Autowired
+        @Resource
         private JediMasterBean jediMasterBean;
 
         @Override
@@ -75,7 +85,7 @@ public class JediMasterPlugin extends SpringPlugin {
     @Extension
     public static class JediKnight implements Hero {
 
-        @Autowired
+        @Resource
         private JediKnightBean jediKnightBean;
 
         @Override

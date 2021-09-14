@@ -2,15 +2,22 @@ package com.jourwon.spring.boot;
 
 import org.pf4j.Extension;
 import org.pf4j.demo.api.Hero;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Resource;
+
+/**
+ * 蜘蛛侠
+ *
+ * @author JourWon
+ * @date 2021/9/14
+ */
 @Extension
 public class SpiderMan implements Hero {
 
     public SpiderMan() {
     }
 
-    @Autowired
+    @Resource
     private SupernaturalAbility supernaturalAbility;
 
     @Override
@@ -42,4 +49,5 @@ public class SpiderMan implements Hero {
     public void defense() {
         supernaturalAbility.defense();
     }
+
 }

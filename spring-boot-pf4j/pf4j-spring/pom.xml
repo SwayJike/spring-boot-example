@@ -7,7 +7,7 @@
         <artifactId>spring-boot-pf4j</artifactId>
         <version>1.0.0</version>
     </parent>
-    <groupId>org.pf4j</groupId>
+    <groupId>com.jourwon.spring.boot</groupId>
     <artifactId>pf4j-spring</artifactId>
     <version>0.7.0</version>
     <name>pf4j-spring</name>

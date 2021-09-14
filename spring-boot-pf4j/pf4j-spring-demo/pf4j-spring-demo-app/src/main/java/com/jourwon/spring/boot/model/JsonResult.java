@@ -1,9 +1,27 @@
 package com.jourwon.spring.boot.model;
 
+/**
+ * json 响应对象
+ *
+ * @author JourWon
+ * @date 2021/9/14
+ */
 public class JsonResult {
-    private Integer code;//状态码
-    private Object data;//数据
-    private String msg;//信息
+
+    /**
+     * 状态码
+     */
+    private Integer code;
+
+    /**
+     * 数据
+     */
+    private Object data;
+
+    /**
+     * 信息
+     */
+    private String msg;
 
     /**
      * 正确时返回的信息

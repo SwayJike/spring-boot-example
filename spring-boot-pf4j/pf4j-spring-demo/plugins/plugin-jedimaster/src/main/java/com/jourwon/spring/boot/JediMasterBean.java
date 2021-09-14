@@ -1,10 +1,15 @@
 package com.jourwon.spring.boot;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 绝地大师
+ *
+ * @author JourWon
+ * @date 2021/9/14
+ */
+@Slf4j
 public class JediMasterBean {
-    private Logger log = LoggerFactory.getLogger(JediMasterBean.class);
 
     private final String name = "绝地大师";
 
@@ -31,4 +36,5 @@ public class JediMasterBean {
     public void defense() {
         log.info("{}在防御", name);
     }
+
 }

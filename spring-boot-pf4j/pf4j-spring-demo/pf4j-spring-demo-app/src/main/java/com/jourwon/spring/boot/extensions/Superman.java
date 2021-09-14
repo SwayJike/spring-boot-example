@@ -2,14 +2,19 @@ package com.jourwon.spring.boot.extensions;
 
 import org.pf4j.Extension;
 import org.pf4j.demo.api.Hero;
-import org.pf4j.spring.ExtensionsInjector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 超人
+ * 
+ * @author JourWon
+ * @date 2021/9/14
+ */
 @Extension
 public class Superman implements Hero {
 
-    private static final Logger log = LoggerFactory.getLogger(ExtensionsInjector.class);
+    private static final Logger log = LoggerFactory.getLogger(Superman.class);
 
     private final String name = "超人";
 
