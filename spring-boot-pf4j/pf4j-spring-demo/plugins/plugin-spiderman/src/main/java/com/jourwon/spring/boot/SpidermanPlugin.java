@@ -44,7 +44,6 @@ public class SpidermanPlugin extends SpringPlugin {
         // 如果想使用spring上下文，可以考虑使用如下配置
         // if (getWrapper().getPluginManager() instanceof SpringPluginManager) {
         //     SpringPluginManager springPluginManager = (SpringPluginManager) getWrapper().getPluginManager();
-        //     ApplicationContext applicationContext = springPluginManager.getApplicationContext();
         //     return springPluginManager.getApplicationContext();
         // }
         //

@@ -43,6 +43,14 @@ public class JediMasterPlugin extends SpringPlugin {
         applicationContext.register(SpringConfiguration.class);
         applicationContext.refresh();
         return applicationContext;
+
+        // 如果想使用spring上下文，可以考虑使用如下配置
+        // if (getWrapper().getPluginManager() instanceof SpringPluginManager) {
+        //     SpringPluginManager springPluginManager = (SpringPluginManager) getWrapper().getPluginManager();
+        //     return springPluginManager.getApplicationContext();
+        // }
+        //
+        // throw new RuntimeException("没有找到SpringPluginManager,当前PluginManager为:" + getWrapper().getPluginManager().getClass().getCanonicalName());
     }
 
     @Extension
