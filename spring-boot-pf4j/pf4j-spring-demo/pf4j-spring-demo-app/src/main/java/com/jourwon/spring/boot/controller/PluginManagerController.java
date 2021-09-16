@@ -40,7 +40,7 @@ public class PluginManagerController {
     }
 
     @GetMapping("/start")
-    @ApiOperation("启用插件")
+    @ApiOperation("启用插件,成功加载插件之后需要启用插件,插件才能生效")
     public JsonResult startPlugin(@RequestParam("pluginId") String pluginId) {
         PluginState pluginState = pluginManager.startPlugin(pluginId);
         if (pluginState.equals(PluginState.STARTED)) {
@@ -62,7 +62,7 @@ public class PluginManagerController {
     }
 
     @GetMapping("/load")
-    @ApiOperation("加载插件,只是加载到上下文,使用前需要启用插件")
+    @ApiOperation("加载插件,只是加载到上下文,使用前需要启用插件(这里的路径使用绝对路径)")
     public JsonResult loadPlugin(@RequestParam("path") String path) {
         String pluginId = pluginManager.loadPlugin(new File(path).toPath());
         return JsonResult.isOk(pluginId);
