@@ -33,9 +33,8 @@ public class SchedulerService {
         log.info("fixedRate-- 线程 : " + Thread.currentThread().getName());
     }
 
-    /***
+    /**
      * initialDelay:第一次调用此方法前的等待时间,然后每隔3s调用一次此方法
-     *
      */
     @Scheduled(initialDelay = 1000, fixedRate = 3000)
     public void initialDelayAndfixedRate() {
