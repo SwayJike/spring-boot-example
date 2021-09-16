@@ -34,21 +34,22 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- 引入了spring-boot-starter-web则不需要引入slf4j-log4j12依赖 -->
         <dependency>
             <groupId>org.pf4j</groupId>
             <artifactId>pf4j-spring</artifactId>
             <version>${pf4j-spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.jourwon.spring.boot</groupId>
             <artifactId>pf4j-spring-demo-api</artifactId>
             <version>${pf4j-spring-demo-api.version}</version>
-        </dependency>
-
-        <!-- Logs -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
         </dependency>
     </dependencies>
 
