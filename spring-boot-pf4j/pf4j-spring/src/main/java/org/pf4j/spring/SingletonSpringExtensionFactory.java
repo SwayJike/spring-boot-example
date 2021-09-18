@@ -47,7 +47,8 @@ public class SingletonSpringExtensionFactory extends SpringExtensionFactory {
 
         this.extensionClassNames = Arrays.asList(extensionClassNames);
 
-        cache = new HashMap<>(); // simple cache implementation
+        // simple cache implementation
+        cache = new HashMap<>(16);
     }
 
     @Override

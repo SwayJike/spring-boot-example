@@ -47,6 +47,11 @@ public abstract class SpringPlugin extends Plugin {
         }
     }
 
+    /**
+     * 创建应用上下文
+     *
+     * @return
+     */
     protected abstract ApplicationContext createApplicationContext();
 
 }
