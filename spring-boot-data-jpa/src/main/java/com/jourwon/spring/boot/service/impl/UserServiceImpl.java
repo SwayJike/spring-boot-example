@@ -48,7 +48,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public CommonPageVO<UserVO> page(UserQuery userQuery) {
-        User user = BeanTransformUtils.transform(userQuery, User.class);
         // jpa做分页查询时，分页从0开始
         Page<User> page = userDao.findAll(PageRequest.of(userQuery.getPageNum() - 1, userQuery.getPageSize()));
         List<UserVO> list = BeanTransformUtils.transformList(page.getContent(), UserVO.class);

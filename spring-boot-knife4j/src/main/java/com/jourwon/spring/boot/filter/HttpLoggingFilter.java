@@ -71,12 +71,10 @@ public class HttpLoggingFilter extends OncePerRequestFilter {
         }
 
         String reqId = request.getHeader(REQ_ID);
-        if (StringUtils.isNotBlank(reqId)) {
-            MDC.put(SysConstants.MDC_KEY, reqId);
-        } else {
+        if (StringUtils.isBlank(reqId)) {
             reqId = generateShortUuid();
-            MDC.put(SysConstants.MDC_KEY, reqId);
         }
+        MDC.put(SysConstants.MDC_KEY, reqId);
 
         String contentType = request.getContentType();
         // 上传文件类的请求
