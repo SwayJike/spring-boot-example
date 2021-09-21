@@ -25,6 +25,8 @@
         <module>spring-boot-cors</module>
         <!-- Spring Boot整合jpa实现增删改查 -->
         <module>spring-boot-data-jpa</module>
+        <!-- Spring Boot整合PostgreSQL -->
+        <module>spring-boot-data-postgresql</module>
         <!-- Spring Boot整合Redis -->
         <module>spring-boot-data-redis</module>
         <!-- Spring Boot整合Docker -->

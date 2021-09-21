@@ -1,0 +1,13 @@
+# 应用名称
+spring:
+  application:
+    name: spring-boot-data-postgresql
+  # 数据库配置
+  datasource:
+    druid:
+      pgsql:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:postgresql://localhost:5432/postgres
+        driver-class-name: org.postgresql.Driver
+        username: postgres
+        password: postgres

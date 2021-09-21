@@ -10,6 +10,7 @@
 |----Spring Boot整合验证码captcha spring-boot-captcha
 |----Spring Boot整合cors跨域资源共享 spring-boot-cors
 |----Spring Boot整合jpa实现增删改查 spring-boot-data-jpa
+|----Spring Boot整合PostgreSQL spring-boot-data-postgresql
 |----Spring Boot整合Redis spring-boot-data-redis
 |----Spring Boot整合Docker spring-boot-docker
 |----Spring Boot整合Druid数据库连接池 spring-boot-druid
