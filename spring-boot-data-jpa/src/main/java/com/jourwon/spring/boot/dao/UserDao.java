@@ -2,6 +2,7 @@ package com.jourwon.spring.boot.dao;
 
 import com.jourwon.spring.boot.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author JourWon
  * @date 2021/2/5
  */
-public interface UserDao extends JpaRepository<User, Long> {
+public interface UserDao extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
 
     /**
      * 根据用户名查询用户

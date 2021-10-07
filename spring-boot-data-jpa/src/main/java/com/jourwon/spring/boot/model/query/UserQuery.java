@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 新增用户请求参数
@@ -29,10 +30,16 @@ public class UserQuery extends PageQuery implements Serializable {
     @ApiModelProperty(value = "用户名")
     private String username;
 
+    @ApiModelProperty(value = "密码")
+    private String password;
+
     @ApiModelProperty(value = "手机号码")
     private String mobilePhoneNumber;
 
     @ApiModelProperty(value = "邮箱")
     private String email;
+
+    @ApiModelProperty(value = "用户id")
+    private List<Long> userIds;
 
 }

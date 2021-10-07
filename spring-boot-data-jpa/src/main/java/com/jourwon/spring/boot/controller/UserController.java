@@ -50,6 +50,12 @@ public class UserController {
         return userService.page(userQuery);
     }
 
+    @GetMapping("/pageBySpecification")
+    @ApiOperation("分页查询用户(根据特定条件)")
+    public CommonPageVO<UserVO> pageBySpecification(@Valid UserQuery userQuery) {
+        return userService.pageBySpecification(userQuery);
+    }
+
     @DeleteMapping("/{userId}")
     @ApiOperation("根据主键删除用户")
     public boolean deleteByPrimaryKey(@PathVariable("userId") Long userId) {

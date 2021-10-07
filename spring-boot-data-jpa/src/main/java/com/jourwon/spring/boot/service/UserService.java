@@ -18,6 +18,14 @@ import java.util.List;
 public interface UserService {
 
     /**
+     * 分页查询用户
+     *
+     * @param userQuery 用户查询参数
+     * @return CommonPageVO<UserVO> 分页数据结构
+     */
+    CommonPageVO<UserVO> pageBySpecification(UserQuery userQuery);
+
+    /**
      * 通过主键获取用户
      *
      * @param userId 用户id

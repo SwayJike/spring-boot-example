@@ -10,11 +10,19 @@ import com.jourwon.spring.boot.model.vo.CommonPageVO;
 import com.jourwon.spring.boot.model.vo.UserVO;
 import com.jourwon.spring.boot.service.UserService;
 import com.jourwon.spring.boot.util.BeanTransformUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +37,39 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private UserDao userDao;
+
+    @Override
+    public CommonPageVO<UserVO> pageBySpecification(UserQuery userQuery) {
+        Specification<User> specification = new Specification<User>() {
+            @Override
+            public Predicate toPredicate(Root<User> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder builder) {
+                // 所有的断言及条件
+                List<Predicate> predicates = new ArrayList<>();
+                // 精确匹配 password
+                if (StringUtils.isNotBlank(userQuery.getPassword())) {
+                    predicates.add(builder.equal(root.get("password"), userQuery.getPassword()));
+                }
+                // 模糊搜索 username
+                if (StringUtils.isNotBlank(userQuery.getUsername())) {
+                    predicates.add(builder.like(root.get("username"), "%" + userQuery.getUsername() + "%"));
+                }
+                // in范围查询 userId
+                if (!CollectionUtils.isEmpty(userQuery.getUserIds())) {
+                    CriteriaBuilder.In<Object> types = builder.in(root.get("userId"));
+                    for (Long id : userQuery.getUserIds()) {
+                        types = types.value(id);
+                    }
+                    predicates.add(types);
+                }
+                return builder.and(predicates.toArray(new Predicate[predicates.size()]));
+            }
+        };
+
+        // jpa做分页查询时，分页从0开始
+        Page<User> page = userDao.findAll(specification, PageRequest.of(userQuery.getPageNum() - 1, userQuery.getPageSize()));
+        List<UserVO> list = BeanTransformUtils.transformList(page.getContent(), UserVO.class);
+        return new CommonPageVO<>(page.getNumber() + 1, page.getSize(), page.getNumberOfElements(), page.getTotalPages(), page.getTotalElements(), list);
+    }
 
     @Override
     public UserDTO getByPrimaryKey(Long userId) {
