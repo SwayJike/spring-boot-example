@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * 定时任务信息
  *
@@ -13,8 +15,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ScheduleInfo {
+public class ScheduleInfo implements Serializable {
 
+    private static final long serialVersionUID = -5430832421904434528L;
     /**
      * 任务类名
      */
