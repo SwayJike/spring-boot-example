@@ -30,6 +30,18 @@ public class ScheduleConfig implements SchedulingConfigurer {
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
         log.info("ScheduleManager.scheduleList().size()=" + ScheduleManager.scheduleList().size());
 
+        // 应用启动后3秒执行一次，然后定时fixedRate执行执行一次
+        // for (ScheduleInfo scheduleInfo : ScheduleManager.scheduleList()) {
+        //     try {
+        //         log.info("scheduleInfo:{}", new ObjectMapper().writeValueAsString(scheduleInfo));
+        //     } catch (JsonProcessingException e) {
+        //         e.printStackTrace();
+        //     }
+        //     taskRegistrar.getScheduler().scheduleAtFixedRate(scheduleInfo.getSchedule(),
+        //             new Date(System.currentTimeMillis() + 3000L),
+        //             scheduleInfo.getFixedRate() * 1000L);
+        // }
+
         for (ScheduleInfo scheduleInfo : ScheduleManager.scheduleList()) {
             try {
                 log.info("scheduleInfo:{}", new ObjectMapper().writeValueAsString(scheduleInfo));
