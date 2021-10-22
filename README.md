@@ -13,6 +13,7 @@
 |----Spring Boot整合PostgreSQL spring-boot-data-postgresql
 |----Spring Boot整合Redis spring-boot-data-redis
 |----Spring Boot整合Docker spring-boot-docker
+|----Spring Boot设计模式之工厂模式 spring-boot-dp-factory
 |----Spring Boot整合Druid数据库连接池 spring-boot-druid
 |----Spring Boot整合dubbo spring-boot-dubbo
 |----Spring Boot整合EasyExcel,实现Excel导入导出 spring-boot-easyexcel
