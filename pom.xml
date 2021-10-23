@@ -150,6 +150,7 @@
         <!-- apache -->
         <shiro-spring.version>1.7.1</shiro-spring.version>
         <commons-lang3.version>3.11</commons-lang3.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 
         <!-- javax -->
         <validation-api.version>2.0.1.Final</validation-api.version>
@@ -411,10 +412,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
