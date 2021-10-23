@@ -30,7 +30,6 @@ public class FruitSelector implements InitializingBean {
     @Override
     public void afterPropertiesSet() {
         fruitMap = fruitList.stream().collect(Collectors.toMap(Fruit::getType, Function.identity()));
-
     }
 
 }
