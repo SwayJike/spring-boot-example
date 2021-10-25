@@ -11,6 +11,11 @@ import java.util.Map;
  */
 public interface PgsqlStudentDao {
 
+    /**
+     * 获取所有学生列表
+     *
+     * @return List<Map<String, Object>> 所有学生列表
+     */
     List<Map<String, Object>> getAllStudents();
 
 }

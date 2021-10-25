@@ -11,10 +11,25 @@ import java.util.Map;
  */
 public interface StudentService {
 
+    /**
+     * 从MySQL数据库获取所有的学生列表
+     *
+     * @return List<Map<String, Object>> 所有的学生列表
+     */
     List<Map<String, Object>> getAllStudentsWithMysql();
 
+    /**
+     * 从Oracle数据库获取所有的学生列表
+     *
+     * @return List<Map<String, Object>> 所有的学生列表
+     */
     List<Map<String, Object>> getAllStudentsWithOracle();
 
+    /**
+     * 从Postgresql数据库获取所有的学生列表
+     *
+     * @return List<Map<String, Object>> 所有的学生列表
+     */
     List<Map<String, Object>> getAllStudentsWithPgsql();
 
 }

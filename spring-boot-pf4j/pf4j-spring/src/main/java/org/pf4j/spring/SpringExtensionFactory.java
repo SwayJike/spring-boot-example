@@ -38,7 +38,7 @@ import static java.util.Objects.nonNull;
  * <p><p>
  * Uses Springs {@link AutowireCapableBeanFactory} to instantiate a given extension class. All kinds of
  * {@link Autowired} are supported (see example below). If no {@link ApplicationContext} is available (this is the case
- * if either the related plugin is not a {@link SpringPlugin} or the given plugin manager is not a
+ * if either the related plugin is not a {@link AbstractSpringPlugin} or the given plugin manager is not a
  * {@link SpringPluginManager}), standard Java reflection will be used to instantiate an extension.
  * <p><p>
  * Creates a new extension instance every time a request is done.
@@ -160,7 +160,7 @@ public class SpringExtensionFactory implements ExtensionFactory {
      * <p>
      * The ordering of checks is:
      * <ol>
-     *     <li>If the given {@code extensionClass} belongs to a plugin that is a {@link SpringPlugin} the plugins context will be returned.</li>
+     *     <li>If the given {@code extensionClass} belongs to a plugin that is a {@link AbstractSpringPlugin} the plugins context will be returned.</li>
      *     <li>Otherwise, if the given {@link #pluginManager} of this instance is a {@link SpringPluginManager} the managers context will be returned.</li>
      *     <li>If none of these checks fits, {@code null} is returned.</li>
      * </ol>
@@ -176,10 +176,10 @@ public class SpringExtensionFactory implements ExtensionFactory {
 
         final ApplicationContext applicationContext;
 
-        if (plugin instanceof SpringPlugin) {
+        if (plugin instanceof AbstractSpringPlugin) {
             log.debug("  Extension class ' " + nameOf(extensionClass) + "' belongs to spring-plugin '" + nameOf(plugin)
                       + "' and will be autowired by using its application context.");
-            applicationContext = ((SpringPlugin) plugin).getApplicationContext();
+            applicationContext = ((AbstractSpringPlugin) plugin).getApplicationContext();
         } else if (this.pluginManager instanceof SpringPluginManager) {
             log.debug("  Extension class ' " + nameOf(extensionClass) + "' belongs to a non spring-plugin (or main application)" +
                       " '" + nameOf(plugin) + ", but the used PF4J plugin-manager is a spring-plugin-manager. Therefore" +

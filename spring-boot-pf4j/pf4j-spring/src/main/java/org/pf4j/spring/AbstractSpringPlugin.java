@@ -23,11 +23,11 @@ import org.springframework.context.ConfigurableApplicationContext;
 /**
  * @author Decebal Suiu
  */
-public abstract class SpringPlugin extends Plugin {
+public abstract class AbstractSpringPlugin extends Plugin {
 
     private ApplicationContext applicationContext;
 
-    public SpringPlugin(PluginWrapper wrapper) {
+    public AbstractSpringPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
 
