@@ -1,5 +1,6 @@
 package com.jourwon.spring.boot.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author JourWon
  * @date 2021/1/18
  */
+@Slf4j
 @Component
 public final class RedisUtils {
 
@@ -137,7 +139,7 @@ public final class RedisUtils {
             }
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("调用RedisUtils的set方法(带过期时间)异常", e);
             return false;
         }
     }
@@ -256,7 +258,7 @@ public final class RedisUtils {
             }
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("调用RedisUtils的hPut方法(带过期时间)异常", e);
             return false;
         }
     }
@@ -288,7 +290,7 @@ public final class RedisUtils {
             }
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("调用RedisUtils的hPutAll方法(带过期时间)异常", e);
             return false;
         }
     }
@@ -423,7 +425,7 @@ public final class RedisUtils {
             }
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("调用RedisUtils的lSet方法(带过期时间)异常", e);
             return false;
         }
     }
