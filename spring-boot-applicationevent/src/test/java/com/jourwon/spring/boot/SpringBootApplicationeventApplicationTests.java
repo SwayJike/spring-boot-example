@@ -5,6 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+/**
+ * 测试类
+ *
+ * @author JourWon
+ * @date 2021/11/28
+ */
 @SpringBootTest
 public class SpringBootApplicationeventApplicationTests {
 
