@@ -4,6 +4,7 @@
 
 企业级spring-boot案例
 |----Spring Boot整合actuator,实现服务监控管理 spring-boot-actuator
+|----Spring Boot集成事件发布及监听 spring-boot-applicationevent
 |----Spring Boot整合异步线程池 spring-boot-async
 |----Spring Boot整合自定义banner spring-boot-banner
 |----Spring Boot整合本地缓存caffeine spring-boot-cache-caffeine
