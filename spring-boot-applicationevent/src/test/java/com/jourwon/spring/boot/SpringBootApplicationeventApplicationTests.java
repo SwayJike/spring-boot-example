@@ -1,13 +1,23 @@
 package com.jourwon.spring.boot;
 
+import com.jourwon.spring.boot.publisher.CustomSpringEventPublisher;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootApplicationeventApplicationTests {
+public class SpringBootApplicationeventApplicationTests {
 
     @Test
-    void contextLoads() {
+    public void contextLoads() {
+    }
+
+    @Autowired
+    private CustomSpringEventPublisher eventPublisher;
+
+    @Test
+    public void publishTest() {
+        eventPublisher.publishEvent("发布消息");
     }
 
 }
