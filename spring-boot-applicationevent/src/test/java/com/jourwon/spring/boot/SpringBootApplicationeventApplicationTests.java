@@ -2,8 +2,9 @@ package com.jourwon.spring.boot;
 
 import com.jourwon.spring.boot.publisher.CustomSpringEventPublisher;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.annotation.Resource;
 
 /**
  * 测试类
@@ -18,7 +19,7 @@ public class SpringBootApplicationeventApplicationTests {
     public void contextLoads() {
     }
 
-    @Autowired
+    @Resource
     private CustomSpringEventPublisher eventPublisher;
 
     @Test
