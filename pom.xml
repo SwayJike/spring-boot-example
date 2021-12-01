@@ -95,6 +95,8 @@
         <module>spring-boot-resttemplate</module>
         <!-- Spring Boot整合retrofit,支持通过接口的方式发起HTTP请求 -->
         <module>spring-boot-retrofit</module>
+        <!-- Spring Boot应用启动后执行任务 -->
+        <module>spring-boot-runner</module>
         <!-- Spring Boot整合定时任务scheduler -->
         <module>spring-boot-scheduler</module>
         <!-- Spring Boot整合Screw,一键生成数据库文档 -->
