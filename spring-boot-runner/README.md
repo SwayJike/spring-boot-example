@@ -3,6 +3,22 @@
 # 延伸阅读
 
 
+为什么我们需要在Spring Boot启动时运行代码？
+
+由于多种原因，我们需要在应用程序启动时运行方法，记录重要的事情或说应用程序已启动的消息，处理数据库或文件，建立索引，创建缓存等。
+启动后台进程，例如发送通知，从某些队列中获取数据等。
+
+在Spring Boot中启动后运行方法的不同方法
+
+每种方式都有其自身的优势。 让我们详细看一下以确定应该使用哪个
+
+使用CommandLineRunner界面
+带有ApplicationRunner界面
+Spring Boot应用程序事件
+@Postconstruct方法的注释
+InitializingBean接口
+@bean批注的Init属性
+
 在spring boot应用中，我们可以在程序启动之前执行任何任务。
 为了达到这个目的，我们需要使用CommandLineRunner或ApplicationRunner接口创建bean，
 spring boot会自动监测到它们。这两个接口都有一个run()方法，在实现接口时需要覆盖该方法，
