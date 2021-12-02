@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
  * @date 2021/12/2
  */
 @Slf4j
-@Order(1)
+@Order(2)
 @Component
-public class MyApplicationRunner implements ApplicationRunner {
+public class MyApplicationRunner2 implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        log.info("启动预加载数据(MyApplicationRunner)...{},{}", args.getSourceArgs(), args.getOptionNames());
+        log.info("启动预加载数据(MyApplicationRunner2)...{},{}", args.getSourceArgs(), args.getOptionNames());
     }
 
 }

@@ -12,13 +12,13 @@ import java.util.Arrays;
  * @date 2021/12/2
  */
 @Slf4j
-@Order(3)
+@Order(4)
 @Component
-public class MyCommandLineRunner implements CommandLineRunner {
+public class MyCommandLineRunner2 implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("启动预加载数据(MyCommandLineRunner)...{}", Arrays.toString(args));
+        log.info("启动预加载数据(MyCommandLineRunner2)...{}", Arrays.toString(args));
     }
 
 }
