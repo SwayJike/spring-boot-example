@@ -182,24 +182,13 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
 它提供了访问参数的不同方法，如下所示
 
-| 方法                                      | 说明                                       |
-| ----------------------------------------- | ------------------------------------------ |
-| String[] GetSourceArgs()                  | 提供传递给应用程序的未处理参数             |
-| Set<String> getOptionNames()              | 所有可选参数的名称，可选参数的前面都有"--" |
-| List<String> getNonOptionArgs()           | 返回未处理的非可选参数，不带"--"的参数     |
-| boolean containsOption(String name)       | 检查名称是否存在于可选参数中               |
-| List<String> getOptionValues(String name) | 按名称给出参数值                           |
-
-方法 getOptionValues 返回值列表，因为参数值可以是数组，因为我们可以在命令行中多次使用相同的键。
-
-相信很多同学看到这里都开始对这两个`run`方法的入参感兴趣了。**Spring Boot**应用启动时是可以接受参数的，换句话说也就是`Spring Boot`的`main`方法是可以接受参数的。这些参数通过命令行 **java -jar  yourapp.jar**   来传递。`CommandLineRunner`会原封不动照单全收这些接口，这些参数也可以封装到`ApplicationArguments`对象中供`ApplicationRunner`调用。 我们来认识一下`ApplicationArguments`的相关方法：
-
-- **getSourceArgs()**  被传递给应用程序的原始参数，返回这些参数的字符串数组。
-- **getOptionNames()** 获取选项名称的`Set`字符串集合。如 `--spring.profiles.active=dev --debug` 将返回`["spring.profiles.active","debug"]` 。
-- **getOptionValues(String name)** 通过名称来获取该名称对应的选项值。如`--foo=bar --foo=baz` 将返回`["bar","baz"]`。
-- **containsOption(String name)** 用来判断是否包含某个选项的名称。
-- **getNonOptionArgs()** 用来获取所有的无选项参数。
-
+| 方法                                      | 说明                                                         |
+| ----------------------------------------- | ------------------------------------------------------------ |
+| String[] GetSourceArgs()                  | 被传递给应用程序的原始参数，返回这些参数的字符串数组         |
+| Set<String> getOptionNames()              | 获取选项名称的`Set`字符串集合，选项参数的前面都有"--"。如 `--spring.profiles.active=dev --debug` 将返回`["spring.profiles.active","debug"]` 。 |
+| List<String> getNonOptionArgs()           | 用来获取所有的无选项参数，不带"--"的参数                     |
+| boolean containsOption(String name)       | 用来判断是否包含某个选项的名称                               |
+| List<String> getOptionValues(String name) | 通过名称来获取该名称对应的选项值，我们可以在命令行中多次使用相同的键。如`--foo=bar --foo=baz` 将返回`["bar","baz"]`。 |
 
 
 ### 实现 ApplicationRunner 接口的示例
