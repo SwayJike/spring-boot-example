@@ -95,7 +95,7 @@
         <module>spring-boot-resttemplate</module>
         <!-- Spring Boot整合retrofit,支持通过接口的方式发起HTTP请求 -->
         <module>spring-boot-retrofit</module>
-        <!-- Spring Boot应用启动后执行任务 -->
+        <!-- Spring Boot 启动时的运行方法 -->
         <module>spring-boot-runner</module>
         <!-- Spring Boot整合定时任务scheduler -->
         <module>spring-boot-scheduler</module>

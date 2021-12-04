@@ -10,7 +10,7 @@
     <artifactId>spring-boot-runner</artifactId>
     <version>1.0.0</version>
     <name>spring-boot-runner</name>
-    <description>Spring Boot应用启动后执行任务</description>
+    <description>Spring Boot 启动时的运行方法</description>
 
     <dependencies>
         <!-- Knife4j-API接口文档 -->

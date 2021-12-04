@@ -8,17 +8,19 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 /**
+ * 实现CommandLineRunner接口
+ *
  * @author JourWon
  * @date 2021/12/2
  */
 @Slf4j
-@Order(3)
+@Order(2)
 @Component
 public class MyCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("启动预加载数据(MyCommandLineRunner)...{}", Arrays.toString(args));
+        log.info("MyCommandLineRunner run方法...{}", Arrays.toString(args));
     }
 
 }
