@@ -1,6 +1,6 @@
 package com.jourwon.spring.boot;
 
-import com.jourwon.spring.boot.publisher.CustomSpringEventPublisher;
+import com.jourwon.spring.boot.publisher.CustomApplicationEventPublisher;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -15,12 +15,8 @@ import javax.annotation.Resource;
 @SpringBootTest
 public class SpringBootApplicationeventApplicationTests {
 
-    @Test
-    public void contextLoads() {
-    }
-
     @Resource
-    private CustomSpringEventPublisher eventPublisher;
+    private CustomApplicationEventPublisher eventPublisher;
 
     @Test
     public void publishTest() {

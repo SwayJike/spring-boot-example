@@ -1,6 +1,6 @@
 package com.jourwon.spring.boot.listener;
 
-import com.jourwon.spring.boot.event.CustomSpringEvent;
+import com.jourwon.spring.boot.event.CustomApplicationEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class CustomSpringEventListener implements ApplicationListener<CustomSpringEvent> {
+public class CustomApplicationListener implements ApplicationListener<CustomApplicationEvent> {
 
     @Override
-    public void onApplicationEvent(CustomSpringEvent event) {
-        log.info("接收到的事件:{}", event.getMessage());
+    public void onApplicationEvent(CustomApplicationEvent event) {
+        log.info("onApplicationEvent方法接收到的消息:{}", event.getMessage());
     }
 
 }

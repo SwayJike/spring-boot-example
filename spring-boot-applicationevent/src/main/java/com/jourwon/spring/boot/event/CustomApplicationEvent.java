@@ -8,11 +8,11 @@ import org.springframework.context.ApplicationEvent;
  * @author JourWon
  * @date 2021/11/27
  */
-public class CustomSpringEvent extends ApplicationEvent {
+public class CustomApplicationEvent extends ApplicationEvent {
 
     private String message;
 
-    public CustomSpringEvent(Object source, String message) {
+    public CustomApplicationEvent(Object source, String message) {
         super(source);
         this.message = message;
     }
