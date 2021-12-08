@@ -10,7 +10,7 @@
     <artifactId>spring-boot-helloworld</artifactId>
     <version>1.0.0</version>
     <name>spring-boot-helloworld</name>
-    <description>spring-boot快速入门-HelloWorld</description>
+    <description>Spring Boot快速入门-HelloWorld</description>
 
     <dependencies>
         <!-- springboot相关 -->

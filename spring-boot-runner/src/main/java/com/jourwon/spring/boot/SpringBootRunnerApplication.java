@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 /**
  * 启动类
- * Spring Boot 启动时的运行方法
+ * Spring Boot启动时的运行方法
  *
  * @author JourWon
  * @date 2021/12/1

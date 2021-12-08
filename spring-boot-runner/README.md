@@ -1,4 +1,4 @@
-# 企业级spring-boot案例-Spring Boot 启动时的运行方法
+# 企业级spring-boot案例-Spring Boot启动时的运行方法
 
 企业级spring-boot案例系列文章上线了，涵盖了大部分企业级的spring-boot使用场景，会不定期进行更新，企业级spring-boot案例源码地址：[https://gitee.com/JourWon/spring-boot-example](https://gitee.com/JourWon/spring-boot-example)，欢迎各位大佬一起学习和指正
 
@@ -23,7 +23,7 @@
 |----Spring Boot整合全局异常处理,接口统一响应对象 spring-boot-exception-handler
 |----Spring Boot整合flyway,数据库版本控制 spring-boot-flyway
 |----Spring Boot整合git插件,将项目打包为tar.gz,并带上git版本号,然后通过sh脚本快速部署 spring-boot-git-commit-id-plugin
-|----spring-boot快速入门-HelloWorld spring-boot-helloworld
+|----Spring Boot快速入门-HelloWorld spring-boot-helloworld
 |----Spring Boot整合HikariCP数据库连接池 spring-boot-hikaricp
 |----Spring Boot整合https spring-boot-https
 |----Spring Boot整合Jackson,实现数据脱敏 spring-boot-json-desensitization

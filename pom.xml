@@ -49,7 +49,7 @@
         <module>spring-boot-flyway</module>
         <!-- Spring Boot整合git插件,将项目打包为tar.gz,并带上git版本号,然后通过sh脚本快速部署 -->
         <module>spring-boot-git-commit-id-plugin</module>
-        <!-- spring-boot快速入门-HelloWorld -->
+        <!-- Spring Boot快速入门-HelloWorld -->
         <module>spring-boot-helloworld</module>
         <!-- Spring Boot整合HikariCP数据库连接池 -->
         <module>spring-boot-hikaricp</module>
@@ -95,7 +95,7 @@
         <module>spring-boot-resttemplate</module>
         <!-- Spring Boot整合retrofit,支持通过接口的方式发起HTTP请求 -->
         <module>spring-boot-retrofit</module>
-        <!-- Spring Boot 启动时的运行方法 -->
+        <!-- Spring Boot启动时的运行方法 -->
         <module>spring-boot-runner</module>
         <!-- Spring Boot整合定时任务scheduler -->
         <module>spring-boot-scheduler</module>
