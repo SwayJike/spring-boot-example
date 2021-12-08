@@ -51,7 +51,7 @@
 |----Spring Boot整合接口限流-redis集群方式 spring-boot-ratelimit-redis
 |----Spring Boot整合RestTemplate,实现服务间调用 spring-boot-resttemplate
 |----Spring Boot整合retrofit,支持通过接口的方式发起HTTP请求 spring-boot-retrofit
-|----Spring Boot 启动时的运行方法 spring-boot-runner
+|----Spring Boot启动时的运行方法 spring-boot-runner
 |----Spring Boot整合定时任务scheduler spring-boot-scheduler
 |----Spring Boot整合Screw,一键生成数据库文档 spring-boot-screw
 |----Spring Boot整合Shiro spring-boot-shiro
@@ -295,9 +295,9 @@ public class SpringBootApplicationeventApplicationTests {
 
 ```java
 2021-12-08 01:08:12.036  INFO 10624 --- [           main] .j.s.b.p.CustomApplicationEventPublisher : 开始发布自定义事件
-        2021-12-08 01:08:12.036  INFO 10624 --- [           main] c.j.s.b.l.CustomApplicationListener      : onApplicationEvent方法接收到的消息:发布消息
-        2021-12-08 01:08:12.036  INFO 10624 --- [           main] .b.l.AnnotationCustomApplicationListener : EventListener注解方式接收到的消息为:发布消息
-        2021-12-08 01:08:12.036  INFO 10624 --- [           main] .j.s.b.p.CustomApplicationEventPublisher : 发布自定义事件结束
+2021-12-08 01:08:12.036  INFO 10624 --- [           main] c.j.s.b.l.CustomApplicationListener      : onApplicationEvent方法接收到的消息:发布消息
+2021-12-08 01:08:12.036  INFO 10624 --- [           main] .b.l.AnnotationCustomApplicationListener : EventListener注解方式接收到的消息为:发布消息
+2021-12-08 01:08:12.036  INFO 10624 --- [           main] .j.s.b.p.CustomApplicationEventPublisher : 发布自定义事件结束
 ```
 
 
@@ -359,8 +359,8 @@ public class AsyncTaskExecutorConfig {
 
 ```java
 2021-12-08 01:09:02.719  INFO 11556 --- [           main] .j.s.b.p.CustomApplicationEventPublisher : 开始发布自定义事件
-        2021-12-08 01:09:02.719  INFO 11556 --- [           main] c.j.s.b.l.CustomApplicationListener      : onApplicationEvent方法接收到的消息:发布消息
-        2021-12-08 01:09:02.735  INFO 11556 --- [           main] .b.l.AnnotationCustomApplicationListener : EventListener注解方式接收到的消息为:发布消息
-        2021-12-08 01:09:02.751  INFO 11556 --- [           main] .j.s.b.p.CustomApplicationEventPublisher : 发布自定义事件结束
-        2021-12-08 01:09:02.751  INFO 11556 --- [ taskExecutor-1] c.j.s.b.l.AsynCustomApplicationListener  : 异步事件监听,当前线程:taskExecutor-1,消息为:发布消息
+2021-12-08 01:09:02.719  INFO 11556 --- [           main] c.j.s.b.l.CustomApplicationListener      : onApplicationEvent方法接收到的消息:发布消息
+2021-12-08 01:09:02.735  INFO 11556 --- [           main] .b.l.AnnotationCustomApplicationListener : EventListener注解方式接收到的消息为:发布消息
+2021-12-08 01:09:02.751  INFO 11556 --- [           main] .j.s.b.p.CustomApplicationEventPublisher : 发布自定义事件结束
+2021-12-08 01:09:02.751  INFO 11556 --- [ taskExecutor-1] c.j.s.b.l.AsynCustomApplicationListener  : 异步事件监听,当前线程:taskExecutor-1,消息为:发布消息
 ```

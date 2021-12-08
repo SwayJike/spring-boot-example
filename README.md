@@ -46,7 +46,7 @@
 |----Spring Boot整合接口限流-redis集群方式 spring-boot-ratelimit-redis
 |----Spring Boot整合RestTemplate,实现服务间调用 spring-boot-resttemplate
 |----Spring Boot整合retrofit,支持通过接口的方式发起HTTP请求 spring-boot-retrofit
-|----Spring Boot 启动时的运行方法 spring-boot-runner
+|----Spring Boot启动时的运行方法 spring-boot-runner
 |----Spring Boot整合定时任务scheduler spring-boot-scheduler
 |----Spring Boot整合Screw,一键生成数据库文档 spring-boot-screw
 |----Spring Boot整合Shiro spring-boot-shiro
