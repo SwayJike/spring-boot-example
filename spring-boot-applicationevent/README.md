@@ -151,7 +151,7 @@ sprjng借助于 org.springframewofk.context.event.ApplicationEvent抽象类及�
 
 #### Spring Boot 内置事件
 
-在Spring Boot的1.5.x中，提供了几种事件，供我们在开发过程中进行更加便捷的扩展及差异化操作。
+在`Spring Boot`的1.5.x中，提供了几种事件，供我们在开发过程中进行更加便捷的扩展及差异化操作。
 
 | 序号 | 事件                                | 描述                                                         |
 | ---- | ----------------------------------- | ------------------------------------------------------------ |
@@ -178,45 +178,45 @@ sprjng借助于 org.springframewofk.context.event.ApplicationEvent抽象类及�
 
 1. 创建事件类 继承 `ApplicationEvent`
 
-   ```java
-   public class CustomApplicationEvent extends ApplicationEvent {
-   
-       private String message;
-   
-       public CustomApplicationEvent(Object source, String message) {
-           super(source);
-           this.message = message;
-       }
-   
-       public String getMessage() {
-           return message;
-       }
-   
-   }
-   ```
+```java
+public class CustomApplicationEvent extends ApplicationEvent {
+
+    private String message;
+
+    public CustomApplicationEvent(Object source, String message) {
+        super(source);
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+}
+```
 
 2. 创建事件的发布者 注入`ApplicationEventPublisher`
 
-   ```java
-   @Slf4j
-   @Component
-   public class CustomApplicationEventPublisher {
-   
-       @Resource
-       ApplicationEventPublisher applicationEventPublisher;
-   
-       public void publishEvent(String message) {
-           log.info("开始发布自定义事件");
-           CustomApplicationEvent customApplicationEvent = new CustomApplicationEvent(this, message);
-           // 发布事件
-           applicationEventPublisher.publishEvent(customApplicationEvent);
-           log.info("发布自定义事件结束");
-       }
-   
-   }
-   ```
+```java
+@Slf4j
+@Component
+public class CustomApplicationEventPublisher {
 
-3. 创建事件的监听者 实现ApplicationListener接口
+    @Resource
+    ApplicationEventPublisher applicationEventPublisher;
+
+    public void publishEvent(String message) {
+        log.info("开始发布自定义事件");
+        CustomApplicationEvent customApplicationEvent = new CustomApplicationEvent(this, message);
+        // 发布事件
+        applicationEventPublisher.publishEvent(customApplicationEvent);
+        log.info("发布自定义事件结束");
+    }
+
+}
+```
+
+3. 创建事件的监听者 实现`ApplicationListener`接口
 
    ```java
    @Slf4j
