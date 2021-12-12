@@ -50,6 +50,7 @@
 |----Spring Boot整合定时任务scheduler spring-boot-scheduler
 |----Spring Boot整合Screw,一键生成数据库文档 spring-boot-screw
 |----Spring Boot整合Shiro spring-boot-shiro
+|----Spring Boot整合starter模块 spring-boot-starter
 |----Spring Boot整合Swagger3-API接口文档 spring-boot-swagger3
 |----Spring Boot整合模板引擎Thymeleaf spring-boot-thymeleaf
 |----Spring Boot整合undertow spring-boot-undertow
